@@ -1,86 +1,86 @@
 {
     "name": "JavaScript Fundamentals",
-    "description": "JavaScript Fundamentals",
     "questions": [
       {
         "question": "Bind polyfill",
         "answer": "The bind method creates a new function that, when called, has its this keyword set to the provided value. A polyfill for bind can be implemented by adding a function to Function.prototype if it does not already exist.",
-        "example": "if (!Function.prototype.bind) {\n  Function.prototype.bind = function(context) {\n    var fn = this;\n    return function() {\n      return fn.apply(context, arguments);\n    };\n  };\n}\n\nvar obj = {\n  x: 42,\n  getX: function() {\n    return this.x;\n  }\n};\n\nvar unboundGetX = obj.getX;\nvar boundGetX = unboundGetX.bind(obj);\nconsole.log(boundGetX()); // Expected output: 42"
+        "hints": "if (!Function.prototype.bind) {\n  Function.prototype.bind = function(context) {\n    var fn = this;\n    return function() {\n      return fn.apply(context, arguments);\n    };\n  };\n}\n\nvar obj = {\n  x: 42,\n  getX: function() {\n    return this.x;\n  }\n};\n\nvar unboundGetX = obj.getX;\nvar boundGetX = unboundGetX.bind(obj);\nconsole.log(boundGetX()); // Expected output: 42"
       },
       {
         "question": "Set timeout polyfill",
         "answer": "setTimeout is a Web API that executes a function after a specified delay. A polyfill for setTimeout can be implemented using recursion and Date object to check the elapsed time.",
-        "example": "function setTimeoutPolyfill(callback, delay) {\n  var start = Date.now();\n\n  function check() {\n    if (Date.now() - start >= delay) {\n      callback();\n    } else {\n      window.requestAnimationFrame(check);\n    }\n  }\n\n  check();\n}\n\nsetTimeoutPolyfill(() => console.log('Hello after 2 seconds'), 2000);"
+        "hints": "function setTimeoutPolyfill(callback, delay) {\n  var start = Date.now();\n\n  function check() {\n    if (Date.now() - start >= delay) {\n      callback();\n    } else {\n      window.requestAnimationFrame(check);\n    }\n  }\n\n  check();\n}\n\nsetTimeoutPolyfill(() => console.log('Hello after 2 seconds'), 2000);"
       },
       {
         "question": "Event delegation",
         "answer": "Event delegation is a technique to handle events on multiple elements with a single event listener. It works by placing a single event listener on a common ancestor of the elements and using event.target to determine the target element.",
-        "example": "document.getElementById('parent').addEventListener('click', function(event) {\n  if (event.target.tagName === 'BUTTON') {\n    console.log('Button clicked');\n  }\n});"
+        "hints": "document.getElementById('parent').addEventListener('click', function(event) {\n  if (event.target.tagName === 'BUTTON') {\n    console.log('Button clicked');\n  }\n});"
       },
       {
         "question": "Currying",
         "answer": "Currying is a technique of translating a function with multiple arguments into a sequence of nesting functions with a single argument. It allows partial application of functions and creates reusable functions.",
-        "example": "function multiply(a, b) {\n  return a * b;\n}\n\nfunction curriedMultiply(a) {\n  return function(b) {\n    return a * b;\n  };\n}\n\nconsole.log(curriedMultiply(2)(3)); // Expected output: 6"
+        "hints": "function multiply(a, b) {\n  return a * b;\n}\n\nfunction curriedMultiply(a) {\n  return function(b) {\n    return a * b;\n  };\n}\n\nconsole.log(curriedMultiply(2)(3)); // Expected output: 6"
       },
       {
         "question": "Event bubbling",
         "answer": "Event bubbling is the process where an event propagates from the target element up to its ancestors in the DOM tree. It allows handling events on multiple elements with a single event listener on a common ancestor.",
-        "example": "document.getElementById('parent').addEventListener('click', function(event) {\n  console.log('Clicked on', event.target.id);\n});"
+        "hints": "document.getElementById('parent').addEventListener('click', function(event) {\n  console.log('Clicked on', event.target.id);\n});"
       },
       {
         "question": "Hoisting",
         "answer": "Hoisting is a JavaScript mechanism where variable and function declarations are moved to the top of their containing scope during the compilation phase. This allows variables to be used before they are declared.",
-        "example": "console.log(x); // Output: undefined\nvar x = 5;"
+        "hints": "console.log(x); // Output: undefined\nvar x = 5;"
       },
       {
         "question": "Prototype inheritance",
         "answer": "Prototype inheritance is a mechanism in JavaScript where objects inherit properties and methods from a prototype object. It allows creating objects based on a blueprint object and sharing behavior between objects.",
-        "example": "function Person(name) {\n  this.name = name;\n}\n\nPerson.prototype.greet = function() {\n  return 'Hello, my name is ' + this.name;\n};\n\nvar john = new Person('John');\nconsole.log(john.greet()); // Expected output: Hello, my name is John"
+        "hints": "function Person(name) {\n  this.name = name;\n}\n\nPerson.prototype.greet = function() {\n  return 'Hello, my name is ' + this.name;\n};\n\nvar john = new Person('John');\nconsole.log(john.greet()); // Expected output: Hello, my name is John"
       },
       {
         "question": "Closures",
         "answer": "Closures are functions that have access to variables from their containing scope even after the parent function has finished executing. They allow creating private variables and functions in JavaScript.",
-        "example": "function createCounter() {\n  var count = 0;\n  return function() {\n    return ++count;\n  };\n}\n\nvar counter = createCounter();\nconsole.log(counter()); // Expected output: 1\nconsole.log(counter()); // Expected output: 2"
+        "hints": "function createCounter() {\n  var count = 0;\n  return function() {\n    return ++count;\n  };\n}\n\nvar counter = createCounter();\nconsole.log(counter()); // Expected output: 1\nconsole.log(counter()); // Expected output: 2"
       },
       {
         "question": "Promises",
         "answer": "Promises are objects representing the eventual completion or failure of an asynchronous operation. They allow handling asynchronous operations in a more readable and manageable way compared to callbacks.",
-        "example": "function fetchData() {\n  return new Promise((resolve, reject) => {\n    setTimeout(() => {\n      resolve('Data fetched successfully');\n    }, 2000);\n  });\n}\n\nfetchData().then(data => {\n  console.log(data); // Expected output: Data fetched successfully\n});"
+        "hints": "function fetchData() {\n  return new Promise((resolve, reject) => {\n    setTimeout(() => {\n      resolve('Data fetched successfully');\n    }, 2000);\n  });\n}\n\nfetchData().then(data => {\n  console.log(data); // Expected output: Data fetched successfully\n});"
       },
       {
         "question": "Async/await",
         "answer": "Async/await is a modern JavaScript feature that allows writing asynchronous code in a synchronous way using the async and await keywords. It simplifies handling promises and improves code readability.",
-        "example": "function fetchData() {\n  return new Promise((resolve, reject) => {\n    setTimeout(() => {\n      resolve('Data fetched successfully');\n    }, 2000);\n  });\n}"
+        "hints": "function fetchData() {\n  return new Promise((resolve, reject) => {\n    setTimeout(() => {\n      resolve('Data fetched successfully');\n    }, 2000);\n  });\n}"
       },
       {
         "question": "Map",
         "answer": "The map method creates a new array by applying a function to each element of an existing array. It does not mutate the original array and returns a new array with the transformed elements.",
-        "example": "var numbers = [1, 2, 3, 4];\nvar doubled = numbers.map(num => num * 2);\nconsole.log(doubled); // Expected output: [2, 4, 6, 8]"
+        "hints": "var numbers = [1, 2, 3, 4];\nvar doubled = numbers.map(num => num * 2);\nconsole.log(doubled); // Expected output: [2, 4, 6, 8]"
       },
       {
         "question": "Filter",
         "answer": "The filter method creates a new array with elements that pass a test specified by a function. It does not mutate the original array and returns a new array with the filtered elements.",
-        "example": "var numbers = [1, 2, 3, 4];\nvar even = numbers.filter(num => num % 2 === 0);\nconsole.log(even); // Expected output: [2, 4]"
+        "hints": "var numbers = [1, 2, 3, 4];\nvar even = numbers.filter(num => num % 2 === 0);\nconsole.log(even); // Expected output: [2, 4]"
       },
       {
         "question": "Reduce",
         "answer": "The reduce method applies a function against an accumulator and each element of an array to reduce it to a single value. It can be used to perform calculations, transformations, or aggregations on array elements.",
-        "example": "var numbers = [1, 2, 3, 4];\nvar sum = numbers.reduce((acc, num) => acc + num, 0);\nconsole.log(sum); // Expected output: 10"
+        "hints": "var numbers = [1, 2, 3, 4];\nvar sum = numbers.reduce((acc, num) => acc + num, 0);\nconsole.log(sum); // Expected output: 10"
       },
       {
         "question": "Spread operator",
         "answer": "The spread operator (...) allows an iterable such as an array or string to be expanded in places where zero or more arguments or elements are expected. It can be used for array literals, function arguments, and object literals.",
-        "example": "var numbers = [1, 2, 3];\nvar combined = [...numbers, 4, 5];\nconsole.log(combined); // Expected output: [1, 2, 3, 4, 5]"
+        "hints": "var numbers = [1, 2, 3];\nvar combined = [...numbers, 4, 5];\nconsole.log(combined); // Expected output: [1, 2, 3, 4, 5]"
       },
       {
         "question": "Destructuring assignment",
         "answer": "Destructuring assignment allows unpacking values from arrays or objects into distinct variables. It provides a concise syntax for extracting multiple values and assigning them to variables.",
-        "example": "var numbers = [1, 2, 3];\nvar [ first, second, third ] = numbers;\nconsole.log(first, second, third); // Expected output: 1 2 3"
+        "hints": "var numbers = [1, 2, 3];\nvar [ first, second, third ] = numbers;\nconsole.log(first, second, third); // Expected output: 1 2 3"
       },
       {
         "question": "Event loop",
         "answer": "The event loop is a mechanism in JavaScript that handles asynchronous operations by executing callback functions in response to events. It allows non-blocking I/O operations and ensures smooth execution of code.",
-        "example": "console.log('Start');\nsetTimeout(() => console.log('Timeout'), 0);\nPromise.resolve().then(() => console.log('Promise'));\nconsole.log('End');"
+        "hints": "console.log('Start');\nsetTimeout(() => console.log('Timeout'), 0);\nPromise.resolve().then(() => console.log('Promise'));\nconsole.log('End');"
       }
     ]
   }
+  
