@@ -3,6 +3,7 @@ const filePaths = {
     'system-design': './data/system-design.json',
     'js-fundamentals': './data/js-fundamentals.json',
     'js-questions': './data/js-questions.json',
+    'js-machine-coding': './data/js-machine-coding.json',
     'concepts-basics': './data/concepts-basics.json',
     'concepts-advanced': './data/concepts-advanced.json',
 };
@@ -13,6 +14,7 @@ const routes = {
     'system-design': '<h1>System Design Page</h1>',
     'js-fundamentals': generateContent(filePaths['js-fundamentals']),
     'js-questions': generateContent(filePaths['js-questions']),
+    'js-machine-coding': generateContent(filePaths['js-machine-coding']),
     'js-ide': '<iframe height=700px width=100% src="https://stackblitz.com/edit/js?embed=1"></iframe>',
     'concepts-basics': '<h1>Concepts Basics Page</h1>',
     'concepts-advanced': '<h1>Concepts Advanced Page</h1>',
@@ -32,7 +34,7 @@ async function generateContent(dataFile) {
                     <li class="question">
                         <h2>${q.question}</h2>
                         <p>${q.answer}</p>
-                        <pre><code>${q.example}</code></pre>
+                        <pre><code>${q.example || q.hints}</code></pre>
                     </li>
                     <hr />
                 `).join('')}
