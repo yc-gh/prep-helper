@@ -12,7 +12,8 @@ const routes = {
     'dsa': '<h1>DSA Page</h1>',
     'system-design': '<h1>System Design Page</h1>',
     'js-fundamentals': generateContent(filePaths['js-fundamentals']),
-    'js-questions': '<h1>JS Questions Page</h1>',
+    'js-questions': generateContent(filePaths['js-questions']),
+    'js-ide': '<iframe height=700px width=100% src="https://stackblitz.com/edit/js?embed=1"></iframe>',
     'concepts-basics': '<h1>Concepts Basics Page</h1>',
     'concepts-advanced': '<h1>Concepts Advanced Page</h1>',
 };
