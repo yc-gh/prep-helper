@@ -40,10 +40,6 @@
       {
         "question": "Given a string s and a dictionary of words dict, add spaces in s to construct a sentence where each word is a valid dictionary word. Return all such possible sentences.",
         "hints": "Use dynamic programming to avoid re-computing the decomposition of the string.\nBacktrack to construct all possible sentences once you reach the end of the string."
-      },
-      {
-        "question": "Implement a carousel component without using any external libraries.",
-        "hints": "Use an array to store the images or content for the carousel.\nManipulate the DOM to cycle through items based on user input or automatically using JavaScript."
       }
     ]
   }
