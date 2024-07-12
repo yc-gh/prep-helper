@@ -4,6 +4,7 @@
     --main-highlight-color: gray;
     --main-text-color: #ffffff;
     --font-family: "Noto Sans";
+    --border-radius: 8px;
 }
 
 .menu {
@@ -88,7 +89,7 @@
     & pre {
         padding: 1rem;
         border: 1px solid black;
-        border-radius: 8px;
+        border-radius: var(--border-radius);
         background-color: rgba(30, 30, 30, 0.3);
         overflow: auto;
     }
