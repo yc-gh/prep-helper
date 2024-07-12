@@ -2,16 +2,6 @@
     "name": "JavaScript Fundamentals",
     "questions": [
       {
-        "question": "Bind polyfill",
-        "answer": "The bind method creates a new function that, when called, has its this keyword set to the provided value. A polyfill for bind can be implemented by adding a function to Function.prototype if it does not already exist.",
-        "hints": "if (!Function.prototype.bind) {\n  Function.prototype.bind = function(context) {\n    var fn = this;\n    return function() {\n      return fn.apply(context, arguments);\n    };\n  };\n}\n\nvar obj = {\n  x: 42,\n  getX: function() {\n    return this.x;\n  }\n};\n\nvar unboundGetX = obj.getX;\nvar boundGetX = unboundGetX.bind(obj);\nconsole.log(boundGetX()); // Expected output: 42"
-      },
-      {
-        "question": "Set timeout polyfill",
-        "answer": "setTimeout is a Web API that executes a function after a specified delay. A polyfill for setTimeout can be implemented using recursion and Date object to check the elapsed time.",
-        "hints": "function setTimeoutPolyfill(callback, delay) {\n  var start = Date.now();\n\n  function check() {\n    if (Date.now() - start >= delay) {\n      callback();\n    } else {\n      window.requestAnimationFrame(check);\n    }\n  }\n\n  check();\n}\n\nsetTimeoutPolyfill(() => console.log('Hello after 2 seconds'), 2000);"
-      },
-      {
         "question": "Event delegation",
         "answer": "Event delegation is a technique to handle events on multiple elements with a single event listener. It works by placing a single event listener on a common ancestor of the elements and using event.target to determine the target element.",
         "hints": "document.getElementById('parent').addEventListener('click', function(event) {\n  if (event.target.tagName === 'BUTTON') {\n    console.log('Button clicked');\n  }\n});"
@@ -80,6 +70,11 @@
         "question": "Event loop",
         "answer": "The event loop is a mechanism in JavaScript that handles asynchronous operations by executing callback functions in response to events. It allows non-blocking I/O operations and ensures smooth execution of code.",
         "hints": "console.log('Start');\nsetTimeout(() => console.log('Timeout'), 0);\nPromise.resolve().then(() => console.log('Promise'));\nconsole.log('End');"
+      },
+      {
+        "question": "Memoization",
+        "answer": "Memoization is a technique of caching the results of expensive function calls and returning the cached result when the same inputs occur again. It improves performance by avoiding redundant computations.",
+        "hints": "function fibonacci(n, memo = {}) {\n  if (n in memo) return memo[n];\n  if (n <= 2) return 1;\n  memo[n] = fibonacci(n - 1, memo) + fibonacci(n - 2, memo);\n  return memo[n];\n}"
       }
     ]
   }

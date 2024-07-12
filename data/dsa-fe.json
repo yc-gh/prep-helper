@@ -1,0 +1,50 @@
+{
+    "name": "DSA Frontend",
+    "questions": [
+      {
+        "question": "Implement a function to perform a deep clone of a JavaScript object.",
+        "hints": "Consider using recursion for nested objects.\nDon't forget to handle special cases like Date, Function, and RegExp objects."
+      },
+      {
+        "question": "Design a data structure that supports adding new words and finding if a string matches any previously added string.",
+        "hints": "Think about using a Trie for efficient word insertion and search.\nRemember to handle edge cases such as case sensitivity and punctuation."
+      },
+      {
+        "question": "Given an array of intervals, merge all overlapping intervals.",
+        "hints": "First, sort the intervals by their start time.\nIterate through the sorted intervals and merge them if they overlap."
+      },
+      {
+        "question": "Implement an autocomplete system from a set of products using a search keyword.",
+        "hints": "Consider using a Trie to store the product names for efficient search.\nImplement a search function that returns products whose names start with the search keyword."
+      },
+      {
+        "question": "Design and implement a least recently used (LRU) cache.",
+        "hints": "Use a combination of a doubly linked list and a hash map for O(1) access and removal.\nEnsure that the most recently used items are easily accessible while the least used items are removed when the cache reaches its capacity."
+      },
+      {
+        "question": "Given a non-empty array of integers, return the k most frequent elements.",
+        "hints": "Use a hash map to count the frequency of each element.\nConsider using a heap to efficiently sort elements by frequency."
+      },
+      {
+        "question": "Implement a function to check if a binary tree is a valid binary search tree.",
+        "hints": "Consider using a depth-first search with a range for validating each node.\nRemember that all left subtree nodes must be less than the root node, and all right subtree nodes must be greater."
+      },
+      {
+        "question": "Find the shortest path in a grid with obstacles elimination.",
+        "hints": "Use a breadth-first search algorithm to explore the grid.\nKeep track of the number of obstacles you can still remove and the distance traveled."
+      },
+      {
+        "question": "Design a stack that supports push, pop, top, and retrieving the minimum element in constant time.",
+        "hints": "Consider using an auxiliary stack to keep track of the minimum elements.\nEnsure that the auxiliary stack is updated appropriately on push and pop operations."
+      },
+      {
+        "question": "Given a string s and a dictionary of words dict, add spaces in s to construct a sentence where each word is a valid dictionary word. Return all such possible sentences.",
+        "hints": "Use dynamic programming to avoid re-computing the decomposition of the string.\nBacktrack to construct all possible sentences once you reach the end of the string."
+      },
+      {
+        "question": "Implement a carousel component without using any external libraries.",
+        "hints": "Use an array to store the images or content for the carousel.\nManipulate the DOM to cycle through items based on user input or automatically using JavaScript."
+      }
+    ]
+  }
+  

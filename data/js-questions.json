@@ -95,6 +95,28 @@
         "question": "What will be the output of the following code?",
         "answer": "The output will be 0, 1, 2 because the 'let' keyword creates a new scope for each iteration of the loop, capturing the value of 'i' at that point in time. This prevents the closure from capturing the final value of 'i' after the loop finishes.",
         "hints": "for (let i = 0; i < 3; i++) {\n  setTimeout(function() {\n    console.log(i);\n  }, 0);\n}"
+      },
+      {
+        "question": "How would you implement infinite scrolling for a list of items fetched from an API?",
+        "hints": "Detect when the user has scrolled to the bottom of the page.\nUse the Intersection Observer API for efficient scroll detection and fetch more items from the API."
+      },
+      {
+        "question": "Describe how to use Web Workers in a web application and why they are useful.",
+        "hints": "Web Workers allow for running JavaScript operations in the background, without blocking the UI thread.\nUseful for performing heavy computations or loading large datasets."
+      },
+      {
+        "question": "Explain the concept of Progressive Web Apps (PWAs) and how to implement one.",
+        "hints": "PWAs use service workers, manifests, and other web technologies to provide a native app-like experience.\nEnsure your application is responsive, works offline, and can be added to the home screen."
+      },
+      {
+        "question": "Bind polyfill",
+        "answer": "The bind method creates a new function that, when called, has its this keyword set to the provided value. A polyfill for bind can be implemented by adding a function to Function.prototype if it does not already exist.",
+        "hints": "if (!Function.prototype.bind) {\n  Function.prototype.bind = function(context) {\n    var fn = this;\n    return function() {\n      return fn.apply(context, arguments);\n    };\n  };\n}\n\nvar obj = {\n  x: 42,\n  getX: function() {\n    return this.x;\n  }\n};\n\nvar unboundGetX = obj.getX;\nvar boundGetX = unboundGetX.bind(obj);\nconsole.log(boundGetX()); // Expected output: 42"
+      },
+      {
+        "question": "Set timeout polyfill",
+        "answer": "setTimeout is a Web API that executes a function after a specified delay. A polyfill for setTimeout can be implemented using recursion and Date object to check the elapsed time.",
+        "hints": "function setTimeoutPolyfill(callback, delay) {\n  var start = Date.now();\n\n  function check() {\n    if (Date.now() - start >= delay) {\n      callback();\n    } else {\n      window.requestAnimationFrame(check);\n    }\n  }\n\n  check();\n}\n\nsetTimeoutPolyfill(() => console.log('Hello after 2 seconds'), 2000);"
       }
     ]
   }

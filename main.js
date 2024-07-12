@@ -1,5 +1,6 @@
 const ROUTE_NAMES = {
-    DSA: 'dsa',
+    DSA_FE: 'dsa-fe',
+    DSA_BE: 'dsa-be',
     SYSTEM_DESIGN_FE: 'system-design-fe',
     SYSTEM_DESIGN_BE: 'system-design-be',
     JS_FUNDAMENTALS: 'js-fundamentals',
@@ -12,7 +13,8 @@ const ROUTE_NAMES = {
 
 const routes = {
     '': '<h1>Home Page</h1>',
-    [ROUTE_NAMES.DSA]: '<h1>DSA Page</h1>',
+    [ROUTE_NAMES.DSA_FE]: generateContent(`./data/${[ROUTE_NAMES.DSA_FE]}.json`),
+    [ROUTE_NAMES.DSA_BE]: '<h1>DSA BE</h1>',
     [ROUTE_NAMES.SYSTEM_DESIGN_FE]: generateContent(`./data/${[ROUTE_NAMES.SYSTEM_DESIGN_FE]}.json`),
     [ROUTE_NAMES.SYSTEM_DESIGN_BE]: '<h1>System Design BE</h1>',
     [ROUTE_NAMES.JS_FUNDAMENTALS]: generateContent(`./data/${[ROUTE_NAMES.JS_FUNDAMENTALS]}.json`),
