@@ -1,40 +1,42 @@
-const filePaths = {
-    'dsa': './data/dsa.json',
-    'system-design': './data/system-design.json',
-    'js-fundamentals': './data/js-fundamentals.json',
-    'js-questions': './data/js-questions.json',
-    'js-machine-coding': './data/js-machine-coding.json',
-    'concepts-basics': './data/concepts-basics.json',
-    'concepts-advanced': './data/concepts-advanced.json',
-};
+const ROUTE_NAMES = {
+    DSA: 'dsa',
+    SYSTEM_DESIGN_FE: 'system-design-fe',
+    SYSTEM_DESIGN_BE: 'system-design-be',
+    JS_FUNDAMENTALS: 'js-fundamentals',
+    JS_QUESTIONS: 'js-questions',
+    JS_MACHINE_CODING: 'js-machine-coding',
+    CONCEPTS_FE: 'concepts-fe',
+    CONCEPTS_BE: 'concepts-be',
+    JS_IDE: 'js-ide',
+}
 
 const routes = {
     '': '<h1>Home Page</h1>',
-    'dsa': '<h1>DSA Page</h1>',
-    'system-design': '<h1>System Design Page</h1>',
-    'js-fundamentals': generateContent(filePaths['js-fundamentals']),
-    'js-questions': generateContent(filePaths['js-questions']),
-    'js-machine-coding': generateContent(filePaths['js-machine-coding']),
-    'js-ide': '<iframe height=700px width=100% src="https://stackblitz.com/edit/js?embed=1"></iframe>',
-    'concepts-basics': '<h1>Concepts Basics Page</h1>',
-    'concepts-advanced': '<h1>Concepts Advanced Page</h1>',
+    [ROUTE_NAMES.DSA]: '<h1>DSA Page</h1>',
+    [ROUTE_NAMES.SYSTEM_DESIGN_FE]: generateContent(`./data/${[ROUTE_NAMES.SYSTEM_DESIGN_FE]}.json`),
+    [ROUTE_NAMES.SYSTEM_DESIGN_BE]: '<h1>System Design BE</h1>',
+    [ROUTE_NAMES.JS_FUNDAMENTALS]: generateContent(`./data/${[ROUTE_NAMES.JS_FUNDAMENTALS]}.json`),
+    [ROUTE_NAMES.JS_QUESTIONS]: generateContent(`./data/${[ROUTE_NAMES.JS_QUESTIONS]}.json`),
+    [ROUTE_NAMES.JS_MACHINE_CODING]: generateContent(`./data/${[ROUTE_NAMES.JS_MACHINE_CODING]}.json`),
+    [ROUTE_NAMES.CONCEPTS_FE]: generateContent(`./data/${[ROUTE_NAMES.CONCEPTS_FE]}.json`),
+    [ROUTE_NAMES.CONCEPTS_BE]: '<h1>Concepts BE</h1>',
+    [ROUTE_NAMES.JS_IDE]: '<iframe height=700px width=100% src="https://stackblitz.com/edit/js?embed=1"></iframe>',
 };
 
-async function generateContent(dataFile) {
-    const json = await fetch(dataFile);
+async function generateContent(filePath) {
+    const json = await fetch(filePath);
     const data = await json.json();
     return `
             <center>
                 <h1>${data.name}</h1>
             </center>
-            <center>${data.description}</center>
             <hr />
             <ul class="questions-list">
                 ${data.questions?.map(q => `
                     <li class="question">
                         <h2>${q.question}</h2>
-                        <p>${q.answer}</p>
-                        <pre><code>${q.example || q.hints}</code></pre>
+                        ${q.answer ? `<p>${q.answer}</p>` : ''}
+                        <pre><code>${q.hints}</code></pre>
                     </li>
                     <hr />
                 `).join('')}

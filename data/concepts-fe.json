@@ -1,0 +1,36 @@
+{
+    "name": "Frontend Engineering Concepts",
+    "questions": [
+      {
+        "question": "Load Balancing",
+        "answer": "A technique to distribute incoming network traffic across multiple servers to ensure no single server becomes overwhelmed. This improves the reliability and availability of applications.",
+        "hints": "Critical for maintaining a smooth user experience under high traffic, reducing latency, and improving web application scalability."
+      },
+      {
+        "question": "Content Delivery Network (CDN)",
+        "answer": "A geographically distributed group of servers which work together to provide fast delivery of Internet content by caching content at edge locations closest to the user.",
+        "hints": "Essential for speeding up the delivery of content with high performance and reliability, especially for global applications."
+      },
+      {
+        "question": "Caching",
+        "answer": "The process of storing copies of files in a cache, or temporary storage location, so that they can be accessed more quickly.",
+        "hints": "Improves application performance by reducing the need to fetch data from the server repeatedly, leading to faster load times."
+      },
+      {
+        "question": "Service Workers",
+        "answer": "Scripts that run in the background, separate from a web page, opening the door to features that don't need a web page or user interaction.",
+        "hints": "Enables capabilities such as push notifications and background sync, and plays a key role in building progressive web applications (PWAs) that work offline."
+      },
+      {
+        "question": "Bundling",
+        "answer": "The process of following imported files and merging them into a single file to serve to the browser, reducing the number of server requests.",
+        "hints": "Improves load times and performance by minimizing the number of files transferred between the server and the client."
+      },
+      {
+        "question": "Micro Frontends",
+        "answer": "An architectural style where independently deliverable frontend applications are composed into a greater whole.",
+        "hints": "Facilitates a more scalable and flexible approach to building web applications, allowing teams to work independently on different features."
+      }
+    ]
+  }
+  
