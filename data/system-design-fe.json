@@ -1,68 +1,73 @@
 {
     "name": "Frontend System Design",
-    "questions": [
+    "topics": [
       {
-        "question": "Design a scalable frontend architecture for a high-traffic web application.",
-        "answer": "Consider aspects like load balancing, CDN usage, caching strategies, and service workers.",
-        "hints": "Utilize CDNs for static content delivery, implement service workers for offline support and caching, use load balancers to distribute incoming traffic, and adopt a microservices architecture for scalability."
-      },
-      {
-        "question": "How would you design a frontend system for real-time collaboration features (like Google Docs)?",
-        "answer": "Focus on aspects such as operational transformation, conflict resolution, and data synchronization.",
-        "hints": "Implement operational transformation to allow multiple users to edit the same document simultaneously without conflicts.\nUse WebSockets for real-time data transmission and ensure data is synchronized across all clients."
-      },
-      {
-        "question": "Design a frontend logging system that helps in monitoring and debugging issues in production.",
-        "answer": "Consider the collection, storage, and analysis of logs. Also, think about user privacy and data security.",
-        "hints": "Develop a centralized logging system that captures frontend errors, performance metrics, and user interactions.\nEnsure logs are securely transmitted and stored, and implement user consent for compliance with privacy laws."
-      },
-      {
-        "question": "How would you optimize a web application's frontend for mobile devices?",
-        "answer": "Discuss responsive design, touch interactions, mobile-specific functionalities, and performance optimizations.",
-        "hints": "Use responsive web design principles, optimize images and assets for mobile, implement lazy loading for resources, and minimize JavaScript execution time for better performance."
-      },
-      {
-        "question": "Design a theme switcher (dark mode/light mode) for a web application.",
-        "answer": "Consider user preferences, system settings, and the impact on existing UI components.",
-        "hints": "Implement a theme switcher using CSS custom properties for easy theme changes.\nStore user preferences in local storage or a user profile and apply the preferred theme on application load."
-      },
-      {
-        "question": "How would you implement a feature flag system for a frontend application?",
-        "answer": "Discuss strategies for rolling out new features, conducting A/B tests, and managing different user segments.",
-        "hints": "Use a feature flag service or build a custom solution to toggle features dynamically without deploying new code.\nSegment users to enable targeted feature releases and A/B testing."
-      },
-      {
-        "question": "Design a frontend application that needs to work offline.",
-        "answer": "Focus on service workers, caching strategies, and data synchronization when the application goes back online.",
-        "hints": "Leverage service workers for caching assets and data for offline use.\nImplement a strategy for data synchronization once the application is back online to ensure data consistency."
-      },
-      {
-        "question": "Design a Frontend System for a Large-Scale Video Streaming Service (like Netflix or YouTube)",
-        "hints": "Consider the challenges of delivering high-quality video content to a global audience.\nDiscuss strategies for reducing latency and ensuring smooth playback across different network conditions.\nExplore the use of adaptive bitrate streaming and CDN networks.\nConsider the user interface aspects, such as video recommendation algorithms and search functionality."
-      },
-      {
-        "question": "Design a Real-Time Multiplayer Game Frontend (like an online chess game)",
-        "hints": "Focus on the real-time communication between the client and server.\nDiscuss how to handle latency and synchronization of game state across all players.\nExplore the use of WebSockets or similar technologies for real-time data transmission.\nConsider the UI/UX design for a seamless multiplayer experience."
-      },
-      {
-        "question": "Design a Scalable Frontend for an E-Commerce Platform (like Amazon)",
-        "hints": "Discuss the handling of dynamic inventory, user reviews, and ratings.\nExplore strategies for personalizing the user experience based on browsing history and preferences.\nConsider the challenges of maintaining a consistent and fast user experience during high traffic events like Black Friday.\nDiscuss the integration of payment systems and user data security."
-      },
-      {
-        "question": "Design a Frontend System for a Social Media Platform (like Twitter)",
-        "hints": "Focus on the feed algorithm and how to display relevant content to the user.\nDiscuss the challenges of handling user-generated content, including text, images, and videos.\nExplore strategies for implementing features like direct messaging, notifications, and live streaming.\nConsider the importance of privacy settings and user data protection."
-      },
-      {
-        "question": "Design a Frontend for a Cloud-Based IDE (like Visual Studio Code Online)",
-        "hints": "Discuss the challenges of creating a responsive and feature-rich code editor in the browser.\nExplore the use of WebAssembly for running extensions or compilers in the browser.\nConsider the system's architecture for supporting real-time collaboration and version control integration.\nFocus on the user experience of navigating large codebases and integrating debugging tools."
-      },
-      {
-        "question": "Design a Frontend System for a Large-Scale Analytics Dashboard",
-        "hints": "Discuss the challenges of visualizing large datasets in real-time.\nExplore the use of data visualization libraries and how to optimize them for performance.\nConsider the user experience of creating custom reports and dashboards.\nDiscuss the backend integration for fetching and processing the data efficiently."
-      },
-      {
-        "question": "Design a Frontend for a Mobile Payment Application (like Apple Pay or Google Wallet)",
-        "hints": "Focus on the security aspects of processing payments and storing sensitive user information.\nDiscuss the integration with different payment gateways and banks.\nExplore the user experience of making payments, transferring money, and managing accounts.\nConsider the challenges of maintaining a seamless experience across different devices and platforms."
+        "name": "",
+        "questions": [
+          {
+            "question": "Design a scalable frontend architecture for a high-traffic web application.",
+            "answer": "Consider aspects like load balancing, CDN usage, caching strategies, and service workers.",
+            "hints": "Utilize CDNs for static content delivery, implement service workers for offline support and caching, use load balancers to distribute incoming traffic, and adopt a microservices architecture for scalability."
+          },
+          {
+            "question": "How would you design a frontend system for real-time collaboration features (like Google Docs)?",
+            "answer": "Focus on aspects such as operational transformation, conflict resolution, and data synchronization.",
+            "hints": "Implement operational transformation to allow multiple users to edit the same document simultaneously without conflicts.\nUse WebSockets for real-time data transmission and ensure data is synchronized across all clients."
+          },
+          {
+            "question": "Design a frontend logging system that helps in monitoring and debugging issues in production.",
+            "answer": "Consider the collection, storage, and analysis of logs. Also, think about user privacy and data security.",
+            "hints": "Develop a centralized logging system that captures frontend errors, performance metrics, and user interactions.\nEnsure logs are securely transmitted and stored, and implement user consent for compliance with privacy laws."
+          },
+          {
+            "question": "How would you optimize a web application's frontend for mobile devices?",
+            "answer": "Discuss responsive design, touch interactions, mobile-specific functionalities, and performance optimizations.",
+            "hints": "Use responsive web design principles, optimize images and assets for mobile, implement lazy loading for resources, and minimize JavaScript execution time for better performance."
+          },
+          {
+            "question": "Design a theme switcher (dark mode/light mode) for a web application.",
+            "answer": "Consider user preferences, system settings, and the impact on existing UI components.",
+            "hints": "Implement a theme switcher using CSS custom properties for easy theme changes.\nStore user preferences in local storage or a user profile and apply the preferred theme on application load."
+          },
+          {
+            "question": "How would you implement a feature flag system for a frontend application?",
+            "answer": "Discuss strategies for rolling out new features, conducting A/B tests, and managing different user segments.",
+            "hints": "Use a feature flag service or build a custom solution to toggle features dynamically without deploying new code.\nSegment users to enable targeted feature releases and A/B testing."
+          },
+          {
+            "question": "Design a frontend application that needs to work offline.",
+            "answer": "Focus on service workers, caching strategies, and data synchronization when the application goes back online.",
+            "hints": "Leverage service workers for caching assets and data for offline use.\nImplement a strategy for data synchronization once the application is back online to ensure data consistency."
+          },
+          {
+            "question": "Design a Frontend System for a Large-Scale Video Streaming Service (like Netflix or YouTube)",
+            "hints": "Consider the challenges of delivering high-quality video content to a global audience.\nDiscuss strategies for reducing latency and ensuring smooth playback across different network conditions.\nExplore the use of adaptive bitrate streaming and CDN networks.\nConsider the user interface aspects, such as video recommendation algorithms and search functionality."
+          },
+          {
+            "question": "Design a Real-Time Multiplayer Game Frontend (like an online chess game)",
+            "hints": "Focus on the real-time communication between the client and server.\nDiscuss how to handle latency and synchronization of game state across all players.\nExplore the use of WebSockets or similar technologies for real-time data transmission.\nConsider the UI/UX design for a seamless multiplayer experience."
+          },
+          {
+            "question": "Design a Scalable Frontend for an E-Commerce Platform (like Amazon)",
+            "hints": "Discuss the handling of dynamic inventory, user reviews, and ratings.\nExplore strategies for personalizing the user experience based on browsing history and preferences.\nConsider the challenges of maintaining a consistent and fast user experience during high traffic events like Black Friday.\nDiscuss the integration of payment systems and user data security."
+          },
+          {
+            "question": "Design a Frontend System for a Social Media Platform (like Twitter)",
+            "hints": "Focus on the feed algorithm and how to display relevant content to the user.\nDiscuss the challenges of handling user-generated content, including text, images, and videos.\nExplore strategies for implementing features like direct messaging, notifications, and live streaming.\nConsider the importance of privacy settings and user data protection."
+          },
+          {
+            "question": "Design a Frontend for a Cloud-Based IDE (like Visual Studio Code Online)",
+            "hints": "Discuss the challenges of creating a responsive and feature-rich code editor in the browser.\nExplore the use of WebAssembly for running extensions or compilers in the browser.\nConsider the system's architecture for supporting real-time collaboration and version control integration.\nFocus on the user experience of navigating large codebases and integrating debugging tools."
+          },
+          {
+            "question": "Design a Frontend System for a Large-Scale Analytics Dashboard",
+            "hints": "Discuss the challenges of visualizing large datasets in real-time.\nExplore the use of data visualization libraries and how to optimize them for performance.\nConsider the user experience of creating custom reports and dashboards.\nDiscuss the backend integration for fetching and processing the data efficiently."
+          },
+          {
+            "question": "Design a Frontend for a Mobile Payment Application (like Apple Pay or Google Wallet)",
+            "hints": "Focus on the security aspects of processing payments and storing sensitive user information.\nDiscuss the integration with different payment gateways and banks.\nExplore the user experience of making payments, transferring money, and managing accounts.\nConsider the challenges of maintaining a seamless experience across different devices and platforms."
+          }
+        ]
       }
     ]
   }

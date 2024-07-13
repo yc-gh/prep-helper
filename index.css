@@ -98,6 +98,10 @@
     }
 }
 
+.questions-list > hr:last-child {
+    display: none;
+}
+
 .link a {
     text-decoration: none;
     color: var(--main-link-color);
@@ -127,8 +131,12 @@
 
 hr {
     border: 0;
-    height: 2px;
+    height: 1px;
     background-color: black;
+}
+
+hr.divider {
+    height: 2px;
 }
 
 html,

@@ -28,20 +28,29 @@ const routes = {
 async function generateContent(filePath) {
     const json = await fetch(filePath);
     const data = await json.json();
+
     return `
             <center>
                 <h1>${data.name}</h1>
             </center>
-            <hr />
-            <ul class="questions-list">
-                ${data.questions?.map(q => `
+            <hr class="divider"/>
+            <ul class="topics-list">
+                ${data.topics?.map(t => `
                     <li class="question">
-                        <h2>${q.question}</h2>
-                        ${q.answer ? `<p>${q.answer}</p>` : ''}
-                        ${q.link ? `<div class="link"><a href=${q.link} target="_blank">${q.link}</a></div>` : ''} 
-                        ${q.hints ? `<pre><code>${q.hints}</code></pre>` : ''} 
+                        <h2>${t.name}</h2>
+                        <ul class="questions-list">
+                            ${t.questions?.map(q => `
+                                <li class="question">
+                                    <h3>${q.question}</h3>
+                                    ${q.answer ? `<p>${q.answer}</p>` : ''}
+                                    ${q.link ? `<div class="link"><a href=${q.link} target="_blank">${q.link}</a></div>` : ''} 
+                                    ${q.hints ? `<pre><code>${q.hints}</code></pre>` : ''} 
+                                </li>
+                                <hr />
+                            `).join('')}
+                        </ul>
                     </li>
-                    <hr />
+                    <hr class="divider"/>
                 `).join('')}
             </ul>
         `;

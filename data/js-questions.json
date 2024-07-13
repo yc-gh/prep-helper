@@ -1,122 +1,127 @@
 {
     "name": "JavaScript Questions",
-    "questions": [
+    "topics": [
       {
-        "question": "Explain closures and how they work",
-        "answer": "Closures are a feature in JavaScript where an inner function has access to the outer (enclosing) function’s variables. This means the inner function can access variables defined outside of it, even after the outer function has completed execution.",
-        "hints": "function outerFunction() {\n  var outerVariable = 'I am outside!';\n  function innerFunction() {\n    console.log(outerVariable);\n  }\n  return innerFunction;\n}\nvar inner = outerFunction();\ninner(); // Logs: 'I am outside!'"
-      },
-      {
-        "question": "How does the JavaScript event loop work?",
-        "answer": "The JavaScript event loop is a mechanism that allows JavaScript to perform non-blocking operations by using callbacks and promises. It constantly checks the call stack and, if it's empty, it processes the next message from the queue, allowing for asynchronous functions to run.",
-        "hints": "console.log('First');\nsetTimeout(function() { console.log('Second'); }, 0);\nconsole.log('Third');\n// Output: First, Third, Second"
-      },
-      {
-        "question": "What is the 'this' keyword and how does it work?",
-        "answer": "The 'this' keyword in JavaScript refers to the object it belongs to. It has different values depending on where it is used: in a method, alone, in a function, in a function (strict mode), in an event, or with call/apply/bind methods.",
-        "hints": "var person = {\n  firstName: 'John',\n  lastName: 'Doe',\n  fullName: function() {\n    return this.firstName + ' ' + this.lastName;\n  }\n};\nconsole.log(person.fullName()); // John Doe"
-      },
-      {
-        "question": "Implement a polyfill for setTimeout using promises",
-        "answer": "A polyfill for setTimeout can be implemented using promises by creating a new promise that resolves after a specified delay.",
-        "hints": "function setTimeoutPromise(delay) {\n  return new Promise(function(resolve) {\n    setTimeout(resolve, delay);\n  });\n}\nsetTimeoutPromise(2000).then(() => console.log('Executed after 2 seconds'));"
-      },
-      {
-        "question": "Explain the concept of prototype inheritance",
-        "answer": "Prototype inheritance is a feature in JavaScript where objects can inherit properties and methods from other objects. This is achieved through the prototype property, which allows objects to share and extend functionalities.",
-        "hints": "function Animal(name) {\n  this.name = name;\n}\nAnimal.prototype.speak = function() {\n  console.log(this.name + ' makes a noise.');\n};\n\nfunction Dog(name) {\n  Animal.call(this, name);\n}\nDog.prototype = Object.create(Animal.prototype);\nDog.prototype.constructor = Dog;\n\nvar dog = new Dog('Rex');\ndog.speak(); // Rex makes a noise."
-      },
-      {
-        "question": "What are Promises and how do they work?",
-        "answer": "Promises are objects that represent the eventual completion (or failure) of an asynchronous operation. They provide a cleaner, more functional way to handle asynchronous operations compared to callbacks, by offering methods like then(), catch(), and finally().",
-        "hints": "const myPromise = new Promise((resolve, reject) => {\n  setTimeout(() => {\n    resolve('Success!');\n  }, 2000);\n});\n\nmyPromise.then((successMessage) => {\n  console.log('Yay! ' + successMessage);\n});"
-      },
-      {
-        "question": "Explain event delegation and its benefits",
-        "answer": "Event delegation is a technique where instead of adding an event listener to each individual element, you add a single event listener to a parent element. It leverages the event bubbling phase to catch events from child elements, improving performance and memory usage.",
-        "hints": "document.getElementById('parent').addEventListener('click', function(e) {\n  if(e.target && e.target.nodeName == 'LI') {\n    console.log('List item ', e.target.id.replace('post-'), ' was clicked!');\n  }\n});"
-      },
-      {
-        "question": "What is the difference between '==' and '===' in JavaScript?",
-        "answer": "The '==' operator compares two values for equality after performing type conversion, while the '===' operator compares two values for equality without type conversion. The '===' operator is more strict and returns true only if the values being compared are of the same type and have the same value.",
-        "hints": "0 == '0' // true\n0 === '0' // false"
-      },
-      {
-        "question": "Explain the concept of currying in JavaScript",
-        "answer": "Currying is a technique in functional programming where a function with multiple arguments is transformed into a sequence of functions, each taking a single argument. This allows for partial application of functions and the creation of reusable functions.",
-        "hints": "function multiply(a, b) {\n  return a * b;\n}\n\nfunction curriedMultiply(a) {\n  return function(b) {\n    return a * b;\n  };\n}\n\nconst multiplyBy2 = curriedMultiply(2);\nconsole.log(multiplyBy2(3)); // 6"
-      },
-      {
-        "question": "What is the difference between 'null' and 'undefined' in JavaScript?",
-        "answer": "In JavaScript, 'null' is a value that represents the intentional absence of any object value, while 'undefined' is a type that represents variables that have been declared but have not been assigned a value. 'null' is an assigned value, while 'undefined' is an unassigned value.",
-        "hints": "let x;\nconsole.log(x); // undefined\nlet y = null;\nconsole.log(y); // null"
-      },
-      {
-        "question": "Explain the concept of 'hoisting' in JavaScript",
-        "answer": "Hoisting is a JavaScript mechanism where variable and function declarations are moved to the top of their containing scope during the compilation phase. This allows variables to be used before they are declared, but only the declarations are hoisted, not the initializations.",
-        "hints": "console.log(x); // undefined\nvar x = 5;"
-      },
-      {
-        "question": "What is the difference between 'var', 'let', and 'const' in JavaScript?",
-        "answer": "'var' is function-scoped and can be redeclared and reassigned, 'let' is block-scoped and can be reassigned but not redeclared, and 'const' is block-scoped and cannot be reassigned or redeclared. 'let' and 'const' were introduced in ES6.",
-        "hints": "var x = 5;\nlet y = 10;\nconst z = 15;"
-      },
-      {
-        "question": "Explain the concept of 'event bubbling' in JavaScript",
-        "answer": "Event bubbling is a phase in the event flow where an event is first captured and handled by the innermost element and then propagated to its ancestors in the DOM tree. This allows for event delegation and handling events on multiple elements with a single event listener.",
-        "hints": "document.getElementById('parent').addEventListener('click', function(event) {\n  console.log('Clicked on', event.target.id);\n});"
-      },
-      {
-        "question": "What is the difference between 'let' and 'const' in JavaScript?",
-        "answer": "'let' is used to declare variables that can be reassigned, while 'const' is used to declare variables that cannot be reassigned. Both 'let' and 'const' are block-scoped and were introduced in ES6.",
-        "hints": "let x = 5;\nx = 10; // Valid\nconst y = 15;\ny = 20; // Invalid"
-      },
-      {
-        "question": "Explain the concept of 'async/await' in JavaScript",
-        "answer": "Async/await is a modern JavaScript feature that allows writing asynchronous code in a synchronous way using the 'async' and 'await' keywords. It simplifies handling promises and improves code readability by avoiding callback hell.",
-        "hints": "async function fetchData() {\n  const response = await fetch('https://api.example.com/data');\n  const data = await response.json();\n  return data;\n}"
-      },
-      {
-        "question": "What is the difference between 'map' and 'forEach' in JavaScript?",
-        "answer": "The 'map' method creates a new array by applying a function to each element of an existing array and returns the new array, while the 'forEach' method executes a provided function once for each array element and does not return a new array.",
-        "hints": "const numbers = [1, 2, 3, 4];\nconst doubled = numbers.map(num => num * 2);\nconsole.log(doubled); // [2, 4, 6, 8]"
-      },
-      {
-        "question": "Explain the concept of 'callback hell' and how to avoid it",
-        "answer": "'Callback hell' refers to the situation where multiple nested callbacks make the code hard to read and maintain. It can be avoided by using promises, async/await, or modularizing code into smaller functions.",
-        "hints": "fs.readFile('file1.txt', 'utf8', (err, data1) => {\n  fs.readFile('file2.txt', 'utf8', (err, data2) => {\n    fs.readFile('file3.txt', 'utf8', (err, data3) => {\n      console.log(data1 + data2 + data3);\n    });\n  });\n});"
-      },
-      {
-        "question": "What will be the output of the following code?",
-        "answer": "The output will be 'undefined' because the variable 'i' is hoisted to the top of the function scope, but the value is not assigned until the setTimeout callback is executed. By the time the callback is executed, the loop has already finished and 'i' is equal to 3.",
-        "hints": "for (var i = 0; i < 3; i++) {\n  setTimeout(function() {\n    console.log(i);\n  }, 0);\n}"
-      },
-      {
-        "question": "What will be the output of the following code?",
-        "answer": "The output will be 0, 1, 2 because the 'let' keyword creates a new scope for each iteration of the loop, capturing the value of 'i' at that point in time. This prevents the closure from capturing the final value of 'i' after the loop finishes.",
-        "hints": "for (let i = 0; i < 3; i++) {\n  setTimeout(function() {\n    console.log(i);\n  }, 0);\n}"
-      },
-      {
-        "question": "How would you implement infinite scrolling for a list of items fetched from an API?",
-        "hints": "Detect when the user has scrolled to the bottom of the page.\nUse the Intersection Observer API for efficient scroll detection and fetch more items from the API."
-      },
-      {
-        "question": "Describe how to use Web Workers in a web application and why they are useful.",
-        "hints": "Web Workers allow for running JavaScript operations in the background, without blocking the UI thread.\nUseful for performing heavy computations or loading large datasets."
-      },
-      {
-        "question": "Explain the concept of Progressive Web Apps (PWAs) and how to implement one.",
-        "hints": "PWAs use service workers, manifests, and other web technologies to provide a native app-like experience.\nEnsure your application is responsive, works offline, and can be added to the home screen."
-      },
-      {
-        "question": "Bind polyfill",
-        "answer": "The bind method creates a new function that, when called, has its this keyword set to the provided value. A polyfill for bind can be implemented by adding a function to Function.prototype if it does not already exist.",
-        "hints": "if (!Function.prototype.bind) {\n  Function.prototype.bind = function(context) {\n    var fn = this;\n    return function() {\n      return fn.apply(context, arguments);\n    };\n  };\n}\n\nvar obj = {\n  x: 42,\n  getX: function() {\n    return this.x;\n  }\n};\n\nvar unboundGetX = obj.getX;\nvar boundGetX = unboundGetX.bind(obj);\nconsole.log(boundGetX()); // Expected output: 42"
-      },
-      {
-        "question": "Set timeout polyfill",
-        "answer": "setTimeout is a Web API that executes a function after a specified delay. A polyfill for setTimeout can be implemented using recursion and Date object to check the elapsed time.",
-        "hints": "function setTimeoutPolyfill(callback, delay) {\n  var start = Date.now();\n\n  function check() {\n    if (Date.now() - start >= delay) {\n      callback();\n    } else {\n      window.requestAnimationFrame(check);\n    }\n  }\n\n  check();\n}\n\nsetTimeoutPolyfill(() => console.log('Hello after 2 seconds'), 2000);"
+        "name": "",
+        "questions": [
+          {
+            "question": "Explain closures and how they work",
+            "answer": "Closures are a feature in JavaScript where an inner function has access to the outer (enclosing) function’s variables. This means the inner function can access variables defined outside of it, even after the outer function has completed execution.",
+            "hints": "function outerFunction() {\n  var outerVariable = 'I am outside!';\n  function innerFunction() {\n    console.log(outerVariable);\n  }\n  return innerFunction;\n}\nvar inner = outerFunction();\ninner(); // Logs: 'I am outside!'"
+          },
+          {
+            "question": "How does the JavaScript event loop work?",
+            "answer": "The JavaScript event loop is a mechanism that allows JavaScript to perform non-blocking operations by using callbacks and promises. It constantly checks the call stack and, if it's empty, it processes the next message from the queue, allowing for asynchronous functions to run.",
+            "hints": "console.log('First');\nsetTimeout(function() { console.log('Second'); }, 0);\nconsole.log('Third');\n// Output: First, Third, Second"
+          },
+          {
+            "question": "What is the 'this' keyword and how does it work?",
+            "answer": "The 'this' keyword in JavaScript refers to the object it belongs to. It has different values depending on where it is used: in a method, alone, in a function, in a function (strict mode), in an event, or with call/apply/bind methods.",
+            "hints": "var person = {\n  firstName: 'John',\n  lastName: 'Doe',\n  fullName: function() {\n    return this.firstName + ' ' + this.lastName;\n  }\n};\nconsole.log(person.fullName()); // John Doe"
+          },
+          {
+            "question": "Implement a polyfill for setTimeout using promises",
+            "answer": "A polyfill for setTimeout can be implemented using promises by creating a new promise that resolves after a specified delay.",
+            "hints": "function setTimeoutPromise(delay) {\n  return new Promise(function(resolve) {\n    setTimeout(resolve, delay);\n  });\n}\nsetTimeoutPromise(2000).then(() => console.log('Executed after 2 seconds'));"
+          },
+          {
+            "question": "Explain the concept of prototype inheritance",
+            "answer": "Prototype inheritance is a feature in JavaScript where objects can inherit properties and methods from other objects. This is achieved through the prototype property, which allows objects to share and extend functionalities.",
+            "hints": "function Animal(name) {\n  this.name = name;\n}\nAnimal.prototype.speak = function() {\n  console.log(this.name + ' makes a noise.');\n};\n\nfunction Dog(name) {\n  Animal.call(this, name);\n}\nDog.prototype = Object.create(Animal.prototype);\nDog.prototype.constructor = Dog;\n\nvar dog = new Dog('Rex');\ndog.speak(); // Rex makes a noise."
+          },
+          {
+            "question": "What are Promises and how do they work?",
+            "answer": "Promises are objects that represent the eventual completion (or failure) of an asynchronous operation. They provide a cleaner, more functional way to handle asynchronous operations compared to callbacks, by offering methods like then(), catch(), and finally().",
+            "hints": "const myPromise = new Promise((resolve, reject) => {\n  setTimeout(() => {\n    resolve('Success!');\n  }, 2000);\n});\n\nmyPromise.then((successMessage) => {\n  console.log('Yay! ' + successMessage);\n});"
+          },
+          {
+            "question": "Explain event delegation and its benefits",
+            "answer": "Event delegation is a technique where instead of adding an event listener to each individual element, you add a single event listener to a parent element. It leverages the event bubbling phase to catch events from child elements, improving performance and memory usage.",
+            "hints": "document.getElementById('parent').addEventListener('click', function(e) {\n  if(e.target && e.target.nodeName == 'LI') {\n    console.log('List item ', e.target.id.replace('post-'), ' was clicked!');\n  }\n});"
+          },
+          {
+            "question": "What is the difference between '==' and '===' in JavaScript?",
+            "answer": "The '==' operator compares two values for equality after performing type conversion, while the '===' operator compares two values for equality without type conversion. The '===' operator is more strict and returns true only if the values being compared are of the same type and have the same value.",
+            "hints": "0 == '0' // true\n0 === '0' // false"
+          },
+          {
+            "question": "Explain the concept of currying in JavaScript",
+            "answer": "Currying is a technique in functional programming where a function with multiple arguments is transformed into a sequence of functions, each taking a single argument. This allows for partial application of functions and the creation of reusable functions.",
+            "hints": "function multiply(a, b) {\n  return a * b;\n}\n\nfunction curriedMultiply(a) {\n  return function(b) {\n    return a * b;\n  };\n}\n\nconst multiplyBy2 = curriedMultiply(2);\nconsole.log(multiplyBy2(3)); // 6"
+          },
+          {
+            "question": "What is the difference between 'null' and 'undefined' in JavaScript?",
+            "answer": "In JavaScript, 'null' is a value that represents the intentional absence of any object value, while 'undefined' is a type that represents variables that have been declared but have not been assigned a value. 'null' is an assigned value, while 'undefined' is an unassigned value.",
+            "hints": "let x;\nconsole.log(x); // undefined\nlet y = null;\nconsole.log(y); // null"
+          },
+          {
+            "question": "Explain the concept of 'hoisting' in JavaScript",
+            "answer": "Hoisting is a JavaScript mechanism where variable and function declarations are moved to the top of their containing scope during the compilation phase. This allows variables to be used before they are declared, but only the declarations are hoisted, not the initializations.",
+            "hints": "console.log(x); // undefined\nvar x = 5;"
+          },
+          {
+            "question": "What is the difference between 'var', 'let', and 'const' in JavaScript?",
+            "answer": "'var' is function-scoped and can be redeclared and reassigned, 'let' is block-scoped and can be reassigned but not redeclared, and 'const' is block-scoped and cannot be reassigned or redeclared. 'let' and 'const' were introduced in ES6.",
+            "hints": "var x = 5;\nlet y = 10;\nconst z = 15;"
+          },
+          {
+            "question": "Explain the concept of 'event bubbling' in JavaScript",
+            "answer": "Event bubbling is a phase in the event flow where an event is first captured and handled by the innermost element and then propagated to its ancestors in the DOM tree. This allows for event delegation and handling events on multiple elements with a single event listener.",
+            "hints": "document.getElementById('parent').addEventListener('click', function(event) {\n  console.log('Clicked on', event.target.id);\n});"
+          },
+          {
+            "question": "What is the difference between 'let' and 'const' in JavaScript?",
+            "answer": "'let' is used to declare variables that can be reassigned, while 'const' is used to declare variables that cannot be reassigned. Both 'let' and 'const' are block-scoped and were introduced in ES6.",
+            "hints": "let x = 5;\nx = 10; // Valid\nconst y = 15;\ny = 20; // Invalid"
+          },
+          {
+            "question": "Explain the concept of 'async/await' in JavaScript",
+            "answer": "Async/await is a modern JavaScript feature that allows writing asynchronous code in a synchronous way using the 'async' and 'await' keywords. It simplifies handling promises and improves code readability by avoiding callback hell.",
+            "hints": "async function fetchData() {\n  const response = await fetch('https://api.example.com/data');\n  const data = await response.json();\n  return data;\n}"
+          },
+          {
+            "question": "What is the difference between 'map' and 'forEach' in JavaScript?",
+            "answer": "The 'map' method creates a new array by applying a function to each element of an existing array and returns the new array, while the 'forEach' method executes a provided function once for each array element and does not return a new array.",
+            "hints": "const numbers = [1, 2, 3, 4];\nconst doubled = numbers.map(num => num * 2);\nconsole.log(doubled); // [2, 4, 6, 8]"
+          },
+          {
+            "question": "Explain the concept of 'callback hell' and how to avoid it",
+            "answer": "'Callback hell' refers to the situation where multiple nested callbacks make the code hard to read and maintain. It can be avoided by using promises, async/await, or modularizing code into smaller functions.",
+            "hints": "fs.readFile('file1.txt', 'utf8', (err, data1) => {\n  fs.readFile('file2.txt', 'utf8', (err, data2) => {\n    fs.readFile('file3.txt', 'utf8', (err, data3) => {\n      console.log(data1 + data2 + data3);\n    });\n  });\n});"
+          },
+          {
+            "question": "What will be the output of the following code?",
+            "answer": "The output will be 'undefined' because the variable 'i' is hoisted to the top of the function scope, but the value is not assigned until the setTimeout callback is executed. By the time the callback is executed, the loop has already finished and 'i' is equal to 3.",
+            "hints": "for (var i = 0; i < 3; i++) {\n  setTimeout(function() {\n    console.log(i);\n  }, 0);\n}"
+          },
+          {
+            "question": "What will be the output of the following code?",
+            "answer": "The output will be 0, 1, 2 because the 'let' keyword creates a new scope for each iteration of the loop, capturing the value of 'i' at that point in time. This prevents the closure from capturing the final value of 'i' after the loop finishes.",
+            "hints": "for (let i = 0; i < 3; i++) {\n  setTimeout(function() {\n    console.log(i);\n  }, 0);\n}"
+          },
+          {
+            "question": "How would you implement infinite scrolling for a list of items fetched from an API?",
+            "hints": "Detect when the user has scrolled to the bottom of the page.\nUse the Intersection Observer API for efficient scroll detection and fetch more items from the API."
+          },
+          {
+            "question": "Describe how to use Web Workers in a web application and why they are useful.",
+            "hints": "Web Workers allow for running JavaScript operations in the background, without blocking the UI thread.\nUseful for performing heavy computations or loading large datasets."
+          },
+          {
+            "question": "Explain the concept of Progressive Web Apps (PWAs) and how to implement one.",
+            "hints": "PWAs use service workers, manifests, and other web technologies to provide a native app-like experience.\nEnsure your application is responsive, works offline, and can be added to the home screen."
+          },
+          {
+            "question": "Bind polyfill",
+            "answer": "The bind method creates a new function that, when called, has its this keyword set to the provided value. A polyfill for bind can be implemented by adding a function to Function.prototype if it does not already exist.",
+            "hints": "if (!Function.prototype.bind) {\n  Function.prototype.bind = function(context) {\n    var fn = this;\n    return function() {\n      return fn.apply(context, arguments);\n    };\n  };\n}\n\nvar obj = {\n  x: 42,\n  getX: function() {\n    return this.x;\n  }\n};\n\nvar unboundGetX = obj.getX;\nvar boundGetX = unboundGetX.bind(obj);\nconsole.log(boundGetX()); // Expected output: 42"
+          },
+          {
+            "question": "Set timeout polyfill",
+            "answer": "setTimeout is a Web API that executes a function after a specified delay. A polyfill for setTimeout can be implemented using recursion and Date object to check the elapsed time.",
+            "hints": "function setTimeoutPolyfill(callback, delay) {\n  var start = Date.now();\n\n  function check() {\n    if (Date.now() - start >= delay) {\n      callback();\n    } else {\n      window.requestAnimationFrame(check);\n    }\n  }\n\n  check();\n}\n\nsetTimeoutPolyfill(() => console.log('Hello after 2 seconds'), 2000);"
+          }
+        ]
       }
     ]
   }

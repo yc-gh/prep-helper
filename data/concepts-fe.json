@@ -1,86 +1,91 @@
 {
   "name": "Frontend Concepts",
-  "questions": [
+  "topics": [
     {
-      "question": "Content Delivery Network (CDN)",
-      "answer": "A geographically distributed group of servers which work together to provide fast delivery of Internet content by caching content at edge locations closest to the user.",
-      "hints": "Essential for speeding up the delivery of content with high performance and reliability, especially for global applications."
-    },
-    {
-      "question": "Caching",
-      "answer": "The process of storing copies of files in a cache, or temporary storage location, so that they can be accessed more quickly.",
-      "hints": "Improves application performance by reducing the need to fetch data from the server repeatedly, leading to faster load times."
-    },
-    {
-      "question": "Service Workers",
-      "answer": "Scripts that run in the background, separate from a web page, opening the door to features that don't need a web page or user interaction.",
-      "hints": "Enables capabilities such as push notifications and background sync, and plays a key role in building progressive web applications (PWAs) that work offline."
-    },
-    {
-      "question": "Bundling",
-      "answer": "The process of following imported files and merging them into a single file to serve to the browser, reducing the number of server requests.",
-      "hints": "Improves load times and performance by minimizing the number of files transferred between the server and the client."
-    },
-    {
-      "question": "Micro Frontends",
-      "answer": "An architectural style where independently deliverable frontend applications are composed into a greater whole.",
-      "hints": "Facilitates a more scalable and flexible approach to building web applications, allowing teams to work independently on different features."
-    },
+      "name": "",
+      "questions": [
+        {
+          "question": "Content Delivery Network (CDN)",
+          "answer": "A geographically distributed group of servers which work together to provide fast delivery of Internet content by caching content at edge locations closest to the user.",
+          "hints": "Essential for speeding up the delivery of content with high performance and reliability, especially for global applications."
+        },
+        {
+          "question": "Caching",
+          "answer": "The process of storing copies of files in a cache, or temporary storage location, so that they can be accessed more quickly.",
+          "hints": "Improves application performance by reducing the need to fetch data from the server repeatedly, leading to faster load times."
+        },
+        {
+          "question": "Service Workers",
+          "answer": "Scripts that run in the background, separate from a web page, opening the door to features that don't need a web page or user interaction.",
+          "hints": "Enables capabilities such as push notifications and background sync, and plays a key role in building progressive web applications (PWAs) that work offline."
+        },
+        {
+          "question": "Bundling",
+          "answer": "The process of following imported files and merging them into a single file to serve to the browser, reducing the number of server requests.",
+          "hints": "Improves load times and performance by minimizing the number of files transferred between the server and the client."
+        },
+        {
+          "question": "Micro Frontends",
+          "answer": "An architectural style where independently deliverable frontend applications are composed into a greater whole.",
+          "hints": "Facilitates a more scalable and flexible approach to building web applications, allowing teams to work independently on different features."
+        },
 
-    {
-      "question": "Web APIs",
-      "answer": "Web APIs are interfaces provided by web browsers to interact with various features like DOM manipulation, AJAX requests, geolocation, local storage, and more. They allow developers to access browser functionality from JavaScript.",
-      "hints": "document.getElementById('example').addEventListener('click', function() {\n  console.log('Button clicked');\n});"
-    },
-    {
-      "question": "Local storage",
-      "answer": "Local storage is a web storage mechanism that allows storing key-value pairs in the browser with no expiration date. It provides a simple way to persist data across browser sessions.",
-      "hints": "localStorage.setItem('username', 'John');\nvar username = localStorage.getItem('username');\nconsole.log(username); // Expected output: John"
-    },
-    {
-      "question": "Session storage",
-      "answer": "Session storage is a web storage mechanism that allows storing key-value pairs in the browser for the duration of the page session. Data is cleared when the page session ends, such as when the tab is closed.",
-      "hints": "sessionStorage.setItem('theme', 'light');\nvar theme = sessionStorage.getItem('theme');\nconsole.log(theme); // Expected output: light"
-    },
-    {
-      "question": "Cookies",
-      "answer": "Cookies are small pieces of data stored on the client-side by websites. They are commonly used for session management, user authentication, tracking user behavior, and personalizing content.",
-      "hints": "document.cookie = 'username=John; expires=Thu, 18 Dec 2023 12:00:00 UTC';\nvar username = document.cookie.replace(/(?:(?:^|.*;s*)username=s*([^;]*).*$)|^.*$/, '$1');\nconsole.log(username); // Expected output: John"
-    },
-    {
-      "question": "Cross-origin resource sharing (CORS)",
-      "answer": "Cross-origin resource sharing is a security feature that allows web browsers to make cross-origin HTTP requests from one domain to another. It enables web servers to specify which origins are allowed to access their resources.",
-      "hints": "Access-Control-Allow-Origin: https://example.com"
-    },
-    {
-      "question": "CSRF (Cross-Site Request Forgery)",
-      "answer": "CSRF is an attack that tricks the victim into submitting a malicious request. It occurs when a user is tricked into clicking a link or submitting a form on a trusted website, leading to unauthorized actions.",
-      "hints": "Use anti-CSRF tokens, implement same-site cookie attributes, and validate requests on the server to prevent CSRF attacks."
-    },
-    {
-      "question": "AJAX",
-      "answer": "AJAX (Asynchronous JavaScript and XML) is a technique for creating dynamic web applications by sending and receiving data asynchronously from a web server without reloading the entire page. It allows updating parts of a web page without a full refresh.",
-      "hints": "var xhr = new XMLHttpRequest();\nxhr.open('GET', 'https://api.example.com/data', true);\nxhr.onload = function() {\n  if (xhr.status >= 200 && xhr.status < 300) {\n    console.log(xhr.responseText);\n  }\n};\nxhr.send();"
-    },
-    {
-      "question": "JSON",
-      "answer": "JSON (JavaScript Object Notation) is a lightweight data interchange format that is easy for humans to read and write and easy for machines to parse and generate. It is commonly used for data exchange between a server and a web client.",
-      "hints": "var data = {\n  'name': 'John',\n  'age': 30\n};\nvar json = JSON.stringify(data);\nconsole.log(json); // Expected output: '{\"name\":\"John\",\"age\":30}'"
-    },
-    {
-      "question": "WebSockets",
-      "answer": "WebSockets is a communication protocol that provides full-duplex communication channels over a single TCP connection. It allows real-time data transfer between a client and a server, enabling features like chat applications, live updates, and multiplayer games.",
-      "hints": "var socket = new WebSocket('wss://api.example.com');\nsocket.onopen = function() {\n  console.log('Connected');\n};\nsocket.onmessage = function(event) {\n  console.log('Received:', event.data);\n};"
-    },
-    {
-      "question": "Progressive web apps (PWAs)",
-      "answer": "Progressive web apps are web applications that provide a native app-like experience using modern web technologies. They are reliable, fast, and engaging with features like offline support, push notifications, and home screen installation.",
-      "hints": "Implement service workers for offline support, use web app manifest for installation prompts, and optimize performance for a smooth user experience."
-    },
-    {
-      "question": "Responsive web design",
-      "answer": "Responsive web design is an approach to building websites that provide an optimal viewing experience across a wide range of devices, from desktop computers to mobile phones. It uses fluid grids, flexible images, and media queries to adapt the layout based on the screen size.",
-      "hints": "Use CSS media queries to adjust styles based on screen size, design with a mobile-first approach, and test the website on various devices to ensure responsiveness."
+        {
+          "question": "Web APIs",
+          "answer": "Web APIs are interfaces provided by web browsers to interact with various features like DOM manipulation, AJAX requests, geolocation, local storage, and more. They allow developers to access browser functionality from JavaScript.",
+          "hints": "document.getElementById('example').addEventListener('click', function() {\n  console.log('Button clicked');\n});"
+        },
+        {
+          "question": "Local storage",
+          "answer": "Local storage is a web storage mechanism that allows storing key-value pairs in the browser with no expiration date. It provides a simple way to persist data across browser sessions.",
+          "hints": "localStorage.setItem('username', 'John');\nvar username = localStorage.getItem('username');\nconsole.log(username); // Expected output: John"
+        },
+        {
+          "question": "Session storage",
+          "answer": "Session storage is a web storage mechanism that allows storing key-value pairs in the browser for the duration of the page session. Data is cleared when the page session ends, such as when the tab is closed.",
+          "hints": "sessionStorage.setItem('theme', 'light');\nvar theme = sessionStorage.getItem('theme');\nconsole.log(theme); // Expected output: light"
+        },
+        {
+          "question": "Cookies",
+          "answer": "Cookies are small pieces of data stored on the client-side by websites. They are commonly used for session management, user authentication, tracking user behavior, and personalizing content.",
+          "hints": "document.cookie = 'username=John; expires=Thu, 18 Dec 2023 12:00:00 UTC';\nvar username = document.cookie.replace(/(?:(?:^|.*;s*)username=s*([^;]*).*$)|^.*$/, '$1');\nconsole.log(username); // Expected output: John"
+        },
+        {
+          "question": "Cross-origin resource sharing (CORS)",
+          "answer": "Cross-origin resource sharing is a security feature that allows web browsers to make cross-origin HTTP requests from one domain to another. It enables web servers to specify which origins are allowed to access their resources.",
+          "hints": "Access-Control-Allow-Origin: https://example.com"
+        },
+        {
+          "question": "CSRF (Cross-Site Request Forgery)",
+          "answer": "CSRF is an attack that tricks the victim into submitting a malicious request. It occurs when a user is tricked into clicking a link or submitting a form on a trusted website, leading to unauthorized actions.",
+          "hints": "Use anti-CSRF tokens, implement same-site cookie attributes, and validate requests on the server to prevent CSRF attacks."
+        },
+        {
+          "question": "AJAX",
+          "answer": "AJAX (Asynchronous JavaScript and XML) is a technique for creating dynamic web applications by sending and receiving data asynchronously from a web server without reloading the entire page. It allows updating parts of a web page without a full refresh.",
+          "hints": "var xhr = new XMLHttpRequest();\nxhr.open('GET', 'https://api.example.com/data', true);\nxhr.onload = function() {\n  if (xhr.status >= 200 && xhr.status < 300) {\n    console.log(xhr.responseText);\n  }\n};\nxhr.send();"
+        },
+        {
+          "question": "JSON",
+          "answer": "JSON (JavaScript Object Notation) is a lightweight data interchange format that is easy for humans to read and write and easy for machines to parse and generate. It is commonly used for data exchange between a server and a web client.",
+          "hints": "var data = {\n  'name': 'John',\n  'age': 30\n};\nvar json = JSON.stringify(data);\nconsole.log(json); // Expected output: '{\"name\":\"John\",\"age\":30}'"
+        },
+        {
+          "question": "WebSockets",
+          "answer": "WebSockets is a communication protocol that provides full-duplex communication channels over a single TCP connection. It allows real-time data transfer between a client and a server, enabling features like chat applications, live updates, and multiplayer games.",
+          "hints": "var socket = new WebSocket('wss://api.example.com');\nsocket.onopen = function() {\n  console.log('Connected');\n};\nsocket.onmessage = function(event) {\n  console.log('Received:', event.data);\n};"
+        },
+        {
+          "question": "Progressive web apps (PWAs)",
+          "answer": "Progressive web apps are web applications that provide a native app-like experience using modern web technologies. They are reliable, fast, and engaging with features like offline support, push notifications, and home screen installation.",
+          "hints": "Implement service workers for offline support, use web app manifest for installation prompts, and optimize performance for a smooth user experience."
+        },
+        {
+          "question": "Responsive web design",
+          "answer": "Responsive web design is an approach to building websites that provide an optimal viewing experience across a wide range of devices, from desktop computers to mobile phones. It uses fluid grids, flexible images, and media queries to adapt the layout based on the screen size.",
+          "hints": "Use CSS media queries to adjust styles based on screen size, design with a mobile-first approach, and test the website on various devices to ensure responsiveness."
+        }
+      ]
     }
   ]
 }

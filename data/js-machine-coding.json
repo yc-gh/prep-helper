@@ -1,105 +1,110 @@
 {
   "name": "JavaScript Machine Coding",
-  "questions": [
+  "topics": [
     {
-      "question": "Build a custom dropdown component without using any libraries.",
-      "answer": "Implement a dropdown that allows for user input, filtering options based on the input. It should be accessible and support keyboard navigation.",
-      "hints": "Start with a basic HTML structure using &lt;div&gt; or &lt;ul&gt;/&lt;li&gt;.\nUse JavaScript for dynamic content filtering based on input.\nConsider ARIA roles for accessibility."
-    },
-    {
-      "question": "Create a to-do list application with features to add, delete, and mark tasks as completed.",
-      "answer": "Design a simple to-do list application where users can manage their daily tasks efficiently.",
-      "hints": "Use an array to store tasks.\nImplement functions to add tasks to the array, delete tasks, and toggle the completed state.\nUse local storage to persist tasks."
-    },
-    {
-      "question": "Develop a modal component that can be reused across different parts of a website.",
-      "answer": "The modal should support opening and closing actions, and it should be possible to include any content inside the modal.",
-      "hints": "Create a Modal class or function component.\nUse a global state or prop to control the visibility.\nEnsure it traps focus for accessibility."
-    },
-    {
-      "question": "Implement infinite scrolling for a list of items fetched from an API.",
-      "answer": "As the user scrolls towards the bottom of the list, automatically fetch the next set of items and append them to the list.",
-      "hints": "Monitor scroll events and calculate when the user is close to the bottom.\nUse pagination in your API requests.\nDebounce scroll events to avoid excessive API calls."
-    },
-    {
-      "question": "Build a lightbox gallery component for displaying images.",
-      "answer": "The component should display thumbnails of images, which when clicked, open in a full-screen modal with navigation controls.",
-      "hints": "Use an array to store image URLs.\nOn thumbnail click, dynamically create a modal with the selected image.\nImplement previous and next navigation."
-    },
-    {
-      "question": "Create a form with validation for a user registration page.",
-      "answer": "The form should include fields for username, email, password, and confirm password. Implement client-side validation before submission.",
-      "hints": "Use regular expressions for email and password validation.\nCheck if the password and confirm password fields match.\nDisplay error messages next to the respective fields."
-    },
-    {
-      "question": "Implement a custom video player with play, pause, and seek functionalities.",
-      "answer": "Build a video player interface that allows users to control video playback, including custom controls for play/pause and a seek bar.",
-      "hints": "Use the &lt;video&gt; tag for the player.\nListen to the video's timeupdate event to update the seek bar.\nUse JavaScript to control play and pause actions."
-    },
-    {
-      "question": "Design a responsive navigation bar that adapts to different screen sizes.",
-      "answer": "The navigation bar should display menu items horizontally on desktop screens and switch to a hamburger menu on mobile devices.",
-      "hints": "Use CSS media queries for responsiveness.\nToggle a class to show or hide the menu on mobile.\nConsider using flexbox or CSS grid for layout."
-    },
-    {
-      "question": "Create a carousel component that auto-plays slides with the option to manually navigate.",
-      "answer": "The carousel should cycle through images automatically but also allow users to navigate to previous or next slides manually.",
-      "hints": "Use an array to store slide information.\nImplement setInterval for auto-play functionality.\nAdd event listeners for manual navigation controls."
-    },
-    {
-      "question": "Build a grid layout that displays items in a masonry-like fashion.",
-      "answer": "Items of varying heights should be laid out such that they create a staggered grid, minimizing gaps between items.",
-      "hints": "Consider using CSS column properties or a JavaScript library if necessary.\nCalculate item positions if doing it manually to ensure a tight fit."
-    },
-    {
-        "question": "What will typeof NaN return and why?",
-        "answer": "typeof NaN will return number. This is because NaN stands for 'Not a Number', but it is still considered a special number in JavaScript.",
-        "hints": "Remember, NaN is a special value representing a computational error in JavaScript."
-      },
-      {
-        "question": "Can you explain closures with an example?",
-        "answer": "A closure is a function that has access to its own scope, the scope of the outer function, and the global scope.",
-        "hints": "Consider how functions can be nested within other functions and how the inner function can access variables from the outer function."
-      },
-      {
-        "question": "What does the .bind() method do?",
-        "answer": "The .bind() method creates a new function that, when called, has its this keyword set to the provided value.",
-        "hints": "Use .bind() when you need to pass a function but want to control what this refers to."
-      },
-      {
-        "question": "What will [2] == [2] return and why?",
-        "answer": "This expression will return false because arrays are objects and are compared by reference, not by value.",
-        "hints": "Even if arrays contain the same elements, they are different objects in memory."
-      },
-      {
-        "question": "What does 0.1 + 0.2 === 0.3 evaluate to and why?",
-        "answer": "This expression evaluates to false due to the way floating-point numbers are represented in binary.",
-        "hints": "Floating-point arithmetic can lead to rounding errors in JavaScript."
-      },
-      {
-        "question": "What will '5' + 3 and '5' - 3 return?",
-        "answer": "'5' + 3 returns the string '53', and '5' - 3 returns the number 2.",
-        "hints": "JavaScript performs type coercion, converting numbers to strings for concatenation with +, but not with -."
-      },
-      {
-        "question": "What are different ways to create an object in JavaScript?",
-        "answer": "Objects can be created using object literals, constructor functions, the Object.create method, new Object(), and ES6 classes.",
-        "hints": "Each method has its use cases and benefits for object creation and inheritance."
-      },
-      {
-        "question": "What does the instanceof operator do?",
-        "answer": "The instanceof operator tests whether the prototype property of a constructor appears anywhere in the prototype chain of an object.",
-        "hints": "It can be used to check if an object is an instance of a particular class or constructor."
-      },
-      {
-        "question": "What is a prototype in JavaScript?",
-        "answer": "A prototype is an object from which other objects inherit properties and methods.",
-        "hints": "JavaScript's prototype system allows for code reuse and inheritance."
-      },
-      {
-        "question": "What is the difference between null and undefined?",
-        "answer": "null is used to indicate the intentional absence of any object value, while undefined indicates that a variable has not been assigned a value.",
-        "hints": "null is often used where an object is expected but not present."
-      }
+      "name": "",
+      "questions": [
+        {
+          "question": "Build a custom dropdown component without using any libraries.",
+          "answer": "Implement a dropdown that allows for user input, filtering options based on the input. It should be accessible and support keyboard navigation.",
+          "hints": "Start with a basic HTML structure using &lt;div&gt; or &lt;ul&gt;/&lt;li&gt;.\nUse JavaScript for dynamic content filtering based on input.\nConsider ARIA roles for accessibility."
+        },
+        {
+          "question": "Create a to-do list application with features to add, delete, and mark tasks as completed.",
+          "answer": "Design a simple to-do list application where users can manage their daily tasks efficiently.",
+          "hints": "Use an array to store tasks.\nImplement functions to add tasks to the array, delete tasks, and toggle the completed state.\nUse local storage to persist tasks."
+        },
+        {
+          "question": "Develop a modal component that can be reused across different parts of a website.",
+          "answer": "The modal should support opening and closing actions, and it should be possible to include any content inside the modal.",
+          "hints": "Create a Modal class or function component.\nUse a global state or prop to control the visibility.\nEnsure it traps focus for accessibility."
+        },
+        {
+          "question": "Implement infinite scrolling for a list of items fetched from an API.",
+          "answer": "As the user scrolls towards the bottom of the list, automatically fetch the next set of items and append them to the list.",
+          "hints": "Monitor scroll events and calculate when the user is close to the bottom.\nUse pagination in your API requests.\nDebounce scroll events to avoid excessive API calls."
+        },
+        {
+          "question": "Build a lightbox gallery component for displaying images.",
+          "answer": "The component should display thumbnails of images, which when clicked, open in a full-screen modal with navigation controls.",
+          "hints": "Use an array to store image URLs.\nOn thumbnail click, dynamically create a modal with the selected image.\nImplement previous and next navigation."
+        },
+        {
+          "question": "Create a form with validation for a user registration page.",
+          "answer": "The form should include fields for username, email, password, and confirm password. Implement client-side validation before submission.",
+          "hints": "Use regular expressions for email and password validation.\nCheck if the password and confirm password fields match.\nDisplay error messages next to the respective fields."
+        },
+        {
+          "question": "Implement a custom video player with play, pause, and seek functionalities.",
+          "answer": "Build a video player interface that allows users to control video playback, including custom controls for play/pause and a seek bar.",
+          "hints": "Use the &lt;video&gt; tag for the player.\nListen to the video's timeupdate event to update the seek bar.\nUse JavaScript to control play and pause actions."
+        },
+        {
+          "question": "Design a responsive navigation bar that adapts to different screen sizes.",
+          "answer": "The navigation bar should display menu items horizontally on desktop screens and switch to a hamburger menu on mobile devices.",
+          "hints": "Use CSS media queries for responsiveness.\nToggle a class to show or hide the menu on mobile.\nConsider using flexbox or CSS grid for layout."
+        },
+        {
+          "question": "Create a carousel component that auto-plays slides with the option to manually navigate.",
+          "answer": "The carousel should cycle through images automatically but also allow users to navigate to previous or next slides manually.",
+          "hints": "Use an array to store slide information.\nImplement setInterval for auto-play functionality.\nAdd event listeners for manual navigation controls."
+        },
+        {
+          "question": "Build a grid layout that displays items in a masonry-like fashion.",
+          "answer": "Items of varying heights should be laid out such that they create a staggered grid, minimizing gaps between items.",
+          "hints": "Consider using CSS column properties or a JavaScript library if necessary.\nCalculate item positions if doing it manually to ensure a tight fit."
+        },
+        {
+          "question": "What will typeof NaN return and why?",
+          "answer": "typeof NaN will return number. This is because NaN stands for 'Not a Number', but it is still considered a special number in JavaScript.",
+          "hints": "Remember, NaN is a special value representing a computational error in JavaScript."
+        },
+        {
+          "question": "Can you explain closures with an example?",
+          "answer": "A closure is a function that has access to its own scope, the scope of the outer function, and the global scope.",
+          "hints": "Consider how functions can be nested within other functions and how the inner function can access variables from the outer function."
+        },
+        {
+          "question": "What does the .bind() method do?",
+          "answer": "The .bind() method creates a new function that, when called, has its this keyword set to the provided value.",
+          "hints": "Use .bind() when you need to pass a function but want to control what this refers to."
+        },
+        {
+          "question": "What will [2] == [2] return and why?",
+          "answer": "This expression will return false because arrays are objects and are compared by reference, not by value.",
+          "hints": "Even if arrays contain the same elements, they are different objects in memory."
+        },
+        {
+          "question": "What does 0.1 + 0.2 === 0.3 evaluate to and why?",
+          "answer": "This expression evaluates to false due to the way floating-point numbers are represented in binary.",
+          "hints": "Floating-point arithmetic can lead to rounding errors in JavaScript."
+        },
+        {
+          "question": "What will '5' + 3 and '5' - 3 return?",
+          "answer": "'5' + 3 returns the string '53', and '5' - 3 returns the number 2.",
+          "hints": "JavaScript performs type coercion, converting numbers to strings for concatenation with +, but not with -."
+        },
+        {
+          "question": "What are different ways to create an object in JavaScript?",
+          "answer": "Objects can be created using object literals, constructor functions, the Object.create method, new Object(), and ES6 classes.",
+          "hints": "Each method has its use cases and benefits for object creation and inheritance."
+        },
+        {
+          "question": "What does the instanceof operator do?",
+          "answer": "The instanceof operator tests whether the prototype property of a constructor appears anywhere in the prototype chain of an object.",
+          "hints": "It can be used to check if an object is an instance of a particular class or constructor."
+        },
+        {
+          "question": "What is a prototype in JavaScript?",
+          "answer": "A prototype is an object from which other objects inherit properties and methods.",
+          "hints": "JavaScript's prototype system allows for code reuse and inheritance."
+        },
+        {
+          "question": "What is the difference between null and undefined?",
+          "answer": "null is used to indicate the intentional absence of any object value, while undefined indicates that a variable has not been assigned a value.",
+          "hints": "null is often used where an object is expected but not present."
+        }
+      ]
+    }
   ]
 }
