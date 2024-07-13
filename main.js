@@ -8,7 +8,8 @@ const ROUTE_NAMES = {
     JS_MACHINE_CODING: 'js-machine-coding',
     CONCEPTS_FE: 'concepts-fe',
     CONCEPTS_BE: 'concepts-be',
-    JS_IDE: 'js-ide',
+    IDE_JS: 'ide-js',
+    IDE_REACT: 'ide-react',
 }
 
 const routes = {
@@ -22,7 +23,8 @@ const routes = {
     [ROUTE_NAMES.JS_MACHINE_CODING]: generateContent(`./data/${[ROUTE_NAMES.JS_MACHINE_CODING]}.json`),
     [ROUTE_NAMES.CONCEPTS_FE]: generateContent(`./data/${[ROUTE_NAMES.CONCEPTS_FE]}.json`),
     [ROUTE_NAMES.CONCEPTS_BE]: '<h1>Concepts BE</h1>',
-    [ROUTE_NAMES.JS_IDE]: '<iframe height=700px width=100% src="https://stackblitz.com/edit/js?embed=1"></iframe>',
+    [ROUTE_NAMES.IDE_JS]: '<iframe height=700px width=100% src="https://stackblitz.com/edit/js?embed=1"></iframe>',
+    [ROUTE_NAMES.IDE_REACT]: '<iframe height=700px width=100% src="https://stackblitz.com/edit/react?embed=1"></iframe>',
 };
 
 async function generateContent(filePath) {
