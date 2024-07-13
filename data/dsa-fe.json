@@ -40,6 +40,78 @@
       {
         "question": "Given a string s and a dictionary of words dict, add spaces in s to construct a sentence where each word is a valid dictionary word. Return all such possible sentences.",
         "hints": "Use dynamic programming to avoid re-computing the decomposition of the string.\nBacktrack to construct all possible sentences once you reach the end of the string."
+      },
+      {
+        "question": "Minimum Path Sum",
+        "link": "https://leetcode.com/problems/minimum-path-sum/"
+      },
+      {
+        "question": "Unique Paths",
+        "link": "https://leetcode.com/problems/unique-paths/"
+      },
+      {
+        "question": "Unique Paths II",
+        "link": "https://leetcode.com/problems/unique-paths-ii/"
+      },
+      {
+        "question": "Coin Change",
+        "link": "https://leetcode.com/problems/coin-change/"
+      },
+      {
+        "question": "Longest Increasing Subsequence",
+        "link": "https://leetcode.com/problems/longest-increasing-subsequence/"
+      },
+      {
+        "question": "Longest Common Subsequence",
+        "link": "https://leetcode.com/problems/longest-common-subsequence/"
+      },
+      {
+        "question": "Edit Distance",
+        "link": "https://leetcode.com/problems/edit-distance/"
+      },
+      {
+        "question": "House Robber",
+        "link": "https://leetcode.com/problems/house-robber/"
+      },
+      {
+        "question": "House Robber II",
+        "link": "https://leetcode.com/problems/house-robber-ii/"
+      },
+      {
+        "question": "Decode Ways",
+        "link": "https://leetcode.com/problems/decode-ways/"
+      },
+      {
+        "question": "Jump Game",
+        "link": "https://leetcode.com/problems/jump-game/"
+      },
+      {
+        "question": "Jump Game II",
+        "link": "https://leetcode.com/problems/jump-game-ii/"
+      },
+      {
+        "question": "Coin Change 2",
+        "link": "https://leetcode.com/problems/coin-change-2/"
+      },
+      {
+        "question": "Longest Palindromic Subsequence",
+        "link": "https://leetcode.com/problems/longest-palindromic-subsequence/"
+      },
+      {
+        "question": "Longest Palindromic Substring",
+        "link": "https://leetcode.com/problems/longest-palindromic-substring/"
+      },
+      {
+        "question": "Palindrome Partitioning",
+        "link": "https://leetcode.com/problems/palindrome-partitioning/"
+      },
+      {
+        "question": "Regular Expression Matching",
+        "link": "https://leetcode.com/problems/regular-expression-matching/"
+      },
+      {
+        "question": "Wildcard Matching",
+        "link": "https : //leetcode.com/problems/wildcard-matching/"
       }
     ]
   }

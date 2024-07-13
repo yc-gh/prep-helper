@@ -38,7 +38,8 @@ async function generateContent(filePath) {
                     <li class="question">
                         <h2>${q.question}</h2>
                         ${q.answer ? `<p>${q.answer}</p>` : ''}
-                        <pre><code>${q.hints}</code></pre>
+                        ${q.link ? `<div class="link"><a href=${q.link} target="_blank">${q.link}</a></div>` : ''} 
+                        ${q.hints ? `<pre><code>${q.hints}</code></pre>` : ''} 
                     </li>
                     <hr />
                 `).join('')}
