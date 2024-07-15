@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="/index.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap"
+      rel="stylesheet"
+    />
+    <title>ICA</title>
+  </head>
+  <body>
+    <div id="navigation-placeholder"></div>
+    <div id="content"></div>
+
+    <script src="/main.js" type="module"></script>
+
+    <script type="module">
+      const dataFilePath = '/data/system-design-fe.json';
+      const json = await fetch(dataFilePath);
+      const data = await json.json();
+
+      document.getElementById('content').innerHTML = `
+              <center>
+                  <h1>${data.name}</h1>
+              </center>
+              <hr class="divider" />
+              <ul class="topics-list">
+                  ${data.topics?.map(t => `
+                      <li>
+                          <h2>${t.name}</h2>
+                          <ul class="questions-list">
+                              ${t.questions?.map(q => `
+                                  <li>
+                                      <h3>${q.question}</h3>
+                                      ${q.answer ? `<p>${q.answer}</p>` : ''}
+                                      ${q.link ? `<div class="link"><a href=${q.link} target="_blank">${q.link}</a></div>` : ''} 
+                                      ${q.hints ? `<pre><code>${q.hints}</code></pre>` : ''} 
+                                  </li>
+                                  <hr />
+                              `).join('')}
+                          </ul>
+                      </li>
+                      <hr class="divider" />
+                  `).join('')}
+              </ul>
+          `;
+    </script>
+  </body>
+</html>

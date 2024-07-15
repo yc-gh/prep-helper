@@ -1,86 +1,85 @@
 {
-    "name": "JavaScript Fundamentals",
-    "topics": [
-      {
-        "name": "",
-        "questions": [
-          {
-            "question": "Event delegation",
-            "answer": "Event delegation is a technique to handle events on multiple elements with a single event listener. It works by placing a single event listener on a common ancestor of the elements and using event.target to determine the target element.",
-            "hints": "document.getElementById('parent').addEventListener('click', function(event) {\n  if (event.target.tagName === 'BUTTON') {\n    console.log('Button clicked');\n  }\n});"
-          },
-          {
-            "question": "Currying",
-            "answer": "Currying is a technique of translating a function with multiple arguments into a sequence of nesting functions with a single argument. It allows partial application of functions and creates reusable functions.",
-            "hints": "function multiply(a, b) {\n  return a * b;\n}\n\nfunction curriedMultiply(a) {\n  return function(b) {\n    return a * b;\n  };\n}\n\nconsole.log(curriedMultiply(2)(3)); // Expected output: 6"
-          },
-          {
-            "question": "Event bubbling",
-            "answer": "Event bubbling is the process where an event propagates from the target element up to its ancestors in the DOM tree. It allows handling events on multiple elements with a single event listener on a common ancestor.",
-            "hints": "document.getElementById('parent').addEventListener('click', function(event) {\n  console.log('Clicked on', event.target.id);\n});"
-          },
-          {
-            "question": "Hoisting",
-            "answer": "Hoisting is a JavaScript mechanism where variable and function declarations are moved to the top of their containing scope during the compilation phase. This allows variables to be used before they are declared.",
-            "hints": "console.log(x); // Output: undefined\nvar x = 5;"
-          },
-          {
-            "question": "Prototype inheritance",
-            "answer": "Prototype inheritance is a mechanism in JavaScript where objects inherit properties and methods from a prototype object. It allows creating objects based on a blueprint object and sharing behavior between objects.",
-            "hints": "function Person(name) {\n  this.name = name;\n}\n\nPerson.prototype.greet = function() {\n  return 'Hello, my name is ' + this.name;\n};\n\nvar john = new Person('John');\nconsole.log(john.greet()); // Expected output: Hello, my name is John"
-          },
-          {
-            "question": "Closures",
-            "answer": "Closures are functions that have access to variables from their containing scope even after the parent function has finished executing. They allow creating private variables and functions in JavaScript.",
-            "hints": "function createCounter() {\n  var count = 0;\n  return function() {\n    return ++count;\n  };\n}\n\nvar counter = createCounter();\nconsole.log(counter()); // Expected output: 1\nconsole.log(counter()); // Expected output: 2"
-          },
-          {
-            "question": "Promises",
-            "answer": "Promises are objects representing the eventual completion or failure of an asynchronous operation. They allow handling asynchronous operations in a more readable and manageable way compared to callbacks.",
-            "hints": "function fetchData() {\n  return new Promise((resolve, reject) => {\n    setTimeout(() => {\n      resolve('Data fetched successfully');\n    }, 2000);\n  });\n}\n\nfetchData().then(data => {\n  console.log(data); // Expected output: Data fetched successfully\n});"
-          },
-          {
-            "question": "Async/await",
-            "answer": "Async/await is a modern JavaScript feature that allows writing asynchronous code in a synchronous way using the async and await keywords. It simplifies handling promises and improves code readability.",
-            "hints": "function fetchData() {\n  return new Promise((resolve, reject) => {\n    setTimeout(() => {\n      resolve('Data fetched successfully');\n    }, 2000);\n  });\n}"
-          },
-          {
-            "question": "Map",
-            "answer": "The map method creates a new array by applying a function to each element of an existing array. It does not mutate the original array and returns a new array with the transformed elements.",
-            "hints": "var numbers = [1, 2, 3, 4];\nvar doubled = numbers.map(num => num * 2);\nconsole.log(doubled); // Expected output: [2, 4, 6, 8]"
-          },
-          {
-            "question": "Filter",
-            "answer": "The filter method creates a new array with elements that pass a test specified by a function. It does not mutate the original array and returns a new array with the filtered elements.",
-            "hints": "var numbers = [1, 2, 3, 4];\nvar even = numbers.filter(num => num % 2 === 0);\nconsole.log(even); // Expected output: [2, 4]"
-          },
-          {
-            "question": "Reduce",
-            "answer": "The reduce method applies a function against an accumulator and each element of an array to reduce it to a single value. It can be used to perform calculations, transformations, or aggregations on array elements.",
-            "hints": "var numbers = [1, 2, 3, 4];\nvar sum = numbers.reduce((acc, num) => acc + num, 0);\nconsole.log(sum); // Expected output: 10"
-          },
-          {
-            "question": "Spread operator",
-            "answer": "The spread operator (...) allows an iterable such as an array or string to be expanded in places where zero or more arguments or elements are expected. It can be used for array literals, function arguments, and object literals.",
-            "hints": "var numbers = [1, 2, 3];\nvar combined = [...numbers, 4, 5];\nconsole.log(combined); // Expected output: [1, 2, 3, 4, 5]"
-          },
-          {
-            "question": "Destructuring assignment",
-            "answer": "Destructuring assignment allows unpacking values from arrays or objects into distinct variables. It provides a concise syntax for extracting multiple values and assigning them to variables.",
-            "hints": "var numbers = [1, 2, 3];\nvar [ first, second, third ] = numbers;\nconsole.log(first, second, third); // Expected output: 1 2 3"
-          },
-          {
-            "question": "Event loop",
-            "answer": "The event loop is a mechanism in JavaScript that handles asynchronous operations by executing callback functions in response to events. It allows non-blocking I/O operations and ensures smooth execution of code.",
-            "hints": "console.log('Start');\nsetTimeout(() => console.log('Timeout'), 0);\nPromise.resolve().then(() => console.log('Promise'));\nconsole.log('End');"
-          },
-          {
-            "question": "Memoization",
-            "answer": "Memoization is a technique of caching the results of expensive function calls and returning the cached result when the same inputs occur again. It improves performance by avoiding redundant computations.",
-            "hints": "function fibonacci(n, memo = {}) {\n  if (n in memo) return memo[n];\n  if (n <= 2) return 1;\n  memo[n] = fibonacci(n - 1, memo) + fibonacci(n - 2, memo);\n  return memo[n];\n}"
-          }
-        ]
-      }
-    ]
-  }
-  
+  "name": "JavaScript Fundamentals",
+  "topics": [
+    {
+      "name": "",
+      "questions": [
+        {
+          "question": "Event delegation",
+          "answer": "Event delegation is a technique to handle events on multiple elements with a single event listener. It works by placing a single event listener on a common ancestor of the elements and using event.target to determine the target element.",
+          "hints": "document.getElementById('parent').addEventListener('click', function(event) {\n  if (event.target.tagName === 'BUTTON') {\n    console.log('Button clicked');\n  }\n});"
+        },
+        {
+          "question": "Currying",
+          "answer": "Currying is a technique of translating a function with multiple arguments into a sequence of nesting functions with a single argument. It allows partial application of functions and creates reusable functions.",
+          "hints": "function multiply(a, b) {\n  return a * b;\n}\n\nfunction curriedMultiply(a) {\n  return function(b) {\n    return a * b;\n  };\n}\n\nconsole.log(curriedMultiply(2)(3)); // Expected output: 6"
+        },
+        {
+          "question": "Event bubbling",
+          "answer": "Event bubbling is the process where an event propagates from the target element up to its ancestors in the DOM tree. It allows handling events on multiple elements with a single event listener on a common ancestor.",
+          "hints": "document.getElementById('parent').addEventListener('click', function(event) {\n  console.log('Clicked on', event.target.id);\n});"
+        },
+        {
+          "question": "Hoisting",
+          "answer": "Hoisting is a JavaScript mechanism where variable and function declarations are moved to the top of their containing scope during the compilation phase. This allows variables to be used before they are declared.",
+          "hints": "console.log(x); // Output: undefined\nvar x = 5;"
+        },
+        {
+          "question": "Prototype inheritance",
+          "answer": "Prototype inheritance is a mechanism in JavaScript where objects inherit properties and methods from a prototype object. It allows creating objects based on a blueprint object and sharing behavior between objects.",
+          "hints": "function Person(name) {\n  this.name = name;\n}\n\nPerson.prototype.greet = function() {\n  return 'Hello, my name is ' + this.name;\n};\n\nvar john = new Person('John');\nconsole.log(john.greet()); // Expected output: Hello, my name is John"
+        },
+        {
+          "question": "Closures",
+          "answer": "Closures are functions that have access to variables from their containing scope even after the parent function has finished executing. They allow creating private variables and functions in JavaScript.",
+          "hints": "function createCounter() {\n  var count = 0;\n  return function() {\n    return ++count;\n  };\n}\n\nvar counter = createCounter();\nconsole.log(counter()); // Expected output: 1\nconsole.log(counter()); // Expected output: 2"
+        },
+        {
+          "question": "Promises",
+          "answer": "Promises are objects representing the eventual completion or failure of an asynchronous operation. They allow handling asynchronous operations in a more readable and manageable way compared to callbacks.",
+          "hints": "function fetchData() {\n  return new Promise((resolve, reject) => {\n    setTimeout(() => {\n      resolve('Data fetched successfully');\n    }, 2000);\n  });\n}\n\nfetchData().then(data => {\n  console.log(data); // Expected output: Data fetched successfully\n});"
+        },
+        {
+          "question": "Async/await",
+          "answer": "Async/await is a modern JavaScript feature that allows writing asynchronous code in a synchronous way using the async and await keywords. It simplifies handling promises and improves code readability.",
+          "hints": "function fetchData() {\n  return new Promise((resolve, reject) => {\n    setTimeout(() => {\n      resolve('Data fetched successfully');\n    }, 2000);\n  });\n}"
+        },
+        {
+          "question": "Map",
+          "answer": "The map method creates a new array by applying a function to each element of an existing array. It does not mutate the original array and returns a new array with the transformed elements.",
+          "hints": "var numbers = [1, 2, 3, 4];\nvar doubled = numbers.map(num => num * 2);\nconsole.log(doubled); // Expected output: [2, 4, 6, 8]"
+        },
+        {
+          "question": "Filter",
+          "answer": "The filter method creates a new array with elements that pass a test specified by a function. It does not mutate the original array and returns a new array with the filtered elements.",
+          "hints": "var numbers = [1, 2, 3, 4];\nvar even = numbers.filter(num => num % 2 === 0);\nconsole.log(even); // Expected output: [2, 4]"
+        },
+        {
+          "question": "Reduce",
+          "answer": "The reduce method applies a function against an accumulator and each element of an array to reduce it to a single value. It can be used to perform calculations, transformations, or aggregations on array elements.",
+          "hints": "var numbers = [1, 2, 3, 4];\nvar sum = numbers.reduce((acc, num) => acc + num, 0);\nconsole.log(sum); // Expected output: 10"
+        },
+        {
+          "question": "Spread operator",
+          "answer": "The spread operator (...) allows an iterable such as an array or string to be expanded in places where zero or more arguments or elements are expected. It can be used for array literals, function arguments, and object literals.",
+          "hints": "var numbers = [1, 2, 3];\nvar combined = [...numbers, 4, 5];\nconsole.log(combined); // Expected output: [1, 2, 3, 4, 5]"
+        },
+        {
+          "question": "Destructuring assignment",
+          "answer": "Destructuring assignment allows unpacking values from arrays or objects into distinct variables. It provides a concise syntax for extracting multiple values and assigning them to variables.",
+          "hints": "var numbers = [1, 2, 3];\nvar [ first, second, third ] = numbers;\nconsole.log(first, second, third); // Expected output: 1 2 3"
+        },
+        {
+          "question": "Event loop",
+          "answer": "The event loop is a mechanism in JavaScript that handles asynchronous operations by executing callback functions in response to events. It allows non-blocking I/O operations and ensures smooth execution of code.",
+          "hints": "console.log('Start');\nsetTimeout(() => console.log('Timeout'), 0);\nPromise.resolve().then(() => console.log('Promise'));\nconsole.log('End');"
+        },
+        {
+          "question": "Memoization",
+          "answer": "Memoization is a technique of caching the results of expensive function calls and returning the cached result when the same inputs occur again. It improves performance by avoiding redundant computations.",
+          "hints": "function fibonacci(n, memo = {}) {\n  if (n in memo) return memo[n];\n  if (n <= 2) return 1;\n  memo[n] = fibonacci(n - 1, memo) + fibonacci(n - 2, memo);\n  return memo[n];\n}"
+        }
+      ]
+    }
+  ]
+}
