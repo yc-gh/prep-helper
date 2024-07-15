@@ -25,13 +25,47 @@
       updateNavBar("{{ site.baseurl }}");
     </script>
 
-    <script src="populate-content.js"></script>
     <script>
       const dataFilePath = "{{ site.baseurl }}/data/system-design-fe.json";
       const json = fetch(dataFilePath)
         .then((response) => response.json())
         .then((data) => {
-          populateContent(data);
+          document.getElementById("content").innerHTML = `
+              <center>
+                  <h1>${data.name}</h1>
+              </center>
+              <hr class="divider" />
+              <ul class="topics-list">
+                  ${data.topics
+                    ?.map(
+                      (t) => `
+                      <li>
+                          <h1><i><u>${t.name}</u></i></h1>
+                          <ul class="questions-list">
+                              ${t.questions
+                                ?.map(
+                                  (q) => `
+                                  <li>
+                                      <h3>${q.question}</h3>
+                                      ${q.answer ? `<p>${q.answer}</p>` : ""}
+                                      ${
+                                        q.hints
+                                          ? `<pre><code>${q.hints}</code></pre>`
+                                          : ""
+                                      } 
+                                  </li>
+                                  <hr />
+                              `
+                                )
+                                .join("")}
+                          </ul>
+                      </li>
+                      <hr class="divider" />
+                  `
+                    )
+                    .join("")}
+              </ul>
+          `;
         });
     </script>
   </body>

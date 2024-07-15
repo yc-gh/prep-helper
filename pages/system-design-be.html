@@ -22,39 +22,17 @@
 
     <script src="nav-bar.js"></script>
     <script>
-      updateNavBar("{{ site.baseurl }}")
+      updateNavBar("{{ site.baseurl }}");
     </script>
 
-    <!-- <script type="module">
-      const dataFilePath = '{{ site.baseurl }}/data/system-design-fe.json';
-      const json = await fetch(dataFilePath);
-      const data = await json.json();
-
-      document.getElementById('content').innerHTML = `
-              <center>
-                  <h1>${data.name}</h1>
-              </center>
-              <hr class="divider" />
-              <ul class="topics-list">
-                  ${data.topics?.map(t => `
-                      <li>
-                          <h2>${t.name}</h2>
-                          <ul class="questions-list">
-                              ${t.questions?.map(q => `
-                                  <li>
-                                      <h3>${q.question}</h3>
-                                      ${q.answer ? `<p>${q.answer}</p>` : ''}
-                                      ${q.link ? `<div class="link"><a href=${q.link} target="_blank">${q.link}</a></div>` : ''} 
-                                      ${q.hints ? `<pre><code>${q.hints}</code></pre>` : ''} 
-                                  </li>
-                                  <hr />
-                              `).join('')}
-                          </ul>
-                      </li>
-                      <hr class="divider" />
-                  `).join('')}
-              </ul>
-          `;
+    <!--
+    <script>
+      const dataFilePath = "{{ site.baseurl }}/data/system-design-be.json";
+      const json = fetch(dataFilePath)
+        .then((response) => response.json())
+        .then((data) => {
+          populateContent(data);
+        });
     </script> -->
   </body>
 </html>
