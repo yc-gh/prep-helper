@@ -6,7 +6,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <base href="{{ site.baseurl }}/" >
+    <base href="{{ site.baseurl }}/" />
     <link rel="stylesheet" href="index.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -15,42 +15,24 @@
       rel="stylesheet"
     />
     <title>ICA</title>
-    <script src="main.js" type="module"></script>
   </head>
   <body>
     <div id="navigation-placeholder"></div>
     <div id="content"></div>
 
-    <script type="module">
-      const dataFilePath = '/data/js-questions.json';
-      const json = await fetch(dataFilePath);
-      const data = await json.json();
+    <script src="nav-bar.js"></script>
+    <script>
+      updateNavBar("{{ site.baseurl }}");
+    </script>
 
-      document.getElementById('content').innerHTML = `
-              <center>
-                  <h1>${data.name}</h1>
-              </center>
-              <hr class="divider" />
-              <ul class="topics-list">
-                  ${data.topics?.map(t => `
-                      <li>
-                          <h2>${t.name}</h2>
-                          <ul class="questions-list">
-                              ${t.questions?.map(q => `
-                                  <li>
-                                      <h3>${q.question}</h3>
-                                      ${q.answer ? `<p>${q.answer}</p>` : ''}
-                                      ${q.link ? `<div class="link"><a href=${q.link} target="_blank">${q.link}</a></div>` : ''} 
-                                      ${q.hints ? `<pre><code>${q.hints}</code></pre>` : ''} 
-                                  </li>
-                                  <hr />
-                              `).join('')}
-                          </ul>
-                      </li>
-                      <hr class="divider" />
-                  `).join('')}
-              </ul>
-          `;
+    <script src="populate-content.js"></script>
+    <script>
+      const dataFilePath = "{{ site.baseurl }}/data/js-questions.json";
+      const json = fetch(dataFilePath)
+        .then((response) => response.json())
+        .then((data) => {
+          populateContent(data);
+        });
     </script>
   </body>
 </html>

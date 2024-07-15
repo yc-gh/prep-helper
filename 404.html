@@ -15,7 +15,6 @@
       rel="stylesheet"
     />
     <title>ICA</title>
-    <script src="main.js" type="module"></script>
   </head>
   <body>
     <div id="navigation-placeholder"></div>
@@ -27,5 +26,10 @@
             <h1><b>You've landed in the middle of nowhere</b></h1>
         </center>
     </div>
+
+    <script src="nav-bar.js"></script>
+    <script>
+      updateNavBar("{{ site.baseurl }}")
+    </script>
   </body>
 </html>

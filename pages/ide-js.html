@@ -6,7 +6,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <base href="{{ site.baseurl }}/" >
+    <base href="{{ site.baseurl }}/" />
     <link rel="stylesheet" href="index.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -15,12 +15,20 @@
       rel="stylesheet"
     />
     <title>ICA</title>
-    <script src="main.js" type="module"></script>
   </head>
   <body>
     <div id="navigation-placeholder"></div>
     <div id="content">
-        <iframe height=700px width=100% src="https://stackblitz.com/edit/js?embed=1"></iframe>
+      <iframe
+        height="700px"
+        width="100%"
+        src="https://stackblitz.com/edit/js?embed=1"
+      ></iframe>
     </div>
+
+    <script src="nav-bar.js"></script>
+    <script>
+      updateNavBar("{{ site.baseurl }}")
+    </script>
   </body>
 </html>

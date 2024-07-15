@@ -15,7 +15,10 @@
       rel="stylesheet"
     />
     <title>ICA</title>
-    <script src="main.js" type="module"></script>
+    <script src="nav-bar.js"></script>
+    <script>
+      updateNavBar("{{ site.baseurl }}")
+    </script>
   </head>
   <body>
     <div id="navigation-placeholder"></div>
@@ -27,7 +30,7 @@
       </p>
       <p>
         <center>
-          <h1>Switch time <b><i>again?</i></b></h1>
+          <h1>Time to switch... <b><i>again?</i></b></h1>
         </center>
       </p>
       <p>
@@ -38,5 +41,10 @@
         </center>
       </p>
     </div>
+    
+    <script src="nav-bar.js"></script>
+    <script>
+      updateNavBar("{{ site.baseurl }}");
+    </script>
   </body>
 </html>
