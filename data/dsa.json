@@ -624,7 +624,13 @@
         },
         {
           "question": "Coin Change",
-          "link": "https://leetcode.com/problems/coin-change/"
+          "link": "https://leetcode.com/problems/coin-change/",
+          "hints": "var coinChange = function(coins, amount) {\n    const minCoins = Infinity;\n    const memo = Array(amount + 1).fill();\n\n\n    const backtrack = function (a) {\n        if (a === 0) {\n            return 0;\n        }\n        else if (a < 0) {\n            return Infinity;\n        }\n\n        if (memo[a]) {\n            return memo[a];\n        }\n\n        let min = Infinity;\n\n        for(let c of coins) {\n            min = Math.min(min, backtrack(a - c));\n        }\n\n        return memo[a] = min === Infinity ? Infinity : 1 + min;\n    }\n\n    const res = backtrack(amount);\n\n    return res === Infinity ? -1 : res;\n};"
+        },
+        {
+          "question": "Word Break",
+          "link": "https://leetcode.com/problems/word-break/",
+          "hints": "var wordBreak = function (s, wordDict) {\n    const memo = {};\n\n    const backtrack = (str) => {\n        if(memo[str] !== undefined) {\n            return memo[str];\n        }\n        \n        if (!str) {\n            return true;\n        }\n\n        for (let i = str.length; i > 0; i--) {\n            const substr = str.substring(0, i);\n            if (wordDict.includes(substr)) {\n                const remainingStr = str.substring(i);\n                const backtrackRes = backtrack(remainingStr);\n                if (backtrackRes) {\n                    return memo[remainingStr] = true;\n                }\n            }\n        }\n\n        return memo[str] = false;\n    }\n\n    return backtrack(s);\n};"
         },
         {
           "question": "Longest Increasing Subsequence",
@@ -944,6 +950,46 @@
         {
           "question": "Print FooBar Alternately",
           "link": "https://leetcode.com/problems/print-foobar-alternately/"
+        }
+      ]
+    },
+    {
+      "name": "Top 150",
+      "questions": [
+        {
+          "question": "Merge Sorted Array",
+          "link": "https://leetcode.com/problems/merge-sorted-array/",
+          "hints": "Start from the rear of both arrays and compare the elements.\nPlace the larger element at the end of the first array.",
+          "code": "var merge = function(nums1, m, nums2, n) {\n    let i = m - 1, j = n - 1, k = m + n - 1;\n\n    while(i >= 0 && j >= 0) {\n        if(nums1[i] > nums2[j]) {\n            nums1[k--] = nums1[i--];\n        }\n        else {\n            nums1[k--] = nums2[j--];\n        }\n    }\n\n    while(i >= 0) {\n        nums1[k--] = nums1[i--];\n    }\n\n    while(j >= 0) {\n        nums1[k--] = nums2[j--];\n    }\n};",
+          "complexity": "Time: O(n)\nSpace: O(1)"
+        },
+        {
+          "question": "Remove Element",
+          "link": "https://leetcode.com/problems/remove-element/",
+          "hints": "Use two pointers.\nOne to iterate the array and the other to keep track of the position to place the next element.",
+          "code": "var removeElement = function(nums, val) {\n    let k = 0, i = 0, n = nums.length;\n\n    while(i < n) {\n        if(nums[i] !== val) {\n            nums[k++] = nums[i];\n        }\n        i++;\n    }\n\n    return k;\n};",
+          "complexity": "Time: O(n)\nSpace: O(1)"
+        },
+        {
+          "question": "Remove Duplicates from Sorted Array",
+          "link": "https://leetcode.com/problems/remove-duplicates-from-sorted-array/",
+          "hints": "Use two pointers.\nOne to iterate the array and the other to keep track of the position to place the next element (eg. k).\nIf the current element is different from the element at k, place the current element at the second pointer and increment the second pointer.",
+          "code": "var removeDuplicates = function(nums) {\n    let k = 0;\n    const n = nums.length;\n\n    for(let i = 1; i < n; i++) {\n        if(nums[i] !== nums[k]) {\n            nums[++k] = nums[i];\n        }\n    }\n\n    return k + 1;\n};",
+          "complexity": "Time: O(n)\nSpace: O(1)"
+        },
+        {
+          "question": "Remove Duplicates from Sorted Array II",
+          "link": "https://leetcode.com/problems/remove-duplicates-from-sorted-array-ii/",
+          "hints": "Similar to Remove Duplicates from Sorted Array, add an additional OR check so that values are copied only if value at k index is not equal to value at k - 1 index.",
+          "code": "var removeDuplicates = function(nums) {\n    const n = nums.length;\n    let k = 0;\n\n    for(let i = 1; i < n; i++) {\n        if(nums[i] !== nums[k] || nums[k] !== nums[k-1]) {\n            nums[++k] = nums[i];\n        }\n    }\n\n    return k + 1;\n};",
+          "complexity": "Time: O(n)\nSpace: O(1)"
+        },
+        {
+          "question": "Majority Element",
+          "link": "https://leetcode.com/problems/majority-element/",
+          "hints": "Use Boyer-Moore Voting Algorithm.\nInitialize a counter and a candidate element.\nIterate through the array and if the counter is 0, update the candidate element.\nIf the current element is the same as the candidate element, increment the counter, else decrement the counter.\nReturn the candidate element.",
+          "code": "var majorityElement = function(nums) {\n    const n = nums.length;\n    let majElement = nums[0], votes = 0;\n\n    for(let i = 0; i < n; i++) {\n        if(votes === 0) {\n            majElement = nums[i];\n        }\n        \n        if(nums[i] === majElement) {\n            votes++;\n        }\n        else {\n            votes--;   \n        }\n    }\n\n    return majElement;\n};",
+          "complexity": "Time: O(n)\nSpace: O(1)"
         }
       ]
     }

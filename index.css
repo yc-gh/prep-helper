@@ -81,39 +81,67 @@
     gap: 1rem;
     padding: 1rem;
 
-    & ul {
+    ul, ol {
         display: flex;
         flex-direction: column;
         gap: 1rem;
+    }
+    
+    .topics-list {
         list-style-type: none;
     }
-
-    & ol {
-        padding-left: 2rem;
+    
+    .index-list {
+        padding-left: 1.5rem;
     }
 
-    & ul li{
+    ol.questions-list {
+        padding-left: 1rem;
+    }
+
+    .question-content {
         display: flex;
         flex-direction: column;
         gap: 1rem;
     }
 
-    & li>pre,
-    & li>.link {
+    .topic-content {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    .question-content pre,
+    .question-content .link {
         padding: 1rem;
         border: 1px solid black;
         border-radius: var(--border-radius);
         background-color: rgba(30, 30, 30, 0.3);
         overflow: auto;
     }
+
+    .questions-list > hr:last-child {
+        display: none;
+    }
 }
 
-.questions-list > hr:last-child {
-    display: none;
-}
 
 .link a {
     text-decoration: none;
+}
+
+a {
+    color: var(--main-link-color);
+}
+
+hr {
+    border: 0;
+    height: 1px;
+    background-color: black;
+}
+
+hr.divider {
+    height: 2px;
 }
 
 @media (max-width: 768px) {
@@ -136,20 +164,6 @@
     .menu-list a {
         justify-content: center;
     }
-}
-
-a {
-    color: var(--main-link-color);
-}
-
-hr {
-    border: 0;
-    height: 1px;
-    background-color: black;
-}
-
-hr.divider {
-    height: 2px;
 }
 
 html,

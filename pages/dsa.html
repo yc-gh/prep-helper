@@ -44,7 +44,7 @@
 
         if (showIndexOfContents) {
           listOfTopics = `
-                <ol type="1" class="topics-list">
+                <ol type="1" class="index-list">
                         ${data.topics
                           ?.map(
                             (t) => `
@@ -75,33 +75,49 @@
                   ${data.topics
                     ?.map(
                       (t) => `
-                      <li>
-                          <h1 id="${slugify(t.name)}"><i><u>${
-                        t.name
-                      }</u></i></h1>
-                          <ul class="questions-list">
-                              ${t.questions
-                                ?.map(
-                                  (q) => `
-                                  <li>
-                                      <h3>${q.question}</h3>
-                                      ${q.answer ? `<p>${q.answer}</p>` : ""}
-                                      ${
-                                        q.link
-                                          ? `<div class="link"><a href=${q.link} target="_blank">${q.link}</a></div>`
-                                          : ""
-                                      } 
-                                      ${
-                                        q.hints
-                                          ? `<pre><code>${q.hints}</code></pre>`
-                                          : ""
-                                      } 
-                                  </li>
-                                  <hr />
-                              `
-                                )
-                                .join("")}
-                          </ul>
+                      <li class="topic-content">
+                            <h1 id="${slugify(t.name)}">
+                                <i><u>${t.name}</u></i>
+                            </h1>
+                            <ol type="1" class="questions-list">
+                                ${t.questions
+                                  ?.map(
+                                    (q) => `
+                                    <li>
+                                        <div class="question-content">
+                                            <h3>${q.question}</h3>
+                                            ${
+                                              q.answer
+                                                ? `<p>${q.answer}</p>`
+                                                : ""
+                                            }
+                                            ${
+                                              q.link
+                                                ? `<div class="link"><a href=${q.link} target="_blank">${q.link}</a></div>`
+                                                : ""
+                                            } 
+                                            ${
+                                              q.hints
+                                                ? `<pre><code>${q.hints}</code></pre>`
+                                                : ""
+                                            } 
+                                            ${
+                                              q.code
+                                                ? `<pre><code>${q.code}</code></pre>`
+                                                : ""
+                                            } 
+                                            ${
+                                              q.complexity
+                                                ? `<pre><code>${q.complexity}</code></pre>`
+                                                : ""
+                                            } 
+                                        </div>
+                                    </li>
+                                    <hr />
+                                `
+                                  )
+                                  .join("")}
+                            </ol>
                       </li>
                       <hr class="divider" />
                   `
