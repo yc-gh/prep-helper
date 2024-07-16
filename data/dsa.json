@@ -990,6 +990,13 @@
           "hints": "Use Boyer-Moore Voting Algorithm.\nInitialize a counter and a candidate element.\nIterate through the array and if the counter is 0, update the candidate element.\nIf the current element is the same as the candidate element, increment the counter, else decrement the counter.\nReturn the candidate element.",
           "code": "var majorityElement = function(nums) {\n    const n = nums.length;\n    let majElement = nums[0], votes = 0;\n\n    for(let i = 0; i < n; i++) {\n        if(votes === 0) {\n            majElement = nums[i];\n        }\n        \n        if(nums[i] === majElement) {\n            votes++;\n        }\n        else {\n            votes--;   \n        }\n    }\n\n    return majElement;\n};",
           "complexity": "Time: O(n)\nSpace: O(1)"
+        },
+        {
+          "question": "Rotate Array",
+          "link": "https://leetcode.com/problems/rotate-array/",
+          "hints": "Normalize the value of k since n * k rotation is the same as k rotation.\nReverse the entire array.\nReverse the first k elements.\nReverse the remaining elements.",
+          "code": "var rotate = function(nums, k) {\n    const n = nums.length;\n    const normalisedK = k % n;\n\n    const reverse = function (from, to) {\n        let i = from, j = to;\n        while(i < j) {\n            [nums[i], nums[j]] = [nums[j], nums[i]];\n            i++;\n            j--;\n        }\n    }\n\n    reverse(0, n - 1);\n    reverse(0, normalisedK - 1);\n    reverse(normalisedK, n - 1);\n};",
+          "complexity": "Time: O(n)\nSpace: O(1)"
         }
       ]
     }
