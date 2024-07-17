@@ -2,6 +2,41 @@
   "name": "Frontend Concepts",
   "topics": [
     {
+      "name": "SOLID Principles",
+      "questions": [
+        {
+          "question": "Single Responsibility Principle (SRP)",
+          "answer": "The Single Responsibility Principle states that a class should have only one reason to change, meaning that a class should have only one job or responsibility.",
+          "hints": "Separate concerns in your codebase, create smaller and more focused classes, and avoid 'god classes' that do too much.",
+          "code": "// Violates SRP\nclass UserSettings {\n    constructor(user) {\n        this.user = user;\n    }\n\n    changeEmail(newEmail) {\n        // Change email\n    }\n\n    saveUser() {\n        // Save user to a database\n    }\n}\n\n// Adheres to SRP\nclass User {\n    constructor(user) {\n        this.user = user;\n    }\n\n    changeEmail(newEmail) {\n        // Change email\n    }\n}\n\nclass UserRepository {\n    saveUser(user) {\n        // Save user to a database\n    }\n}"
+        },
+        {
+          "question": "Open/Closed Principle (OCP)",
+          "answer": "The Open/Closed Principle states that software entities should be open for extension but closed for modification. This means that the behavior of a module can be extended without modifying its source code.",
+          "hints": "Use interfaces and abstract classes to define contracts, favor composition over inheritance, and apply the strategy pattern for flexible behavior.",
+          "code": "// Violates OCP\nclass Rectangle {\n    constructor(width, height) {\n        this.width = width;\n        this.height = height;\n    }\n}\n\nfunction calculateArea(rectangles) {\n    return rectangles.reduce((area, rectangle) => {\n        return area + rectangle.width * rectangle.height;\n    }, 0);\n}\n\n// Adheres to OCP\nclass Shape {\n    area() {}\n}\n\nclass Rectangle extends Shape {\n    constructor(width, height) {\n        super();\n        this.width = width;\n        this.height = height;\n    }\n\n    area() {\n        return this.width * this.height;\n    }\n}\n\nfunction calculateArea(shapes) {\n    return shapes.reduce((area, shape) => {\n        return area + shape.area();\n    }, 0);\n}"
+        },
+        {
+          "question": "Liskov Substitution Principle (LSP)",
+          "answer": "The Liskov Substitution Principle states that objects of a superclass should be replaceable with objects of its subclasses without affecting the correctness of the program. In other words, derived classes must be substitutable for their base classes.",
+          "hints": "Ensure derived classes adhere to the contract of the base class, avoid weakening preconditions, and maintain postconditions of the base class.",
+          "code": "// Violates LSP\nclass Bird {\n    fly() {\n        console.log(\"I can fly\");\n    }\n}\n\nclass Duck extends Bird {}\n\nclass Ostrich extends Bird {\n    fly() {\n        throw new Error(\"I cannot fly\");\n    }\n}\n\n// Adheres to LSP\nclass Bird {}\n\nclass FlyingBird extends Bird {\n    fly() {\n        console.log(\"I can fly\");\n    }\n}\n\nclass Duck extends FlyingBird {}\n\nclass Ostrich extends Bird {}"
+        },
+        {
+          "question": "Interface Segregation Principle (ISP)",
+          "answer": "The Interface Segregation Principle states that a client should not be forced to implement interfaces they do not use. Instead of having large interfaces, segregate them into smaller, more specific interfaces.",
+          "hints": "Design cohesive interfaces with a single responsibility, favor multiple specific interfaces over a single general interface, and apply the dependency inversion principle.",
+          "code": "// Violates ISP\nclass Worker {\n    work() {}\n    eat() {}\n}\n\n// Adheres to ISP\nclass Workable {\n    work() {}\n}\n\nclass Eatable {\n    eat() {}\n}\n\nclass Worker extends Workable {\n    work() {\n        console.log(\"Working\");\n    }\n}\n\nclass LunchBreak extends Eatable {\n    eat() {\n        console.log(\"Eating\");\n    }\n}"
+        },
+        {
+          "question": "Dependency Inversion Principle (DIP)",
+          "answer": "The Dependency Inversion Principle states that high-level modules should not depend on low-level modules. Both should depend on abstractions, and abstractions should not depend on details. In other words, depend on abstractions, not concretions.",
+          "hints": "Use dependency injection to decouple components, apply inversion of control containers, and favor composition over inheritance for flexibility.",
+          "code": "// Violates DIP\nclass LightBulb {\n    turnOn() {\n        console.log(\"LightBulb: turned on...\");\n    }\n\n    turnOff() {\n        console.log(\"LightBulb: turned off...\");\n    }\n}\n\nclass Switch {\n    constructor(bulb) {\n        this.bulb = bulb;\n    }\n\n    operate() {\n        this.bulb.turnOn();\n        this.bulb.turnOff();\n    }\n}\n\n// Adheres to DIP\nclass SwitchableDevice {\n    turnOn() {}\n    turnOff() {}\n}\n\nclass LightBulb extends SwitchableDevice {\n    turnOn() {\n        console.log(\"LightBulb: turned on...\");\n    }\n\n    turnOff() {\n        console.log(\"LightBulb: turned off...\");\n    }\n}\n\nclass Switch {\n    constructor(device) {\n        this.device = device;\n    }\n\n    operate() {\n        this.device.turnOn();\n        this.device.turnOff();\n    }\n}"
+        }
+      ]
+    },
+    {
       "name": "",
       "questions": [
         {

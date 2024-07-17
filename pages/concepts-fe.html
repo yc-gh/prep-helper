@@ -39,7 +39,7 @@
                   ${data.topics
                     ?.map(
                       (t) => `
-                      <li>
+                      <li class="topic-content">
                           <h1><i><u>${t.name}</u></i></h1>
                           <ul class="questions-list">
                               ${t.questions
@@ -51,6 +51,11 @@
                                       ${
                                         q.hints
                                           ? `<pre><code>${q.hints}</code></pre>`
+                                          : ""
+                                      }
+                                      ${
+                                        q.code
+                                          ? `<pre><code>${q.code}</code></pre>`
                                           : ""
                                       } 
                                   </li>
