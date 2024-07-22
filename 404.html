@@ -3,33 +3,16 @@
 
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <base href="{{ site.baseurl }}/" />
-    <link rel="stylesheet" href="index.css" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap"
-      rel="stylesheet"
-    />
-    <title>ICA</title>
-  </head>
-  <body>
-    <div id="navigation-placeholder"></div>
-    <div id="content">
-      <center>
-        <h1>404 - Page Not Found</h1>
-      </center>
-      <center>
-        <h1><b>You've landed in the middle of nowhere</b></h1>
-      </center>
-    </div>
-
-    <script src="nav-bar.js"></script>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="refresh" content="0; URL='{{ site.baseurl }}/'" />
+    <title>Redirecting...</title>
+</head>
+<body>
     <script>
-      updateNavBar("{{ site.baseurl }}");
+        // JavaScript redirect for environments where the meta refresh did not work
+        window.location.href = '{{ site.baseurl }}/';
     </script>
-  </body>
+    <p>If you are not redirected, <a href="{{ site.baseurl }}/">click here to continue</a>.</p>
+</body>
 </html>
