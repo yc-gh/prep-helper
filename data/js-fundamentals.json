@@ -5,6 +5,36 @@
       "name": "",
       "questions": [
         {
+          "question": "Prototype",
+          "answer": "The prototype is an object that is associated with every function and object in JavaScript. It allows objects to inherit properties and methods from other objects.",
+          "hints": "function Person(name) {\n  this.name = name;\n}\n\nPerson.prototype.greet = function() {\n  return 'Hello, my name is ' + this.name;\n};\n\nvar john = new Person('John');\nconsole.log(john.greet()); // Expected output: Hello, my name is John"
+        },
+        {
+          "question": "Inheritance",
+          "answer": "Inheritance in JavaScript is achieved through prototype chaining, where objects inherit properties and methods from their prototype object. It allows creating a hierarchy of objects with shared behavior.",
+          "hints": "function Animal(name) {\n  this.name = name;\n}\n\nAnimal.prototype.speak = function() {\n  return 'Animal sound';\n};\n\nfunction Dog(name) {\n  Animal.call(this, name);\n}\n\nDog.prototype = Object.create(Animal.prototype);\nDog.prototype.constructor = Dog;\n\nDog.prototype.bark = function() {\n  return 'Woof';\n};\n\nvar dog = new Dog('Buddy');\nconsole.log(dog.speak()); // Expected output: Animal sound\nconsole.log(dog.bark()); // Expected output: Woof"
+        },
+        {
+          "question": "Function vs Class",
+          "answer": "Functions and classes are both used to define reusable code in JavaScript. Functions are first-class citizens and can be used to create objects, while classes provide a more structured way to define objects with constructors and methods.",
+          "hints": "function Person(name) {\n  this.name = name;\n}\n\nPerson.prototype.greet = function() {\n  return 'Hello, my name is ' + this.name;\n};\n\nvar john = new Person('John');\nconsole.log(john.greet()); // Expected output: Hello, my name is John"
+        },
+        {
+          "question": "New keyword",
+          "answer": "The new keyword in JavaScript is used to create an instance of a user-defined object type or one of the built-in object types that has a constructor function. It creates a new object, sets the prototype of the object to the constructor's prototype, and calls the constructor function with the specified arguments.",
+          "hints": "function Person(name) {\n  this.name = name;\n}\n\nvar john = new Person('John');"
+        },
+        {
+          "question": "First Class Functions",
+          "answer": "First-class functions are functions that can be treated like any other value in a programming language. They can be assigned to variables, passed as arguments, and returned from other functions.",
+          "hints": "function greet() {\n  return 'Hello';\n}\n\nvar sayHello = greet;\nconsole.log(sayHello()); // Expected output: Hello"
+        },
+        {
+          "question": "Scope and Types",
+          "answer": "Scope in JavaScript refers to the visibility and lifetime of variables and functions. There are two main types of scope in JavaScript: global scope and local scope. Global scope variables are accessible throughout the program, while local scope variables are limited to the block or function where they are declared.",
+          "hints": "var globalVariable = 'Global';\n\nfunction example() {\n  var localVariable = 'Local';\n  console.log(globalVariable); // Output: Global\n  console.log(localVariable); // Output: Local\n}\n\nexample();"
+        },
+        {
           "question": "Event delegation",
           "answer": "Event delegation is a technique to handle events on multiple elements with a single event listener. It works by placing a single event listener on a common ancestor of the elements and using event.target to determine the target element.",
           "hints": "document.getElementById('parent').addEventListener('click', function(event) {\n  if (event.target.tagName === 'BUTTON') {\n    console.log('Button clicked');\n  }\n});"
