@@ -1,0 +1,754 @@
+{
+    "name": "DSA Top 150",
+    "topics": [
+      {
+        "name": "Arrays",
+        "questions": [
+          {
+            "question": "Merge Sorted Array",
+            "link": "https://leetcode.com/problems/merge-sorted-array/",
+            "hints": "Start from the rear of both arrays and compare the elements.\nPlace the larger element at the end of the first array.",
+            "code": "var merge = function(nums1, m, nums2, n) {\n    let i = m - 1, j = n - 1, k = m + n - 1;\n\n    while(i >= 0 && j >= 0) {\n        if(nums1[i] > nums2[j]) {\n            nums1[k--] = nums1[i--];\n        }\n        else {\n            nums1[k--] = nums2[j--];\n        }\n    }\n\n    while(i >= 0) {\n        nums1[k--] = nums1[i--];\n    }\n\n    while(j >= 0) {\n        nums1[k--] = nums2[j--];\n    }\n};",
+            "complexity": "Time: O(n)\nSpace: O(1)"
+          },
+          {
+            "question": "Remove Element",
+            "link": "https://leetcode.com/problems/remove-element/",
+            "hints": "Use two pointers.\nOne to iterate the array and the other to keep track of the position to place the next element.",
+            "code": "var removeElement = function(nums, val) {\n    let k = 0, i = 0, n = nums.length;\n\n    while(i < n) {\n        if(nums[i] !== val) {\n            nums[k++] = nums[i];\n        }\n        i++;\n    }\n\n    return k;\n};",
+            "complexity": "Time: O(n)\nSpace: O(1)"
+          },
+          {
+            "question": "Remove Duplicates from Sorted Array",
+            "link": "https://leetcode.com/problems/remove-duplicates-from-sorted-array/",
+            "hints": "Use two pointers.\nOne to iterate the array and the other to keep track of the position to place the next element (eg. k).\nIf the current element is different from the element at k, place the current element at the second pointer and increment the second pointer.",
+            "code": "var removeDuplicates = function(nums) {\n    let k = 0;\n    const n = nums.length;\n\n    for(let i = 1; i < n; i++) {\n        if(nums[i] !== nums[k]) {\n            nums[++k] = nums[i];\n        }\n    }\n\n    return k + 1;\n};",
+            "complexity": "Time: O(n)\nSpace: O(1)"
+          },
+          {
+            "question": "Remove Duplicates from Sorted Array II",
+            "link": "https://leetcode.com/problems/remove-duplicates-from-sorted-array-ii/",
+            "hints": "Similar to Remove Duplicates from Sorted Array, add an additional OR check so that values are copied only if value at k index is not equal to value at k - 1 index.",
+            "code": "var removeDuplicates = function(nums) {\n    const n = nums.length;\n    let k = 0;\n\n    for(let i = 1; i < n; i++) {\n        if(nums[i] !== nums[k] || nums[k] !== nums[k-1]) {\n            nums[++k] = nums[i];\n        }\n    }\n\n    return k + 1;\n};",
+            "complexity": "Time: O(n)\nSpace: O(1)"
+          },
+          {
+            "question": "Majority Element",
+            "link": "https://leetcode.com/problems/majority-element/",
+            "hints": "Use Boyer-Moore Voting Algorithm.\nInitialize a counter and a candidate element.\nIterate through the array and if the counter is 0, update the candidate element.\nIf the current element is the same as the candidate element, increment the counter, else decrement the counter.\nReturn the candidate element.",
+            "code": "var majorityElement = function(nums) {\n    const n = nums.length;\n    let majElement = nums[0], votes = 0;\n\n    for(let i = 0; i < n; i++) {\n        if(votes === 0) {\n            majElement = nums[i];\n        }\n        \n        if(nums[i] === majElement) {\n            votes++;\n        }\n        else {\n            votes--;   \n        }\n    }\n\n    return majElement;\n};",
+            "complexity": "Time: O(n)\nSpace: O(1)"
+          },
+          {
+            "question": "Rotate Array",
+            "link": "https://leetcode.com/problems/rotate-array/",
+            "hints": "Normalize the value of k since n * k rotation is the same as k rotation.\nReverse the entire array.\nReverse the first k elements.\nReverse the remaining elements.",
+            "code": "var rotate = function(nums, k) {\n    const n = nums.length;\n    const normalisedK = k % n;\n\n    const reverse = function (from, to) {\n        let i = from, j = to;\n        while(i < j) {\n            [nums[i], nums[j]] = [nums[j], nums[i]];\n            i++;\n            j--;\n        }\n    }\n\n    reverse(0, n - 1);\n    reverse(0, normalisedK - 1);\n    reverse(normalisedK, n - 1);\n};",
+            "complexity": "Time: O(n)\nSpace: O(1)"
+          },
+          {
+            "question": "Best Time to Buy and Sell Stock",
+            "link": "https://leetcode.com/problems/best-time-to-buy-and-sell-stock/",
+            "hints": "Keep track of the minimum price and the maximum profit.\nIterate through the array and update the minimum price and maximum profit.",
+            "code": "var maxProfit = function(prices) {\n    let buy = prices[0], profit = 0;\n\n    for(const price of prices) {\n        if (price < buy) {\n            buy = price;\n        }\n        else if (price > buy) {\n            profit = Math.max(profit, price - buy);\n        }\n    }\n\n    return profit;\n};",
+            "complexity": "Time: O(n)\nSpace: O(1)"
+          },
+          {
+            "question": "Best Time to Buy and Sell Stock II",
+            "link": "https://leetcode.com/problems/best-time-to-buy-and-sell-stock-ii/",
+            "hints": "Iterate through the array and if the current price is greater than the previous price, add the difference to the profit.",
+            "code": "var maxProfit = function(prices) {\n    let buy = prices[0], profit = 0;\n\n    for(const price of prices) {\n        if (price < buy) {\n            buy = price;\n        }\n        if (price > buy) {\n            profit += price - buy;\n            buy = price;\n        }\n    }\n\n    return profit;\n};",
+            "complexity": "Time: O(n)\nSpace: O(1)"
+          },
+          {
+            "question": "Jump Game",
+            "link": "https://leetcode.com/problems/jump-game/",
+            "hints": "Iterate through the array and keep track of the maximum jump.\nIf the maximum jump is less than the current index, return false.\nIf the maximum jump is greater than the last index, return true.",
+            "code": "var canJump = function(nums) {\n    let maxJump = 0;\n\n    for(let i = 0; i < nums.length; i++) {\n        if(maxJump < i) {\n            return false;\n        }\n        maxJump = Math.max(maxJump, i + nums[i]);\n    }\n\n    return maxJump >= nums.length - 1;\n};",
+            "complexity": "Time: O(n)\nSpace: O(1)"
+          },
+          {
+            "question": "Jump Game II",
+            "link": "https://leetcode.com/problems/jump-game-ii/",
+            "hints": "Iterate through the array and keep track of the maximum jump.\nIf the current index is equal to the maximum jump, increment the jump count and update the maximum jump.",
+            "code": "var jump = function(nums) {\n    const n = nums.length;\n    let i = 0, jumps = 0, maxEnd = 0, currEnd = 0;\n\n    for(let i = 0; i < n - 1; i++) {\n        maxEnd = Math.max(maxEnd, i + nums[i]);\n        if(i === currEnd) {\n            jumps++;\n            currEnd = maxEnd;\n        }\n    }\n\n    return jumps;\n};",
+            "complexity": "Time: O(n)\nSpace: O(1)"
+          },
+          {
+            "question": "H-Index",
+            "link": "https://leetcode.com/problems/h-index/",
+            "hints": "Create an array to keep track of the number of papers for each number of citations.\nIterate through the count array in reverse and keep the sum of the number of papers published.\nIf the number of papers published is greater than or equal to the current index, return the index.",
+            "code": "var hIndex = function(citations) {\n    const n = citations.length;\n    const paperCountByNumOfCitations = Array(n + 1).fill(0);\n\n    for(const c of citations) {\n        if(c >= n) {\n            paperCountByNumOfCitations[n]++;\n        }\n        else {\n            paperCountByNumOfCitations[c]++;\n        }\n    }\n\n    let publishCount = 0;\n    for(let h = n; h >= 0; h--) {\n        publishCount += paperCountByNumOfCitations[h];\n        if(publishCount >= h) {\n            return h;\n        }\n    }\n\n    return 0;\n};",
+            "complexity": "Time: O(n)\nSpace: O(n)"
+          },
+          {
+            "question": "Insert Delete GetRandom O(1)",
+            "link": "https://leetcode.com/problems/insert-delete-getrandom-o1/"
+          },
+          {
+            "question": "Product of Array Except Self",
+            "link": "https://leetcode.com/problems/product-of-array-except-self/"
+          },
+          {
+            "question": "Gas Station",
+            "link": "https://leetcode.com/problems/gas-station/"
+          },
+          {
+            "question": "Candy",
+            "link": "https://leetcode.com/problems/candy/"
+          },
+          {
+            "question": "Trapping Rain Water",
+            "link": "https://leetcode.com/problems/trapping-rain-water/"
+          },
+          {
+            "question": "Roman to Integer",
+            "link": "https://leetcode.com/problems/roman-to-integer/"
+          },
+          {
+            "question": "Integer to Roman",
+            "link": "https://leetcode.com/problems/integer-to-roman/"
+          },
+          {
+            "question": "Length of Last Word",
+            "link": "https://leetcode.com/problems/length-of-last-word/"
+          },
+          {
+            "question": "Longest Common Prefix",
+            "link": "https://leetcode.com/problems/longest-common-prefix/"
+          },
+          {
+            "question": "Reverse Words in a String",
+            "link": "https://leetcode.com/problems/reverse-words-in-a-string/"
+          },
+          {
+            "question": "Zigzag Conversion",
+            "link": "https://leetcode.com/problems/zigzag-conversion/"
+          },
+          {
+            "question": "Find the Index of the First Occurrence in a String",
+            "link": "https://leetcode.com/problems/find-the-index-of-the-first-occurrence-in-a-string/"
+          },
+          {
+            "question": "Text Justification",
+            "link": "https://leetcode.com/problems/text-justification/"
+          }
+        ]
+      },
+      {
+        "name": "Two Pointers",
+        "questions": [
+          {
+            "question": "Valid Palindrome",
+            "link": "https://leetcode.com/problems/valid-palindrome/"
+          },
+          {
+            "question": "Is Subsequence",
+            "link": "https://leetcode.com/problems/is-subsequence/"
+          },
+          {
+            "question": "Two Sum II - Input Array Is Sorted",
+            "link": "https://leetcode.com/problems/two-sum-ii-input-array-is-sorted/"
+          },
+          {
+            "question": "Container With Most Water",
+            "link": "https://leetcode.com/problems/container-with-most-water/"
+          },
+          {
+            "question": "3Sum",
+            "link": "https://leetcode.com/problems/3sum/"
+          }
+        ]
+      },
+      {
+        "name": "Sliding Window",
+        "questions": [
+          {
+            "question": "Minimum Size Subarray Sum",
+            "link": "https://leetcode.com/problems/minimum-size-subarray-sum/"
+          },
+          {
+            "question": "Longest Substring Without Repeating Characters",
+            "link": "https://leetcode.com/problems/longest-substring-without-repeating-characters/"
+          },
+          {
+            "question": "Substring with Concatenation of All Words",
+            "link": "https://leetcode.com/problems/substring-with-concatenation-of-all-words/"
+          },
+          {
+            "question": "Minimum Window Substring",
+            "link": "https://leetcode.com/problems/minimum-window-substring/"
+          }
+        ]
+      },
+      {
+        "name": "Matrix",
+        "questions": [
+          {
+            "question": "Valid Sudoku",
+            "link": "https://leetcode.com/problems/valid-sudoku/"
+          },
+          {
+            "question": "Spiral Matrix",
+            "link": "https://leetcode.com/problems/spiral-matrix/"
+          },
+          {
+            "question": "Rotate Image",
+            "link": "https://leetcode.com/problems/rotate-image/"
+          },
+          {
+            "question": "Set Matrix Zeroes",
+            "link": "https://leetcode.com/problems/set-matrix-zeroes/"
+          },
+          {
+            "question": "Game of Life",
+            "link": "https://leetcode.com/problems/game-of-life/"
+          }
+        ]
+      },
+      {
+        "name": "Hashmap",
+        "questions": [
+          {
+            "question": "Ransom Note",
+            "link": "https://leetcode.com/problems/ransom-note/"
+          },
+          {
+            "question": "Isomorphic Strings",
+            "link": "https://leetcode.com/problems/isomorphic-strings/"
+          },
+          {
+            "question": "Word Pattern",
+            "link": "https://leetcode.com/problems/word-pattern/"
+          },
+          {
+            "question": "Valid Anagram",
+            "link": "https://leetcode.com/problems/valid-anagram/"
+          },
+          {
+            "question": "Group Anagrams",
+            "link": "https://leetcode.com/problems/group-anagrams/"
+          },
+          {
+            "question": "Two Sum",
+            "link": "https://leetcode.com/problems/two-sum/"
+          },
+          {
+            "question": "Happy Number",
+            "link": "https://leetcode.com/problems/happy-number/"
+          },
+          {
+            "question": "Contains Duplicate II",
+            "link": "https://leetcode.com/problems/contains-duplicate-ii/"
+          },
+          {
+            "question": "Longest Consecutive Sequence",
+            "link": "https://leetcode.com/problems/longest-consecutive-sequence/"
+          }
+        ]
+      },
+      {
+        "name": "Intervals",
+        "questions": [
+          {
+            "question": "Summary Ranges",
+            "link": "https://leetcode.com/problems/summary-ranges/"
+          },
+          {
+            "question": "Merge Intervals",
+            "link": "https://leetcode.com/problems/merge-intervals/"
+          },
+          {
+            "question": "Insert Interval",
+            "link": "https://leetcode.com/problems/insert-interval/"
+          },
+          {
+            "question": "Minimum Number of Arrows to Burst Balloons",
+            "link": "https://leetcode.com/problems/minimum-number-of-arrows-to-burst-balloons/"
+          }
+        ]
+      },
+      {
+        "name": "Stack",
+        "questions": [
+          {
+            "question": "Valid Parentheses",
+            "link": "https://leetcode.com/problems/valid-parentheses/"
+          },
+          {
+            "question": "Simplify Path",
+            "link": "https://leetcode.com/problems/simplify-path/"
+          },
+          {
+            "question": "Min Stack",
+            "link": "https://leetcode.com/problems/min-stack/"
+          },
+          {
+            "question": "Evaluate Reverse Polish Notation",
+            "link": "https://leetcode.com/problems/evaluate-reverse-polish-notation/"
+          },
+          {
+            "question": "Basic Calculator",
+            "link": "https://leetcode.com/problems/basic-calculator/"
+          }
+        ]
+      },
+      {
+        "name": "Linked List",
+        "questions": [
+          {
+            "question": "Linked List Cycle",
+            "link": "https://leetcode.com/problems/linked-list-cycle/"
+          },
+          {
+            "question": "Add Two Numbers",
+            "link": "https://leetcode.com/problems/add-two-numbers/"
+          },
+          {
+            "question": "Merge Two Sorted Lists",
+            "link": "https://leetcode.com/problems/merge-two-sorted-lists/"
+          },
+          {
+            "question": "Copy List with Random Pointer",
+            "link": "https://leetcode.com/problems/copy-list-with-random-pointer/"
+          },
+          {
+            "question": "Reverse Linked List II",
+            "link": "https://leetcode.com/problems/reverse-linked-list-ii/"
+          },
+          {
+            "question": "Reverse Nodes in k-Group",
+            "link": "https://leetcode.com/problems/reverse-nodes-in-k-group/"
+          },
+          {
+            "question": "Remove Nth Node From End of List",
+            "link": "https://leetcode.com/problems/remove-nth-node-from-end-of-list/"
+          },
+          {
+            "question": "Remove Duplicates from Sorted List II",
+            "link": "https://leetcode.com/problems/remove-duplicates-from-sorted-list-ii/"
+          },
+          {
+            "question": "Rotate List",
+            "link": "https://leetcode.com/problems/rotate-list/"
+          },
+          {
+            "question": "Partition List",
+            "link": "https://leetcode.com/problems/partition-list/"
+          },
+          {
+            "question": "LRU Cache",
+            "link": "https://leetcode.com/problems/lru-cache/"
+          }
+        ]
+      },
+      {
+        "name": "Binary Tree General",
+        "questions": [
+          {
+            "question": "Maximum Depth of Binary Tree",
+            "link": "https://leetcode.com/problems/maximum-depth-of-binary-tree/"
+          },
+          {
+            "question": "Same Tree",
+            "link": "https://leetcode.com/problems/same-tree/"
+          },
+          {
+            "question": "Invert Binary Tree",
+            "link": "https://leetcode.com/problems/invert-binary-tree/"
+          },
+          {
+            "question": "Symmetric Tree",
+            "link": "https://leetcode.com/problems/symmetric-tree/"
+          },
+          {
+            "question": "Construct Binary Tree from Preorder and Inorder Traversal",
+            "link": "https://leetcode.com/problems/construct-binary-tree-from-preorder-and-inorder-traversal/"
+          },
+          {
+            "question": "Construct Binary Tree from Inorder and Postorder Traversal",
+            "link": "https://leetcode.com/problems/construct-binary-tree-from-inorder-and-postorder-traversal/"
+          },
+          {
+            "question": "Populating Next Right Pointers in Each Node II",
+            "link": "https://leetcode.com/problems/populating-next-right-pointers-in-each-node-ii/"
+          },
+          {
+            "question": "Flatten Binary Tree to Linked List",
+            "link": "https://leetcode.com/problems/flatten-binary-tree-to-linked-list/"
+          },
+          {
+            "question": "Path Sum",
+            "link": "https://leetcode.com/problems/path-sum/"
+          },
+          {
+            "question": "Sum Root to Leaf Numbers",
+            "link": "https://leetcode.com/problems/sum-root-to-leaf-numbers/"
+          },
+          {
+            "question": "Binary Tree Maximum Path Sum",
+            "link": "https://leetcode.com/problems/binary-tree-maximum-path-sum/"
+          },
+          {
+            "question": "Binary Search Tree Iterator",
+            "link": "https://leetcode.com/problems/binary-search-tree-iterator/"
+          },
+          {
+            "question": "Count Complete Tree Nodes",
+            "link": "https://leetcode.com/problems/count-complete-tree-nodes/"
+          },
+          {
+            "question": "Lowest Common Ancestor of a Binary Tree",
+            "link": "https://leetcode.com/problems/lowest-common-ancestor-of-a-binary-tree/"
+          }
+        ]
+      },
+      {
+        "name": "Binary Tree BFS",
+        "questions": [
+          {
+            "question": "Binary Tree Right Side View",
+            "link": "https://leetcode.com/problems/binary-tree-right-side-view/"
+          },
+          {
+            "question": "Average of Levels in Binary Tree",
+            "link": "https://leetcode.com/problems/average-of-levels-in-binary-tree/"
+          },
+          {
+            "question": "Binary Tree Level Order Traversal",
+            "link": "https://leetcode.com/problems/binary-tree-level-order-traversal/"
+          },
+          {
+            "question": "Binary Tree Zigzag Level Order Traversal",
+            "link": "https://leetcode.com/problems/binary-tree-zigzag-level-order-traversal/"
+          }
+        ]
+      },
+      {
+        "name": "Binary Search Tree",
+        "questions": [
+          {
+            "question": "Minimum Absolute Difference in BST",
+            "link": "https://leetcode.com/problems/minimum-absolute-difference-in-bst/"
+          },
+          {
+            "question": "Kth Smallest Element in a BST",
+            "link": "https://leetcode.com/problems/kth-smallest-element-in-a-bst/"
+          },
+          {
+            "question": "Validate Binary Search Tree",
+            "link": "https://leetcode.com/problems/validate-binary-search-tree/"
+          }
+        ]
+      },
+      {
+        "name": "Graph General",
+        "questions": [
+          {
+            "question": "Number of Islands",
+            "link": "https://leetcode.com/problems/number-of-islands/"
+          },
+          {
+            "question": "Surrounded Regions",
+            "link": "https://leetcode.com/problems/surrounded-regions/"
+          },
+          {
+            "question": "Clone Graph",
+            "link": "https://leetcode.com/problems/clone-graph/"
+          },
+          {
+            "question": "Evaluate Division",
+            "link": "https://leetcode.com/problems/evaluate-division/"
+          },
+          {
+            "question": "Course Schedule",
+            "link": "https://leetcode.com/problems/course-schedule/"
+          },
+          {
+            "question": "Course Schedule II",
+            "link": "https://leetcode.com/problems/course-schedule-ii/"
+          }
+        ]
+      },
+      {
+        "name": "Graph BFS",
+        "questions": [
+          {
+            "question": "Snakes and Ladders",
+            "link": "https://leetcode.com/problems/snakes-and-ladders/"
+          },
+          {
+            "question": "Minimum Genetic Mutation",
+            "link": "https://leetcode.com/problems/minimum-genetic-mutation/"
+          },
+          {
+            "question": "Word Ladder",
+            "link": "https://leetcode.com/problems/word-ladder/"
+          }
+        ]
+      },
+      {
+        "name": "Trie",
+        "questions": [
+          {
+            "question": "Implement Trie (Prefix Tree)",
+            "link": "https://leetcode.com/problems/implement-trie-prefix-tree/"
+          },
+          {
+            "question": "Design Add and Search Words Data Structure",
+            "link": "https://leetcode.com/problems/design-add-and-search-words-data-structure/"
+          },
+          {
+            "question": "Word Search II",
+            "link": "https://leetcode.com/problems/word-search-ii/"
+          }
+        ]
+      },
+      {
+        "name": "Backtracking",
+        "questions": [
+          {
+            "question": "Letter Combinations of a Phone Number",
+            "link": "https://leetcode.com/problems/letter-combinations-of-a-phone-number/"
+          },
+          {
+            "question": "Combinations",
+            "link": "https://leetcode.com/problems/combinations/"
+          },
+          {
+            "question": "Permutations",
+            "link": "https://leetcode.com/problems/permutations/"
+          },
+          {
+            "question": "Combination Sum",
+            "link": "https://leetcode.com/problems/combination-sum/"
+          },
+          {
+            "question": "N-Queens II",
+            "link": "https://leetcode.com/problems/n-queens-ii/"
+          },
+          {
+            "question": "Generate Parentheses",
+            "link": "https://leetcode.com/problems/generate-parentheses/"
+          },
+          {
+            "question": "Word Search",
+            "link": "https://leetcode.com/problems/word-search/"
+          }
+        ]
+      },
+      {
+        "name": "Divide and Conquer",
+        "questions": [
+          {
+            "question": "Convert Sorted Array to Binary Search Tree",
+            "link": "https://leetcode.com/problems/convert-sorted-array-to-binary-search-tree/"
+          },
+          {
+            "question": "Sort List",
+            "link": "https://leetcode.com/problems/sort-list/"
+          },
+          {
+            "question": "Construct Quad Tree",
+            "link": "https://leetcode.com/problems/construct-quad-tree/"
+          },
+          {
+            "question": "Merge k Sorted Lists",
+            "link": "https://leetcode.com/problems/merge-k-sorted-lists/"
+          }
+        ]
+      },
+      {
+        "name": "Kadane's Algorithm",
+        "questions": [
+          {
+            "question": "Maximum Subarray",
+            "link": "https://leetcode.com/problems/maximum-subarray/"
+          },
+          {
+            "question": "Maximum Sum Circular Subarray",
+            "link": "https://leetcode.com/problems/maximum-sum-circular-subarray/"
+          }
+        ]
+      },
+      {
+        "name": "Binary Search",
+        "questions": [
+          {
+            "question": "Search Insert Position",
+            "link": "https://leetcode.com/problems/search-insert-position/"
+          },
+          {
+            "question": "Search a 2D Matrix",
+            "link": "https://leetcode.com/problems/search-a-2d-matrix/"
+          },
+          {
+            "question": "Find Peak Element",
+            "link": "https://leetcode.com/problems/find-peak-element/"
+          },
+          {
+            "question": "Search in Rotated Sorted Array",
+            "link": "https://leetcode.com/problems/search-in-rotated-sorted-array/"
+          },
+          {
+            "question": "Find First and Last Position of Element in Sorted Array",
+            "link": "https://leetcode.com/problems/find-first-and-last-position-of-element-in-sorted-array/"
+          },
+          {
+            "question": "Find Minimum in Rotated Sorted Array",
+            "link": "https://leetcode.com/problems/find-minimum-in-rotated-sorted-array/"
+          },
+          {
+            "question": "Median of Two Sorted Arrays",
+            "link": "https://leetcode.com/problems/median-of-two-sorted-arrays/"
+          }
+        ]
+      },
+      {
+        "name": "Heap",
+        "questions": [
+          {
+            "question": "Kth Largest Element in an Array",
+            "link": "https://leetcode.com/problems/kth-largest-element-in-an-array/"
+          },
+          {
+            "question": "IPO",
+            "link": "https://leetcode.com/problems/ipo/"
+          },
+          {
+            "question": "Find K Pairs with Smallest Sums",
+            "link": "https://leetcode.com/problems/find-k-pairs-with-smallest-sums/"
+          },
+          {
+            "question": "Find Median from Data Stream",
+            "link": "https://leetcode.com/problems/find-median-from-data-stream/"
+          }
+        ]
+      },
+      {
+        "name": "Bit Manipulation",
+        "questions": [
+          {
+            "question": "Add Binary",
+            "link": "https://leetcode.com/problems/add-binary/"
+          },
+          {
+            "question": "Reverse Bits",
+            "link": "https://leetcode.com/problems/reverse-bits/"
+          },
+          {
+            "question": "Number of 1 Bits",
+            "link": "https://leetcode.com/problems/number-of-1-bits/"
+          },
+          {
+            "question": "Single Number",
+            "link": "https://leetcode.com/problems/single-number/"
+          },
+          {
+            "question": "Single Number II",
+            "link": "https://leetcode.com/problems/single-number-ii/"
+          },
+          {
+            "question": "Bitwise AND of Numbers Range",
+            "link": "https://leetcode.com/problems/bitwise-and-of-numbers-range/"
+          }
+        ]
+      },
+      {
+        "name": "Math",
+        "questions": [
+          {
+            "question": "Palindrome Number",
+            "link": "https://leetcode.com/problems/palindrome-number/"
+          },
+          {
+            "question": "Plus One",
+            "link": "https://leetcode.com/problems/plus-one/"
+          },
+          {
+            "question": "Factorial Trailing Zeroes",
+            "link": "https://leetcode.com/problems/factorial-trailing-zeroes/"
+          },
+          {
+            "question": "Sqrt(x)",
+            "link": "https://leetcode.com/problems/sqrtx/"
+          },
+          {
+            "question": "Pow(x, n)",
+            "link": "https://leetcode.com/problems/powx-n/"
+          },
+          {
+            "question": "Max Points on a Line",
+            "link": "https://leetcode.com/problems/max-points-on-a-line/"
+          }
+        ]
+      },
+      {
+        "name": "Dynamic Programming",
+        "questions": [
+          {
+            "question": "Climbing Stairs",
+            "link": "https://leetcode.com/problems/climbing-stairs/"
+          },
+          {
+            "question": "House Robber",
+            "link": "https://leetcode.com/problems/house-robber/"
+          },
+          {
+            "question": "Word Break",
+            "link": "https://leetcode.com/problems/word-break/"
+          },
+          {
+            "question": "Coin Change",
+            "link": "https://leetcode.com/problems/coin-change/"
+          },
+          {
+            "question": "Longest Increasing Subsequence",
+            "link": "https://leetcode.com/problems/longest-increasing-subsequence/"
+          }
+        ]
+      },
+      {
+        "name": "Multidimensional Dynamic Programming",
+        "questions": [
+          {
+            "question": "Triangle",
+            "link": "https://leetcode.com/problems/triangle/"
+          },
+          {
+            "question": "Minimum Path Sum",
+            "link": "https://leetcode.com/problems/minimum-path-sum/"
+          },
+          {
+            "question": "Unique Paths II",
+            "link": "https://leetcode.com/problems/unique-paths-ii/"
+          },
+          {
+            "question": "Longest Palindromic Substring",
+            "link": "https://leetcode.com/problems/longest-palindromic-substring/"
+          },
+          {
+            "question": "Interleaving String",
+            "link": "https://leetcode.com/problems/interleaving-string/"
+          },
+          {
+            "question": "Edit Distance",
+            "link": "https://leetcode.com/problems/edit-distance/"
+          },
+          {
+            "question": "Best Time to Buy and Sell Stock III",
+            "link": "https://leetcode.com/problems/best-time-to-buy-and-sell-stock-iii/"
+          },
+          {
+            "question": "Best Time to Buy and Sell Stock IV",
+            "link": "https://leetcode.com/problems/best-time-to-buy-and-sell-stock-iv/"
+          },
+          {
+            "question": "Maximal Square",
+            "link": "https://leetcode.com/problems/maximal-square/"
+          }
+        ]
+      }
+    ]
+  }
+  

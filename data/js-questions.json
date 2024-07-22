@@ -5,6 +5,11 @@
       "name": "",
       "questions": [
         {
+          "question": "Call vs Apply vs Bind",
+          "answer": "Call, apply, and bind are methods on functions in JavaScript that allow you to set the 'this' value and pass arguments to a function. Call and apply are similar, but apply takes an array of arguments, while call takes a comma-separated list of arguments. Bind returns a new function with the 'this' value bound to the provided object.",
+          "hints": "function greet(name) {\n  return 'Hello, ' + name;\n}\n\nvar person = { name: 'Alice' };\nconsole.log(greet.call(person, 'Bob')); // Hello, Bob\nconsole.log(greet.apply(person, ['Bob'])); // Hello, Bob\nvar greetPerson = greet.bind(person);\nconsole.log(greetPerson('Bob')); // Hello, Bob"
+        },
+        {
           "question": "Explain closures and how they work",
           "answer": "Closures are a feature in JavaScript where an inner function has access to the outer (enclosing) function’s variables. This means the inner function can access variables defined outside of it, even after the outer function has completed execution.",
           "hints": "function outerFunction() {\n  var outerVariable = 'I am outside!';\n  function innerFunction() {\n    console.log(outerVariable);\n  }\n  return innerFunction;\n}\nvar inner = outerFunction();\ninner(); // Logs: 'I am outside!'"

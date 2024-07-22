@@ -3,6 +3,7 @@ const PAGES_BASE_PATH = 'pages';
 const getPagesRoutes = function(baseUrl) {
     return {
         DSA: `${baseUrl}/${PAGES_BASE_PATH}/dsa`,
+        DSA_TOP_150: `${baseUrl}/${PAGES_BASE_PATH}/dsa-top-150`,
         SYSTEM_DESIGN_FE: `${baseUrl}/${PAGES_BASE_PATH}/system-design-fe`,
         SYSTEM_DESIGN_BE: `${baseUrl}/${PAGES_BASE_PATH}/system-design-be`,
         JS_FUNDAMENTALS: `${baseUrl}/${PAGES_BASE_PATH}/js-fundamentals`,
@@ -22,7 +23,11 @@ const updateNavBar = (baseUrl) => {
         <nav class="menu">
             <ul class="menu-list">
                 <li class="menu-item dropdown">
-                    <a href="${pagesRoutes.DSA}">DSA</a>
+                    <a href="${pagesRoutes.DSA_TOP_150}">DSA</a>
+                    <ul class="dropdown-content">
+                    <li class="menu-item"><a href="${pagesRoutes.DSA_TOP_150}">Top 150</a></li>
+                        <li class="menu-item"><a href="${pagesRoutes.DSA}">General</a></li>
+                    </ul>
                 </li>
                 <li class="menu-item dropdown">
                     <a href="${pagesRoutes.SYSTEM_DESIGN_FE}">System Design</a>

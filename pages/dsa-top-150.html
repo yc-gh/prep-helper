@@ -1,0 +1,138 @@
+---
+---
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <base href="{{ site.baseurl }}/" />
+    <link rel="stylesheet" href="index.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap"
+      rel="stylesheet"
+    />
+    <title>ICA</title>
+  </head>
+  <body>
+    <div id="navigation-placeholder"></div>
+    <div id="content"></div>
+
+    <script src="nav-bar.js"></script>
+    <script>
+      updateNavBar("{{ site.baseurl }}");
+    </script>
+
+    <script>
+      function slugify(text) {
+        return text
+          .toString()
+          .toLowerCase()
+          .replace(/\s+/g, "-") // Replace spaces with -
+          .replace(/[^\w\-]+/g, "") // Remove all non-word chars
+          .replace(/\-\-+/g, "-"); // Replace multiple - with single -
+      }
+
+      function populateContent(
+        data,
+        showIndexOfContents = false,
+        bookmarkBaseUrl = ""
+      ) {
+        let listOfTopics = "";
+
+        if (showIndexOfContents) {
+          listOfTopics = `
+                <ol type="1" class="index-list">
+                        ${data.topics
+                          ?.map(
+                            (t) => `
+                                    <li class="link">
+                                        <h2>
+                                            <a href="${bookmarkBaseUrl}#${slugify(
+                              t.name
+                            )}">
+                                                <i><u>${t.name}</u></i>
+                                            </a>
+                                        </h2>
+                                    </li>
+                                    `
+                          )
+                          .join("")}
+                </ol>
+                <hr class="divider" />
+            `;
+        }
+
+        document.getElementById("content").innerHTML = `
+              <center>
+                  <h1>${data.name}</h1>
+              </center>
+              <hr class="divider" />
+              ${listOfTopics}
+              <ul class="topics-list">
+                  ${data.topics
+                    ?.map(
+                      (t) => `
+                      <li class="topic-content">
+                            <h1 id="${slugify(t.name)}">
+                                <i><u>${t.name}</u></i>
+                            </h1>
+                            <ol type="1" class="questions-list">
+                                ${t.questions
+                                  ?.map(
+                                    (q) => `
+                                    <li>
+                                        <div class="question-content">
+                                            <h3>${q.question}</h3>
+                                            ${
+                                              q.answer
+                                                ? `<p>${q.answer}</p>`
+                                                : ""
+                                            }
+                                            ${
+                                              q.link
+                                                ? `<div class="link"><a href=${q.link} target="_blank">${q.link}</a></div>`
+                                                : ""
+                                            } 
+                                            ${
+                                              q.hints
+                                                ? `<pre><code>${q.hints}</code></pre>`
+                                                : ""
+                                            } 
+                                            ${
+                                              q.code
+                                                ? `<pre><code>${q.code}</code></pre>`
+                                                : ""
+                                            } 
+                                            ${
+                                              q.complexity
+                                                ? `<pre><code>${q.complexity}</code></pre>`
+                                                : ""
+                                            } 
+                                        </div>
+                                    </li>
+                                    <hr />
+                                `
+                                  )
+                                  .join("")}
+                            </ol>
+                      </li>
+                      <hr class="divider" />
+                  `
+                    )
+                    .join("")}
+              </ul>
+          `;
+      }
+
+      const dataFilePath = "{{ site.baseurl }}/data/dsa-top-150.json";
+      const json = fetch(dataFilePath)
+        .then((response) => response.json())
+        .then((data) => {
+          populateContent(data, true, "pages/dsa-top-150");
+        });
+    </script>
+  </body>
+</html>
