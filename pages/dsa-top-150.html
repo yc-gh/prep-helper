@@ -85,7 +85,11 @@
                                     (q) => `
                                     <li>
                                         <div class="question-content">
-                                            <h3>${q.question}</h3>
+                                            <div class="question-title">
+                                              <h3>${q.question}</h3>
+                                              <div class="difficulty-circle ${q.difficulty?.toLowerCase() || ''}"></div>
+                                            </div>
+
                                             ${
                                               q.answer
                                                 ? `<p>${q.answer}</p>`

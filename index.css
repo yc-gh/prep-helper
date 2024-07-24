@@ -2,7 +2,7 @@
     --main-bg-color: darkcyan;
     --main-nav-color: darkslategray;
     --main-highlight-color: gray;
-    --main-text-color: #ffffff;
+    --main-text-color: black;
     --main-link-color: rgb(0, 0, 210);
     --font-family: "Noto Sans";
     --border-radius: 8px;
@@ -96,7 +96,7 @@
     }
 
     ol.questions-list {
-        padding-left: 1rem;
+        padding-left: 2rem;
     }
 
     .question-content {
@@ -118,6 +118,34 @@
         border-radius: var(--border-radius);
         background-color: rgba(30, 30, 30, 0.3);
         overflow: auto;
+    }
+
+    .question-title {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+    }
+
+    .difficulty-circle {
+        width: 1.25rem;
+        height: 1.25rem;
+        border-radius: 50%;
+
+    }
+
+    .easy {
+        background-color: green;
+        border: 1px solid black;
+    }
+
+    .medium {
+        background-color: yellow;
+        border: 1px solid black;
+    }
+
+    .hard {
+        background-color: red;
+        border: 1px solid black;
     }
 
     .questions-list > hr:last-child {
@@ -168,11 +196,11 @@ hr.divider {
 
 html,
 body {
-    min-height: 100vh;
+    height: 100vh;
     max-width: 100vw;
-    height: auto;
+    font-family: var(--font-family);
+    color: var(--main-text-color);
     background-color: var(--main-bg-color);
-    font-family: var(--font-family)
 }
 
 * {
