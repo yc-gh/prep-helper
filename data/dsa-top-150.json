@@ -9,77 +9,88 @@
             "link": "https://leetcode.com/problems/merge-sorted-array/",
             "hints": "Start from the rear of both arrays and compare the elements.\nPlace the larger element at the end of the first array.",
             "code": "var merge = function(nums1, m, nums2, n) {\n    let i = m - 1, j = n - 1, k = m + n - 1;\n\n    while(i >= 0 && j >= 0) {\n        if(nums1[i] > nums2[j]) {\n            nums1[k--] = nums1[i--];\n        }\n        else {\n            nums1[k--] = nums2[j--];\n        }\n    }\n\n    while(i >= 0) {\n        nums1[k--] = nums1[i--];\n    }\n\n    while(j >= 0) {\n        nums1[k--] = nums2[j--];\n    }\n};",
-            "complexity": "Time: O(n)\nSpace: O(1)"
+            "complexity": "Time: O(n)\nSpace: O(1)",
+            "difficulty": "Easy"
           },
           {
             "question": "Remove Element",
             "link": "https://leetcode.com/problems/remove-element/",
             "hints": "Use two pointers.\nOne to iterate the array and the other to keep track of the position to place the next element.",
             "code": "var removeElement = function(nums, val) {\n    let k = 0, i = 0, n = nums.length;\n\n    while(i < n) {\n        if(nums[i] !== val) {\n            nums[k++] = nums[i];\n        }\n        i++;\n    }\n\n    return k;\n};",
-            "complexity": "Time: O(n)\nSpace: O(1)"
+            "complexity": "Time: O(n)\nSpace: O(1)",
+            "difficulty": "Easy"
           },
           {
             "question": "Remove Duplicates from Sorted Array",
             "link": "https://leetcode.com/problems/remove-duplicates-from-sorted-array/",
             "hints": "Use two pointers.\nOne to iterate the array and the other to keep track of the position to place the next element (eg. k).\nIf the current element is different from the element at k, place the current element at the second pointer and increment the second pointer.",
             "code": "var removeDuplicates = function(nums) {\n    let k = 0;\n    const n = nums.length;\n\n    for(let i = 1; i < n; i++) {\n        if(nums[i] !== nums[k]) {\n            nums[++k] = nums[i];\n        }\n    }\n\n    return k + 1;\n};",
-            "complexity": "Time: O(n)\nSpace: O(1)"
+            "complexity": "Time: O(n)\nSpace: O(1)",
+            "difficulty": "Easy"
           },
           {
             "question": "Remove Duplicates from Sorted Array II",
             "link": "https://leetcode.com/problems/remove-duplicates-from-sorted-array-ii/",
             "hints": "Similar to Remove Duplicates from Sorted Array, add an additional OR check so that values are copied only if value at k index is not equal to value at k - 1 index.",
             "code": "var removeDuplicates = function(nums) {\n    const n = nums.length;\n    let k = 0;\n\n    for(let i = 1; i < n; i++) {\n        if(nums[i] !== nums[k] || nums[k] !== nums[k-1]) {\n            nums[++k] = nums[i];\n        }\n    }\n\n    return k + 1;\n};",
-            "complexity": "Time: O(n)\nSpace: O(1)"
+            "complexity": "Time: O(n)\nSpace: O(1)",
+            "difficulty": "Medium"
           },
           {
             "question": "Majority Element",
             "link": "https://leetcode.com/problems/majority-element/",
             "hints": "Use Boyer-Moore Voting Algorithm.\nInitialize a counter and a candidate element.\nIterate through the array and if the counter is 0, update the candidate element.\nIf the current element is the same as the candidate element, increment the counter, else decrement the counter.\nReturn the candidate element.",
             "code": "var majorityElement = function(nums) {\n    const n = nums.length;\n    let majElement = nums[0], votes = 0;\n\n    for(let i = 0; i < n; i++) {\n        if(votes === 0) {\n            majElement = nums[i];\n        }\n        \n        if(nums[i] === majElement) {\n            votes++;\n        }\n        else {\n            votes--;   \n        }\n    }\n\n    return majElement;\n};",
-            "complexity": "Time: O(n)\nSpace: O(1)"
+            "complexity": "Time: O(n)\nSpace: O(1)",
+            "difficulty": "Easy"
           },
           {
             "question": "Rotate Array",
             "link": "https://leetcode.com/problems/rotate-array/",
             "hints": "Normalize the value of k since n * k rotation is the same as k rotation.\nReverse the entire array.\nReverse the first k elements.\nReverse the remaining elements.",
             "code": "var rotate = function(nums, k) {\n    const n = nums.length;\n    const normalisedK = k % n;\n\n    const reverse = function (from, to) {\n        let i = from, j = to;\n        while(i < j) {\n            [nums[i], nums[j]] = [nums[j], nums[i]];\n            i++;\n            j--;\n        }\n    }\n\n    reverse(0, n - 1);\n    reverse(0, normalisedK - 1);\n    reverse(normalisedK, n - 1);\n};",
-            "complexity": "Time: O(n)\nSpace: O(1)"
+            "complexity": "Time: O(n)\nSpace: O(1)",
+            "difficulty": "Medium"
           },
           {
             "question": "Best Time to Buy and Sell Stock",
             "link": "https://leetcode.com/problems/best-time-to-buy-and-sell-stock/",
             "hints": "Keep track of the minimum price and the maximum profit.\nIterate through the array and update the minimum price and maximum profit.",
             "code": "var maxProfit = function(prices) {\n    let buy = prices[0], profit = 0;\n\n    for(const price of prices) {\n        if (price < buy) {\n            buy = price;\n        }\n        else if (price > buy) {\n            profit = Math.max(profit, price - buy);\n        }\n    }\n\n    return profit;\n};",
-            "complexity": "Time: O(n)\nSpace: O(1)"
+            "complexity": "Time: O(n)\nSpace: O(1)",
+            "difficulty": "Easy"
           },
           {
             "question": "Best Time to Buy and Sell Stock II",
             "link": "https://leetcode.com/problems/best-time-to-buy-and-sell-stock-ii/",
             "hints": "Iterate through the array and if the current price is greater than the previous price, add the difference to the profit.",
             "code": "var maxProfit = function(prices) {\n    let buy = prices[0], profit = 0;\n\n    for(const price of prices) {\n        if (price < buy) {\n            buy = price;\n        }\n        if (price > buy) {\n            profit += price - buy;\n            buy = price;\n        }\n    }\n\n    return profit;\n};",
-            "complexity": "Time: O(n)\nSpace: O(1)"
+            "complexity": "Time: O(n)\nSpace: O(1)",
+            "difficulty": "Medium"
           },
           {
             "question": "Jump Game",
             "link": "https://leetcode.com/problems/jump-game/",
             "hints": "Iterate through the array and keep track of the maximum jump.\nIf the maximum jump is less than the current index, return false.\nIf the maximum jump is greater than the last index, return true.",
             "code": "var canJump = function(nums) {\n    let maxJump = 0;\n\n    for(let i = 0; i < nums.length; i++) {\n        if(maxJump < i) {\n            return false;\n        }\n        maxJump = Math.max(maxJump, i + nums[i]);\n    }\n\n    return maxJump >= nums.length - 1;\n};",
-            "complexity": "Time: O(n)\nSpace: O(1)"
+            "complexity": "Time: O(n)\nSpace: O(1)",
+            "difficulty": "Medium"
           },
           {
             "question": "Jump Game II",
             "link": "https://leetcode.com/problems/jump-game-ii/",
             "hints": "Iterate through the array and keep track of the maximum jump.\nIf the current index is equal to the maximum jump, increment the jump count and update the maximum jump.",
             "code": "var jump = function(nums) {\n    const n = nums.length;\n    let i = 0, jumps = 0, maxEnd = 0, currEnd = 0;\n\n    for(let i = 0; i < n - 1; i++) {\n        maxEnd = Math.max(maxEnd, i + nums[i]);\n        if(i === currEnd) {\n            jumps++;\n            currEnd = maxEnd;\n        }\n    }\n\n    return jumps;\n};",
-            "complexity": "Time: O(n)\nSpace: O(1)"
+            "complexity": "Time: O(n)\nSpace: O(1)",
+            "difficulty": "Medium"
           },
           {
             "question": "H-Index",
             "link": "https://leetcode.com/problems/h-index/",
             "hints": "Create an array to keep track of the number of papers for each number of citations.\nIterate through the count array in reverse and keep the sum of the number of papers published.\nIf the number of papers published is greater than or equal to the current index, return the index.",
             "code": "var hIndex = function(citations) {\n    const n = citations.length;\n    const paperCountByNumOfCitations = Array(n + 1).fill(0);\n\n    for(const c of citations) {\n        if(c >= n) {\n            paperCountByNumOfCitations[n]++;\n        }\n        else {\n            paperCountByNumOfCitations[c]++;\n        }\n    }\n\n    let publishCount = 0;\n    for(let h = n; h >= 0; h--) {\n        publishCount += paperCountByNumOfCitations[h];\n        if(publishCount >= h) {\n            return h;\n        }\n    }\n\n    return 0;\n};",
-            "complexity": "Time: O(n)\nSpace: O(n)"
+            "complexity": "Time: O(n)\nSpace: O(n)",
+            "difficulty": "Medium"
           },
           {
             "question": "Insert Delete GetRandom O(1)",
@@ -298,43 +309,88 @@
         "questions": [
           {
             "question": "Linked List Cycle",
-            "link": "https://leetcode.com/problems/linked-list-cycle/"
+            "link": "https://leetcode.com/problems/linked-list-cycle/",
+            "code": "var hasCycle = function(head) {\n    let slow = head, fast = head?.next;\n\n    while(fast != null) {\n        if(slow == fast) {\n            return true;\n        }\n\n        slow = slow.next;\n        fast = fast.next?.next;\n    }\n\n    return false;\n};",
+            "hints": "Use two pointers, one slow and one fast.\nIf there is a cycle, the two pointers will meet at some point.",
+            "complexity": "Time: O(n)\nSpace: O(1)",
+            "difficulty": "Easy"
           },
           {
             "question": "Add Two Numbers",
-            "link": "https://leetcode.com/problems/add-two-numbers/"
+            "link": "https://leetcode.com/problems/add-two-numbers/",
+            "code": "var addTwoNumbers = function(l1, l2) {\n    const dummyHead = new ListNode(0);\n    let c1 = l1, c2 = l2, c3 = dummyHead, carry = 0, rem = 0;\n\n    while(c1 != null && c2 != null) {\n        const sum = c1.val + c2.val + carry;\n        carry = Math.trunc(sum / 10);\n        rem = Math.trunc(sum % 10);\n        c3.next = new ListNode(rem);\n        c3 = c3.next;\n        c1 = c1.next;\n        c2 = c2.next;\n    }\n\n    let remainingList = c1 == null ? c2 : c1;\n\n    while(remainingList != null) {\n        const sum = remainingList.val + carry;\n        carry = Math.trunc(sum / 10);\n        rem = Math.trunc(sum % 10);\n        c3.next = new ListNode(rem);\n        c3 = c3.next;\n        remainingList = remainingList.next;\n    }\n\n    if(carry) {\n        c3.next = new ListNode(carry);\n    }\n\n    return dummyHead.next;\n};",
+            "hints": "Create a dummy node to keep track of the head of the new linked list.\nIterate through the two linked lists and add the values.\nKeep track of the carry and the remainder.\nCreate a new node with the remainder and update the carry.\nIf there are any remaining nodes, add them to the new linked list.",
+            "complexity": "Time: O(n)\nSpace: O(1)",
+            "difficulty": "Medium"
           },
           {
             "question": "Merge Two Sorted Lists",
-            "link": "https://leetcode.com/problems/merge-two-sorted-lists/"
+            "link": "https://leetcode.com/problems/merge-two-sorted-lists/",
+            "code": "var mergeTwoLists = function(list1, list2) {\n    let dummyHead = new ListNode(0), c1 = list1, c2 = list2, c3 = dummyHead;\n\n    while(c1 != null && c2 != null) {\n        if(c1.val < c2.val) {\n            c3.next = c1;\n            c1 = c1.next;\n        }\n        else {\n            c3.next = c2;\n            c2 = c2.next;\n        }\n        c3 = c3.next;\n    }\n\n    if(c1 != null) {\n        c3.next = c1;\n    }\n    else {\n        c3.next = c2;\n    }\n\n    return dummyHead.next;\n};",
+            "hints": "Create a dummy node to keep track of the head of the new linked list.\nIterate through the two linked lists and compare the values.\nAdd the smaller value to the new linked list and update the pointer.\nIf there are any remaining nodes, add them to the new linked list.",
+            "complexity": "Time: O(n)\nSpace: O(1)",
+            "difficulty": "Easy"
+          },
+          {
+            "question": "Copy List with Random Pointer (Extra Space)",
+            "link": "https://leetcode.com/problems/copy-list-with-random-pointer/",
+            "code": "var copyRandomList = function(head) {\n    if(head == null) return null;\n    \n    let curr = head;\n    const cloneMap = new Map();\n\n    while(curr != null) {\n        const cloneNode = new Node(curr.val);\n        cloneMap.set(curr, cloneNode);\n        curr = curr.next;\n    }\n\n    curr = head;\n\n    while(curr != null) {\n        const cloneNode = cloneMap.get(curr);\n        cloneNode.next = cloneMap.get(curr.next) || null;\n        cloneNode.random = cloneMap.get(curr.random) || null;\n        curr = curr.next;\n    }\n\n    return cloneMap.get(head);\n};",
+            "hints": "Use a hashmap, where the key is the original node and the value is the clone node.\nIterate through the linked list and create a clone node for each node.\nUpdate the next and random pointers of the clone node using the hashmap.",
+            "complexity": "Time: O(n)\nSpace: O(n)",
+            "difficulty": "Medium"
           },
           {
             "question": "Copy List with Random Pointer",
-            "link": "https://leetcode.com/problems/copy-list-with-random-pointer/"
+            "link": "https://leetcode.com/problems/copy-list-with-random-pointer/",
+            "code": "var copyRandomList = function(head) {\n    if(head == null) return null;\n    \n    let curr = head;\n\n    while(curr != null) {\n        const cloneNode = new ListNode(curr.val);\n        const next = curr.next;\n        curr.next = cloneNode;\n        cloneNode.next = next;\n        curr = next;\n    }\n\n    curr = head;\n    const newList = head.next;\n\n    while(curr != null) {\n        const next = curr.next.next;\n        if(curr.random) {\n            curr.next.random = curr.random.next;\n        }\n        curr = next;\n    }\n\n    curr = head;\n\n    while(curr != null) {\n        const next = curr.next.next;\n        if(next) {\n            curr.next.next = next.next;\n        }\n        curr.next = next;\n        curr = next;\n    }\n    \n    return newList;\n};",
+            "hints": "Iterate through the linked list and create a clone node for each node.\nUpdate the next pointer of the original node to the clone node.\nIterate through the linked list and update the random pointer of the clone node.\nIterate through the linked list and update the next pointer of the original node and the clone node.",
+            "complexity": "Time: O(n)\nSpace: O(1)",
+            "difficulty": "Medium"
           },
           {
             "question": "Reverse Linked List II",
-            "link": "https://leetcode.com/problems/reverse-linked-list-ii/"
+            "link": "https://leetcode.com/problems/reverse-linked-list-ii/",
+            "code": "var reverseBetween = function(head, left, right) {\n    if(head == null) return null;\n    const stack = Array(), dummyHead = new ListNode(0);\n    let curr = head, prev = dummyHead, i = 1;\n    prev.next = head;\n\n    while(i <= left - 1) {\n        prev = prev.next;\n        i++;\n    }\n\n    curr = prev.next;\n    i = 1;\n\n    while(i <= (right - left + 1)) {\n        stack.push(curr);\n        curr = curr.next;\n        i++\n    }\n\n    while(stack.length > 0) {\n        prev.next = stack.pop();\n        prev = prev.next;\n    }\n\n    prev.next = curr;\n\n    return dummyHead.next;\n};",
+            "hints": "Use a stack to store the nodes between left and right.\nIterate through the linked list and update the next pointer of the previous node to the top of the stack.\nUpdate the next pointer of the last node in the stack to the current node.",
+            "complexity": "Time: O(n)\nSpace: O(n)",
+            "difficulty": "Medium"
           },
           {
             "question": "Reverse Nodes in k-Group",
-            "link": "https://leetcode.com/problems/reverse-nodes-in-k-group/"
+            "link": "https://leetcode.com/problems/reverse-nodes-in-k-group/",
+            "difficulty": "Hard"
           },
           {
             "question": "Remove Nth Node From End of List",
-            "link": "https://leetcode.com/problems/remove-nth-node-from-end-of-list/"
+            "link": "https://leetcode.com/problems/remove-nth-node-from-end-of-list/",
+            "code": "var removeNthFromEnd = function(head, n) {\n    let delay = n, dummyHead = new ListNode(0), delayedPtr = dummyHead, curr = head;\n    dummyHead.next = head;\n\n    while(curr != null) {\n        if(delay-- <= 0) {\n            delayedPtr = delayedPtr.next;\n        }\n        curr = curr.next;\n    }\n\n    delayedPtr.next = delayedPtr.next.next;\n\n    return dummyHead.next;\n};",
+            "hints": "Use two pointers, one to keep track of the delayed node and the other to iterate through the linked list.\nMove the delayed pointer when the delay is less than or equal to 0.\nRemove the node by updating the next pointer of the delayed node.",
+            "complexity": "Time: O(n)\nSpace: O(1)",
+            "difficulty": "Medium"
           },
           {
             "question": "Remove Duplicates from Sorted List II",
-            "link": "https://leetcode.com/problems/remove-duplicates-from-sorted-list-ii/"
+            "link": "https://leetcode.com/problems/remove-duplicates-from-sorted-list-ii/",
+            "code": "var deleteDuplicates = function(head) {\n    if(head == null) return null;\n    const dummyHead = new ListNode(0);\n    let prev = dummyHead, curr = head, nextPtr = head.next;\n\n    while(curr != null) {\n        while(nextPtr != null && nextPtr.val == curr.val) {\n            nextPtr = nextPtr.next;\n        }\n        \n        if(nextPtr == curr.next) {\n            prev.next = curr;\n            prev = prev.next;\n        }\n\n        curr = nextPtr;\n    }\n\n    prev.next = null;\n    return dummyHead.next;\n};",
+            "hints": "Use a dummy node to keep track of the head of the new linked list.\nKeep track of the previous node, the current node, and the next node.\nIterate through the linked list and use next node to find the next distinct node.\nIf the next node is the next node of the current node, add the current node to the new linked list.",
+            "complexity": "Time: O(n)\nSpace: O(1)",
+            "difficulty": "Medium"
           },
           {
             "question": "Rotate List",
-            "link": "https://leetcode.com/problems/rotate-list/"
+            "link": "https://leetcode.com/problems/rotate-list/",
+            "code": "var listLength = function(head) {\n    let count = 0, curr = head;\n\n    while(curr != null) {\n        count++;\n        curr = curr.next;\n    }\n\n    return count;\n}\n\nvar rotateRight = function(head, k) {\n    if(head == null) return null;\n\n    const n = listLength(head);\n    let modK = Math.trunc(k % n);\n    if(modK == 0) return head;\n    \n    let curr = head;\n\n    for(let i = 1; i < n - modK; i++) {\n        curr = curr.next;\n    }\n\n    const newHead = curr.next;\n    curr.next = null;\n\n    curr = newHead;\n    while(curr.next != null) {\n        curr = curr.next;\n    }\n    curr.next = head;\n\n    return newHead;\n};",
+            "hints": "Find the length of the linked list.\nCalculate the effective rotation by taking the modulo of k with the length of the linked list.\nIterate through the linked list to find the new head and the new tail.\nUpdate the next pointer of the new tail to the original head and update the next pointer of the new head to null.",
+            "complexity": "Time: O(n)\nSpace: O(1)",
+            "difficulty": "Medium"
           },
           {
             "question": "Partition List",
-            "link": "https://leetcode.com/problems/partition-list/"
+            "link": "https://leetcode.com/problems/partition-list/",
+            "code": "var partition = function(head, x) {\n    if(head == null) return null;\n    const dummyLessHead = new ListNode(0), dummyGreaterHead = new ListNode(0);\n    let curr = head, lessPrev = dummyLessHead, greaterPrev = dummyGreaterHead;\n\n    while(curr != null) {\n        if(curr.val < x) {\n            lessPrev.next = curr;\n            lessPrev = curr;\n        }\n        else {\n            greaterPrev.next = curr;\n            greaterPrev = curr;\n        }\n        curr = curr.next;\n    }\n\n    greaterPrev.next = null;\n    lessPrev.next = dummyGreaterHead.next;\n    return dummyLessHead.next;\n};",
+            "hints": "Create two dummy nodes to keep track of the head of the less than and greater than linked lists.\nIterate through the linked list and add the nodes to the respective linked lists.\nUpdate the next pointer of the greater than linked list to null and the next pointer of the less than linked list to the greater than linked list.",
+            "complexity": "Time: O(n)\nSpace: O(1)",
+            "difficulty": "Medium"
           },
           {
             "question": "LRU Cache",
@@ -347,31 +403,67 @@
         "questions": [
           {
             "question": "Maximum Depth of Binary Tree",
-            "link": "https://leetcode.com/problems/maximum-depth-of-binary-tree/"
+            "link": "https://leetcode.com/problems/maximum-depth-of-binary-tree/",
+            "code": "var maxDepth = function(root) {\n    if(root == null) return 0;\n\n    return 1 + Math.max(maxDepth(root.left), maxDepth(root.right));\n};",
+            "hints": "Recursively calculate the maximum depth of the left and right subtrees.\nReturn 1 plus the maximum depth of the left and right subtrees.",
+            "complexity": "Time: O(n)\nSpace: O(n)",
+            "difficulty": "Easy"
           },
           {
             "question": "Same Tree",
-            "link": "https://leetcode.com/problems/same-tree/"
+            "link": "https://leetcode.com/problems/same-tree/",
+            "code": "var isSameTree = function(p, q) {\n    if(p == null && q == null) return true;\n    if(p == null || q == null) return false;\n    if(p.val != q.val) return false;\n\n    return isSameTree(p.left, q.left) && isSameTree(p.right, q.right);\n};",
+            "hints": "Recursively check if the current nodes are equal.\nRecursively check if the left subtrees are equal.\nRecursively check if the right subtrees are equal.",
+            "complexity": "Time: O(n)\nSpace: O(n)",
+            "difficulty": "Easy"
           },
           {
             "question": "Invert Binary Tree",
-            "link": "https://leetcode.com/problems/invert-binary-tree/"
+            "link": "https://leetcode.com/problems/invert-binary-tree/",
+            "code": "var invertTree = function(root) {\n    if(root == null) return null;\n    \n    const leftSubtree = invertTree(root.left);\n    const rightSubtree = invertTree(root.right);\n    root.left = rightSubtree;\n    root.right = leftSubtree;\n\n    return root;\n};",
+            "hints": "Recursively invert the left and right subtrees.\nSwap the left and right subtrees.",
+            "complexity": "Time: O(n)\nSpace: O(n)",
+            "difficulty": "Easy"
           },
           {
             "question": "Symmetric Tree",
-            "link": "https://leetcode.com/problems/symmetric-tree/"
+            "link": "https://leetcode.com/problems/symmetric-tree/",
+            "code": "var isSymmetric = function(root) {\n    if(root == null) return true;\n    return isSymmetricUtil(root.left, root.right);\n};\n\nvar isSymmetricUtil = function(rootA, rootB) {\n    if(rootA == null && rootB == null) return true;\n    if(rootA == null || rootB == null) return false;\n    if(rootA.val != rootB.val) return false;\n\n    return isSymmetricUtil(rootA.left, rootB.right) && isSymmetricUtil(rootA.right, rootB.left);\n};",
+            "hints": "Recursively check if the left and right subtrees are symmetric.\nCheck if the left subtree of the left subtree is equal to the right subtree of the right subtree.\nCheck if the right subtree of the left subtree is equal to the left subtree of the right subtree.",
+            "complexity": "Time: O(n)\nSpace: O(n)",
+            "difficulty": "Easy"
           },
           {
             "question": "Construct Binary Tree from Preorder and Inorder Traversal",
-            "link": "https://leetcode.com/problems/construct-binary-tree-from-preorder-and-inorder-traversal/"
+            "link": "https://leetcode.com/problems/construct-binary-tree-from-preorder-and-inorder-traversal/",
+            "code": "var buildTree = function(preorder, inorder) {\n    return buildTreeUtil(preorder, inorder, [0]);\n};\n\nvar buildTreeUtil = function(preorder, inorder, preIndex) {\n    if(preIndex >= preorder.length) return null;\n\n    const curr = preorder[preIndex[0]];\n    const inorderIndex = inorder.findIndex(ele => ele == curr);\n    if(inorderIndex == -1) return null;\n\n    preIndex[0]++;\n\n    const root = new TreeNode(curr);\n    root.left = buildTreeUtil(preorder, inorder.slice(0, inorderIndex), preIndex);\n    root.right = buildTreeUtil(preorder, inorder.slice(inorderIndex), preIndex);\n\n    return root;\n}",
+            "hints": "Use a preorder traversal to get the current node.\nFind the index of the current node in the inorder traversal.\nRecursively build the left subtree with the left part of the inorder traversal.\nRecursively build the right subtree with the right part of the inorder traversal.",
+            "complexity": "Time: O(n)\nSpace: O(n)",
+            "difficulty": "Medium"
           },
           {
             "question": "Construct Binary Tree from Inorder and Postorder Traversal",
-            "link": "https://leetcode.com/problems/construct-binary-tree-from-inorder-and-postorder-traversal/"
+            "link": "https://leetcode.com/problems/construct-binary-tree-from-inorder-and-postorder-traversal/",
+            "code": "var buildTree = function(inorder, postorder) {\n    return buildTreeUtil(inorder, postorder, [postorder.length - 1]);\n};\n\nvar buildTreeUtil = function(inorder, postorder, postIndex) {\n    if(postIndex < 0) return null;\n\n    const curr = postorder[postIndex[0]];\n    const inorderIndex = inorder.findIndex(ele => ele == curr);\n    if(inorderIndex == -1) return null;\n\n    postIndex[0]--;\n\n    const root = new TreeNode(curr);\n    root.right = buildTreeUtil(inorder.slice(inorderIndex), postorder, postIndex);\n    root.left = buildTreeUtil(inorder.slice(0, inorderIndex), postorder, postIndex);\n\n    return root;\n}",
+            "hints": "Use a postorder traversal to get the current node.\nFind the index of the current node in the inorder traversal.\nRecursively build the right subtree with the right part of the inorder traversal.\nRecursively build the left subtree with the left part of the inorder traversal.",
+            "complexity": "Time: O(n)\nSpace: O(n)",
+            "difficulty": "Medium"
+          },
+          {
+            "question": "Populating Next Right Pointers in Each Node",
+            "link": "https://leetcode.com/problems/populating-next-right-pointers-in-each-node/",
+            "code": "var connect = function(root) {\n    let levelStart = root;\n\n    while(levelStart != null) {\n        let curr = levelStart;\n\n        while(curr != null) {\n            if(curr.left != null) {\n                curr.left.next = curr.right;\n            }\n            if(curr.next != null && curr.right != null) {\n                curr.right.next = curr.next.left;\n            }\n            curr = curr.next;\n        }\n\n        levelStart = levelStart.left;\n    }\n\n    return root;\n};",
+            "hints": "Use a level order traversal to connect the nodes at the same level.\nIterate through the nodes at the same level and connect the left and right nodes.\nIf the current node has a next node, connect the right node of the current node to the left node of the next node.",
+            "complexity": "Time: O(n)\nSpace: O(1)",
+            "difficulty": "Medium"
           },
           {
             "question": "Populating Next Right Pointers in Each Node II",
-            "link": "https://leetcode.com/problems/populating-next-right-pointers-in-each-node-ii/"
+            "link": "https://leetcode.com/problems/populating-next-right-pointers-in-each-node-ii/",
+            "code": "var connect = function(root) {\n    let levelStart = root;\n\n    while(levelStart != null) {\n        let curr = levelStart;\n\n        while(curr != null) {\n            if(curr.left != null) {\n                if(curr.right) {\n                    curr.left.next = curr.right;\n                }\n                else {\n                    curr.left.next = getNextNeighbour(curr.next);\n                }\n            }\n            if(curr.right != null) {\n                curr.right.next = getNextNeighbour(curr.next);\n            }\n            curr = curr.next;\n        }\n\n        levelStart = levelStart.left || levelStart.right || levelStart.next;\n    }\n\n    return root;\n};\n\nvar getNextNeighbour = function(root) {\n    let curr = root;\n\n    while(curr != null) {\n        if(curr.left != null) {\n            return curr.left;\n        }\n        else if(curr.right != null) {\n            return curr.right;\n        }\n        curr = curr.next;\n    }\n\n    return null;\n}",
+            "hints": "Use a level order traversal to connect the nodes at the same level.\nIterate through the nodes at the same level and connect the left and right nodes.\nIf the current node has a next node, connect the right node of the current node to the left node of the next node.",
+            "complexity": "Time: O(n)\nSpace: O(1)",
+            "difficulty": "Medium"
           },
           {
             "question": "Flatten Binary Tree to Linked List",
