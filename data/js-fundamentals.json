@@ -20,6 +20,11 @@
           "hints": "function Person(name) {\n  this.name = name;\n}\n\nPerson.prototype.greet = function() {\n  return 'Hello, my name is ' + this.name;\n};\n\nvar john = new Person('John');\nconsole.log(john.greet()); // Expected output: Hello, my name is John"
         },
         {
+          "question": "Constructor Functions",
+          "answer": "Constructor functions in JavaScript are used to create multiple objects with the same properties and methods. They are defined using the 'function' keyword and are invoked using the 'new' keyword.",
+          "hints": "function Person(name, age) {\n  this.name = name;\n  this.age = age;\n}\nvar person1 = new Person('Alice', 30);\nvar person2 = new Person('Bob', 25);"
+        },
+        {
           "question": "New keyword",
           "answer": "The new keyword in JavaScript is used to create an instance of a user-defined object type or one of the built-in object types that has a constructor function. It creates a new object, sets the prototype of the object to the constructor's prototype, and calls the constructor function with the specified arguments.",
           "hints": "function Person(name) {\n  this.name = name;\n}\n\nvar john = new Person('John');"
