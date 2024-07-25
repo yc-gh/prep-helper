@@ -23,21 +23,21 @@ const updateNavBar = (baseUrl) => {
         <nav class="menu">
             <ul class="menu-list">
                 <li class="menu-item dropdown">
-                    <a href="${pagesRoutes.DSA_TOP_150}">DSA</a>
+                    <a>DSA</a>
                     <ul class="dropdown-content">
                     <li class="menu-item"><a href="${pagesRoutes.DSA_TOP_150}">Top 150</a></li>
                         <li class="menu-item"><a href="${pagesRoutes.DSA}">General</a></li>
                     </ul>
                 </li>
                 <li class="menu-item dropdown">
-                    <a href="${pagesRoutes.SYSTEM_DESIGN_FE}">System Design</a>
+                    <a>System Design</a>
                     <ul class="dropdown-content">
                         <li class="menu-item"><a href="${pagesRoutes.SYSTEM_DESIGN_FE}">Frontend</a></li>
                         <li class="menu-item"><a href="${pagesRoutes.SYSTEM_DESIGN_BE}">Backend</a></li>
                     </ul>
                 </li>
                 <li class="menu-item dropdown">
-                    <a href="${pagesRoutes.JS_FUNDAMENTALS}">JavaScript</a>
+                    <a>JavaScript</a>
                     <ul class="dropdown-content">
                         <li class="menu-item">
                             <a href="${pagesRoutes.JS_FUNDAMENTALS}">Fundamentals</a>
@@ -49,7 +49,7 @@ const updateNavBar = (baseUrl) => {
                     </ul>
                 </li>
                 <li class="menu-item dropdown">
-                    <a href="${pagesRoutes.CONCEPTS_FE}">Concepts</a>
+                    <a>Concepts</a>
                     <ul class="dropdown-content">
                         <li class="menu-item"><a href="${pagesRoutes.CONCEPTS_FE}">Frontend</a></li>
                         <li class="menu-item"><a href="${pagesRoutes.CONCEPTS_BE}">Backend</a></li>
