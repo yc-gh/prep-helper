@@ -284,7 +284,11 @@
         "questions": [
           {
             "question": "Valid Parentheses",
-            "link": "https://leetcode.com/problems/valid-parentheses/"
+            "link": "https://leetcode.com/problems/valid-parentheses/",
+            "code": "var isValid = function(s) {\n    const stack = [];\n\n    for(const c of s) {\n        if(c == '(' || c == '{' || c == '[') {\n            stack.push(c);\n        }\n        else {\n            if(stack.length == 0) return false;\n            const top = stack[stack.length - 1];\n\n            switch(c) {\n                case ')': {\n                    if(top == '(') stack.pop();\n                    else return false;\n                    break;\n                }\n                case '}': {\n                    if(top == '{') stack.pop();\n                    else return false;\n                    break;\n                }\n                case ']': {\n                    if(top == '[') stack.pop();\n                    else return false;\n                    break;\n                }\n            }\n        }\n    }\n\n    return stack.length == 0;\n};",
+            "hints": "Use a stack to keep track of the opening brackets.\nIf the current character is an opening bracket, push it onto the stack.\nIf the current character is a closing bracket, check if the stack is empty or the top of the stack is not the corresponding opening bracket.",
+            "complexity": "Time: O(n)\nSpace: O(n)",
+            "difficulty": "Easy"
           },
           {
             "question": "Simplify Path",
@@ -406,7 +410,7 @@
             "link": "https://leetcode.com/problems/maximum-depth-of-binary-tree/",
             "code": "var maxDepth = function(root) {\n    if(root == null) return 0;\n\n    return 1 + Math.max(maxDepth(root.left), maxDepth(root.right));\n};",
             "hints": "Recursively calculate the maximum depth of the left and right subtrees.\nReturn 1 plus the maximum depth of the left and right subtrees.",
-            "complexity": "Time: O(n)\nSpace: O(n)",
+            "complexity": "Time: O(n)\nSpace: O(1)",
             "difficulty": "Easy"
           },
           {
@@ -414,7 +418,7 @@
             "link": "https://leetcode.com/problems/same-tree/",
             "code": "var isSameTree = function(p, q) {\n    if(p == null && q == null) return true;\n    if(p == null || q == null) return false;\n    if(p.val != q.val) return false;\n\n    return isSameTree(p.left, q.left) && isSameTree(p.right, q.right);\n};",
             "hints": "Recursively check if the current nodes are equal.\nRecursively check if the left subtrees are equal.\nRecursively check if the right subtrees are equal.",
-            "complexity": "Time: O(n)\nSpace: O(n)",
+            "complexity": "Time: O(n)\nSpace: O(1)",
             "difficulty": "Easy"
           },
           {
@@ -422,7 +426,7 @@
             "link": "https://leetcode.com/problems/invert-binary-tree/",
             "code": "var invertTree = function(root) {\n    if(root == null) return null;\n    \n    const leftSubtree = invertTree(root.left);\n    const rightSubtree = invertTree(root.right);\n    root.left = rightSubtree;\n    root.right = leftSubtree;\n\n    return root;\n};",
             "hints": "Recursively invert the left and right subtrees.\nSwap the left and right subtrees.",
-            "complexity": "Time: O(n)\nSpace: O(n)",
+            "complexity": "Time: O(n)\nSpace: O(1)",
             "difficulty": "Easy"
           },
           {
@@ -430,7 +434,7 @@
             "link": "https://leetcode.com/problems/symmetric-tree/",
             "code": "var isSymmetric = function(root) {\n    if(root == null) return true;\n    return isSymmetricUtil(root.left, root.right);\n};\n\nvar isSymmetricUtil = function(rootA, rootB) {\n    if(rootA == null && rootB == null) return true;\n    if(rootA == null || rootB == null) return false;\n    if(rootA.val != rootB.val) return false;\n\n    return isSymmetricUtil(rootA.left, rootB.right) && isSymmetricUtil(rootA.right, rootB.left);\n};",
             "hints": "Recursively check if the left and right subtrees are symmetric.\nCheck if the left subtree of the left subtree is equal to the right subtree of the right subtree.\nCheck if the right subtree of the left subtree is equal to the left subtree of the right subtree.",
-            "complexity": "Time: O(n)\nSpace: O(n)",
+            "complexity": "Time: O(n)\nSpace: O(1)",
             "difficulty": "Easy"
           },
           {
@@ -438,7 +442,7 @@
             "link": "https://leetcode.com/problems/construct-binary-tree-from-preorder-and-inorder-traversal/",
             "code": "var buildTree = function(preorder, inorder) {\n    return buildTreeUtil(preorder, inorder, [0]);\n};\n\nvar buildTreeUtil = function(preorder, inorder, preIndex) {\n    if(preIndex >= preorder.length) return null;\n\n    const curr = preorder[preIndex[0]];\n    const inorderIndex = inorder.findIndex(ele => ele == curr);\n    if(inorderIndex == -1) return null;\n\n    preIndex[0]++;\n\n    const root = new TreeNode(curr);\n    root.left = buildTreeUtil(preorder, inorder.slice(0, inorderIndex), preIndex);\n    root.right = buildTreeUtil(preorder, inorder.slice(inorderIndex), preIndex);\n\n    return root;\n}",
             "hints": "Use a preorder traversal to get the current node.\nFind the index of the current node in the inorder traversal.\nRecursively build the left subtree with the left part of the inorder traversal.\nRecursively build the right subtree with the right part of the inorder traversal.",
-            "complexity": "Time: O(n)\nSpace: O(n)",
+            "complexity": "Time: O(n)\nSpace: O(1)",
             "difficulty": "Medium"
           },
           {
@@ -446,7 +450,7 @@
             "link": "https://leetcode.com/problems/construct-binary-tree-from-inorder-and-postorder-traversal/",
             "code": "var buildTree = function(inorder, postorder) {\n    return buildTreeUtil(inorder, postorder, [postorder.length - 1]);\n};\n\nvar buildTreeUtil = function(inorder, postorder, postIndex) {\n    if(postIndex < 0) return null;\n\n    const curr = postorder[postIndex[0]];\n    const inorderIndex = inorder.findIndex(ele => ele == curr);\n    if(inorderIndex == -1) return null;\n\n    postIndex[0]--;\n\n    const root = new TreeNode(curr);\n    root.right = buildTreeUtil(inorder.slice(inorderIndex), postorder, postIndex);\n    root.left = buildTreeUtil(inorder.slice(0, inorderIndex), postorder, postIndex);\n\n    return root;\n}",
             "hints": "Use a postorder traversal to get the current node.\nFind the index of the current node in the inorder traversal.\nRecursively build the right subtree with the right part of the inorder traversal.\nRecursively build the left subtree with the left part of the inorder traversal.",
-            "complexity": "Time: O(n)\nSpace: O(n)",
+            "complexity": "Time: O(n)\nSpace: O(1)",
             "difficulty": "Medium"
           },
           {
@@ -467,15 +471,27 @@
           },
           {
             "question": "Flatten Binary Tree to Linked List",
-            "link": "https://leetcode.com/problems/flatten-binary-tree-to-linked-list/"
+            "link": "https://leetcode.com/problems/flatten-binary-tree-to-linked-list/",
+            "code": "var prev = null;\n\nvar flatten = function(root) {\n    prev = null;\n    flattenUtil(root);\n};\n\nvar flattenUtil = function(root) {\n    if(root == null) return null;\n\n    flattenUtil(root.right);\n    flattenUtil(root.left);\n\n    root.right = prev;\n    root.left = null;\n    prev = root;\n}",
+            "hints": "Use a postorder traversal to flatten the binary tree.\nRecursively flatten the right subtree.\nRecursively flatten the left subtree.\nUpdate the right pointer of the current node to the previous node.",
+            "complexity": "Time: O(n)\nSpace: O(1)",
+            "difficulty": "Medium"
           },
           {
             "question": "Path Sum",
-            "link": "https://leetcode.com/problems/path-sum/"
+            "link": "https://leetcode.com/problems/path-sum/",
+            "code": "var hasPathSum = function(root, targetSum) {\n    if(root == null) return false;\n\n    const newSum = targetSum - root.val;\n    if(newSum == 0 && root.left == null && root.right == null) return true;\n\n    const left = hasPathSum(root.left, newSum);\n    const right = hasPathSum(root.right, newSum);\n\n    return left || right;\n};",
+            "hints": "Recursively check if the current node is a leaf node and the sum is equal to the target sum.\nRecursively check if the left subtree has a path sum equal to the target sum.\nRecursively check if the right subtree has a path sum equal to the target sum.",
+            "complexity": "Time: O(n)\nSpace: O(1)",
+            "difficulty": "Easy"
           },
           {
             "question": "Sum Root to Leaf Numbers",
-            "link": "https://leetcode.com/problems/sum-root-to-leaf-numbers/"
+            "link": "https://leetcode.com/problems/sum-root-to-leaf-numbers/",
+            "code": "var sumNumbers = function(root) {\n    if(root == null) return 0;\n\n    return sumNumbersUtil(root, \"\");\n};\n\nvar sumNumbersUtil = function(root, currNum) {\n    if(root == null) return 0;\n\n    const newNum = currNum + root.val;\n\n    if(root.left == null && root.right == null) {\n        return Number(newNum);\n    }\n\n    const left = sumNumbersUtil(root.left, newNum);\n    const right = sumNumbersUtil(root.right, newNum);\n\n    return Number(left) + Number(right);\n}",
+            "hints": "Recursively calculate the sum of the numbers from the root to the leaf nodes.\nIf the current node is a leaf node, return the number.\nRecursively calculate the sum of the numbers from the left and right subtrees.",
+            "complexity": "Time: O(n)\nSpace: O(1)",
+            "difficulty": "Medium"
           },
           {
             "question": "Binary Tree Maximum Path Sum",
@@ -491,7 +507,11 @@
           },
           {
             "question": "Lowest Common Ancestor of a Binary Tree",
-            "link": "https://leetcode.com/problems/lowest-common-ancestor-of-a-binary-tree/"
+            "link": "https://leetcode.com/problems/lowest-common-ancestor-of-a-binary-tree/",
+            "code": "var lowestCommonAncestor = function(root, p, q) {\n    if(root == null) return null;\n    if(root == p || root == q) return root;\n\n    const leftLCA = lowestCommonAncestor(root.left, p, q);\n    const rightLCA = lowestCommonAncestor(root.right, p, q);\n\n    if(leftLCA != null && rightLCA != null) return root;\n\n    return leftLCA != null ? leftLCA : rightLCA;\n};",
+            "hints": "Recursively check if the current node is one of the nodes.\nRecursively find the lowest common ancestor in the left subtree.\nRecursively find the lowest common ancestor in the right subtree.\nIf the left and right subtrees have the nodes, return the current node.",
+            "complexity": "Time: O(n)\nSpace: O(1)",
+            "difficulty": "Medium"
           }
         ]
       },
@@ -500,7 +520,11 @@
         "questions": [
           {
             "question": "Binary Tree Right Side View",
-            "link": "https://leetcode.com/problems/binary-tree-right-side-view/"
+            "link": "https://leetcode.com/problems/binary-tree-right-side-view/",
+            "code": "var rightSideView = function(root) {\n    if(root == null) return [];\n\n    const queue = [root];\n    const rightView = [];\n\n    while(queue.length > 0){\n        let size = queue.length;\n        const lastEle = queue[queue.length - 1];\n        rightView.push(lastEle.val);\n        while(size-- > 0) {\n            let curr = queue.shift();\n            if(curr.left) queue.push(curr.left);\n            if(curr.right) queue.push(curr.right);\n        }\n    }\n\n    return rightView;\n};",
+            "hints": "Use a queue to perform a level order traversal.\nKeep track of the last element in each level.\nAdd the last element to the right view array.",
+            "complexity": "Time: O(n)\nSpace: O(n)",
+            "difficulty": "Medium"
           },
           {
             "question": "Average of Levels in Binary Tree",
@@ -508,11 +532,19 @@
           },
           {
             "question": "Binary Tree Level Order Traversal",
-            "link": "https://leetcode.com/problems/binary-tree-level-order-traversal/"
+            "link": "https://leetcode.com/problems/binary-tree-level-order-traversal/",
+            "code": "var levelOrder = function(root) {\n    if(root == null) return [];\n\n    const queue = [root], levelOrder = [];\n\n    while(queue.length > 0){\n        let size = queue.length;\n        levelOrder.push(queue.map(node => node.val));\n        \n        while(size-- > 0) {\n            let curr = queue.shift();\n            if(curr.left) queue.push(curr.left);\n            if(curr.right) queue.push(curr.right);\n        }\n    }\n\n    return levelOrder;\n};",
+            "hints": "Use a queue to perform a level order traversal.\nKeep track of the nodes at each level.\nAdd the nodes at each level to the level order array.",
+            "complexity": "Time: O(n)\nSpace: O(n)",
+            "difficulty": "Medium"
           },
           {
             "question": "Binary Tree Zigzag Level Order Traversal",
-            "link": "https://leetcode.com/problems/binary-tree-zigzag-level-order-traversal/"
+            "link": "https://leetcode.com/problems/binary-tree-zigzag-level-order-traversal/",
+            "code": "var zigzagLevelOrder = function(root) {\n    if(root == null) return [];\n\n    const queue = [root], levelOrder = [];\n    let level = 0;\n\n    while(queue.length > 0){\n        let size = queue.length;\n        const currLevel = queue.map(node => node.val);\n        levelOrder.push((level & 1 == 1) ? currLevel.reverse() : currLevel);\n\n        while(size-- > 0) {\n            let curr = queue.shift();\n            if(curr.left) queue.push(curr.left);\n            if(curr.right) queue.push(curr.right);\n        }\n        level++;\n    }\n\n    return levelOrder;\n};",
+            "hints": "Use a queue to perform a level order traversal.\nKeep track of the level to determine the direction of traversal.\nReverse the nodes at each level based on the level.",
+            "complexity": "Time: O(n)\nSpace: O(n)",
+            "difficulty": "Medium"
           }
         ]
       },
