@@ -7,7 +7,7 @@
           {
             "question": "Design a scalable backend architecture for a high-traffic web application.",
             "answer": "Consider aspects like load balancing, caching strategies, database sharding, and microservices.",
-            "hints": "Use load balancers to distribute incoming traffic, implement caching mechanisms to reduce database load, shard databases to distribute data, and adopt a microservices architecture for scalability."
+            "hints": "Use load balancers to distribute incoming traffic, implement caching mechanisms to reduce database load,\nshard databases to distribute data, and adopt a microservices architecture for scalability."
           },
           {
             "question": "How would you design a backend system for real-time collaboration features (like Google Docs)?",
@@ -22,7 +22,7 @@
           {
             "question": "How would you optimize a web application's backend for mobile devices?",
             "answer": "Discuss API design, data transfer optimization, mobile-specific functionalities, and performance improvements.",
-            "hints": "Design efficient APIs to reduce data transfer, optimize responses for mobile devices, implement caching strategies for mobile data, and minimize server-side processing time for better performance."
+            "hints": "Design efficient APIs to reduce data transfer, optimize responses for mobile devices,\nimplement caching strategies for mobile data, and minimize server-side processing time for better performance."
           },
           {
             "question": "Design a backend system for a large-scale e-commerce platform (like Amazon).",
@@ -64,12 +64,12 @@
           {
             "question": "Design a reliable backend system that can handle failures gracefully.",
             "answer": "Discuss strategies like redundancy, failover mechanisms, error handling, and monitoring.",
-            "hints": "Implement redundancy for critical components, use failover mechanisms to switch to backup systems, handle errors gracefully with retries and fallbacks, and monitor system health with alerts and dashboards."
+            "hints": "Implement redundancy for critical components, use failover mechanisms to switch to backup systems,\nhandle errors gracefully with retries and fallbacks, and monitor system health with alerts and dashboards."
           },
           {
             "question": "How would you ensure data consistency in a distributed backend system?",
             "answer": "Discuss techniques like two-phase commit, eventual consistency, and conflict resolution.",
-            "hints": "Use two-phase commit for transactions that require strong consistency, implement eventual consistency for distributed systems, and resolve conflicts with versioning or conflict resolution algorithms."
+            "hints": "Use two-phase commit for transactions that require strong consistency,\nimplement eventual consistency for distributed systems, and resolve conflicts with versioning or conflict resolution algorithms."
           },
           {
             "question": "Design a fault-tolerant backend system for a financial application.",
@@ -79,7 +79,7 @@
           {
             "question": "How would you handle cascading failures in a distributed backend system?",
             "answer": "Discuss strategies like isolation, circuit breakers, bulkheads, and timeouts.",
-            "hints": "Isolate components to prevent failures from spreading, use circuit breakers to stop cascading failures, implement bulkheads to limit resource usage, and set timeouts to prevent long-running operations."
+            "hints": "Isolate components to prevent failures from spreading, use circuit breakers to stop cascading failures,\nimplement bulkheads to limit resource usage, and set timeouts to prevent long-running operations."
           },
           {
             "question": "Design a system that can recover from partial data loss due to failures.",
@@ -89,12 +89,12 @@
           {
             "question": "How would you ensure high availability in a distributed backend system?",
             "answer": "Discuss strategies like load balancing, redundancy, failover mechanisms, and disaster recovery.",
-            "hints": "Use load balancers to distribute traffic, implement redundancy for critical components, set up failover mechanisms to switch to backup systems, and create disaster recovery plans for catastrophic events."
+            "hints": "Use load balancers to distribute traffic, implement redundancy for critical components,\nset up failover mechanisms to switch to backup systems, and create disaster recovery plans for catastrophic events."
           },
           {
             "question": "Design a system that can handle spikes in traffic without downtime.",
             "answer": "Discuss strategies like auto-scaling, caching, load balancing, and rate limiting.",
-            "hints": "Automatically scale resources to handle traffic spikes, cache frequently accessed data to reduce load, distribute incoming traffic with load balancers, and set up rate limiting to prevent overload."
+            "hints": "Automatically scale resources to handle traffic spikes, cache frequently accessed data to reduce load,\ndistribute incoming traffic with load balancers, and set up rate limiting to prevent overload."
           }
         ]
       },
@@ -104,32 +104,32 @@
           {
             "question": "Design a highly available backend system that can recover from failures.",
             "answer": "Discuss strategies like redundancy, failover mechanisms, disaster recovery, and monitoring.",
-            "hints": "Implement redundancy for critical components, use failover mechanisms to switch to backup systems, create disaster recovery plans for catastrophic events, and monitor system health for early detection of issues."
+            "hints": "Implement redundancy for critical components, use failover mechanisms to switch to backup systems,\ncreate disaster recovery plans for catastrophic events, and monitor system health for early detection of issues."
           },
           {
             "question": "How would you ensure continuous availability in a distributed backend system?",
             "answer": "Discuss techniques like load balancing, auto-scaling, fault tolerance, and service monitoring.",
-            "hints": "Use load balancers to distribute traffic, automatically scale resources to handle demand, design fault-tolerant systems to prevent downtime, and monitor services for availability and performance."
+            "hints": "Use load balancers to distribute traffic, automatically scale resources to handle demand,\ndesign fault-tolerant systems to prevent downtime, and monitor services for availability and performance."
           },
           {
             "question": "Design a system that can handle rolling updates and zero-downtime deployments.",
             "answer": "Discuss strategies like blue-green deployments, canary releases, feature toggles, and database migrations.",
-            "hints": "Use blue-green deployments to switch between versions seamlessly, perform canary releases to test new features gradually, use feature toggles to enable/disable features dynamically, and plan database migrations carefully to avoid downtime."
+            "hints": "Use blue-green deployments to switch between versions seamlessly, perform canary releases to test new features gradually,\nuse feature toggles to enable/disable features dynamically, and plan database migrations carefully to avoid downtime."
           },
           {
             "question": "How would you design a system that can recover from data corruption or loss?",
             "answer": "Discuss techniques like data backups, data replication, point-in-time recovery, and disaster recovery.",
-            "hints": "Create backups to restore data in case of corruption, replicate data for fault tolerance, implement point-in-time recovery to restore data to a specific state, and create disaster recovery plans for catastrophic events."
+            "hints": "Create backups to restore data in case of corruption, replicate data for fault tolerance,\nimplement point-in-time recovery to restore data to a specific state, and create disaster recovery plans for catastrophic events."
           },
           {
             "question": "Design a system that can handle service disruptions and maintain availability.",
             "answer": "Discuss strategies like graceful degradation, circuit breakers, retries, and fallback mechanisms.",
-            "hints": "Implement graceful degradation to maintain core functionality during disruptions, use circuit breakers to stop cascading failures, retry failed requests with backoff strategies, and provide fallback mechanisms for critical services."
+            "hints": "Implement graceful degradation to maintain core functionality during disruptions,\nuse circuit breakers to stop cascading failures, retry failed requests with backoff strategies, and provide fallback mechanisms for critical services."
           },
           {
             "question": "How would you ensure high availability for a globally distributed backend system?",
             "answer": "Discuss techniques like geo-replication, content delivery networks, latency-aware routing, and global load balancing.",
-            "hints": "Replicate data across multiple regions for fault tolerance, use CDNs to cache content closer to users, route traffic based on latency to optimize performance, and balance load across global servers for high availability."
+            "hints": "Replicate data across multiple regions for fault tolerance, use CDNs to cache content closer to users,\nroute traffic based on latency to optimize performance, and balance load across global servers for high availability."
           }
         ]
       },
@@ -139,37 +139,37 @@
           {
             "question": "Design a secure backend system that protects user data and prevents unauthorized access.",
             "answer": "Discuss strategies like encryption, authentication, authorization, and secure communication.",
-            "hints": "Encrypt sensitive data at rest and in transit, implement strong authentication mechanisms, enforce fine-grained authorization policies, and use secure communication protocols like HTTPS."
+            "hints": "Encrypt sensitive data at rest and in transit, implement strong authentication mechanisms,\nenforce fine-grained authorization policies, and use secure communication protocols like HTTPS."
           },
           {
             "question": "How would you prevent common security vulnerabilities in a backend system?",
             "answer": "Discuss techniques like input validation, output encoding, parameterized queries, and security headers.",
-            "hints": "Validate and sanitize user input to prevent injection attacks, encode output to prevent XSS attacks, use parameterized queries to prevent SQL injection, and set security headers to protect against common exploits."
+            "hints": "Validate and sanitize user input to prevent injection attacks, encode output to prevent XSS attacks,\nuse parameterized queries to prevent SQL injection, and set security headers to protect against common exploits."
           },
           {
             "question": "Design a system that can detect and respond to security incidents in real-time.",
             "answer": "Discuss strategies like intrusion detection, log monitoring, incident response, and security audits.",
-            "hints": "Implement intrusion detection systems to detect security breaches, monitor logs for suspicious activities, create incident response plans for quick mitigation, and conduct regular security audits to identify vulnerabilities."
+            "hints": "Implement intrusion detection systems to detect security breaches, monitor logs for suspicious activities,\ncreate incident response plans for quick mitigation, and conduct regular security audits to identify vulnerabilities."
           },
           {
             "question": "How would you secure sensitive data in a distributed backend system?",
             "answer": "Discuss techniques like data encryption, access controls, secure key management, and data masking.",
-            "hints": "Encrypt sensitive data at rest and in transit, enforce access controls to limit data exposure, securely manage encryption keys, and mask data to protect sensitive information."
+            "hints": "Encrypt sensitive data at rest and in transit, enforce access controls to limit data exposure,\nsecurely manage encryption keys, and mask data to protect sensitive information."
           },
           {
             "question": "Design a system that can prevent and mitigate DDoS attacks.",
             "answer": "Discuss strategies like rate limiting, traffic filtering, load balancing, and DDoS protection services.",
-            "hints": "Set up rate limiting to prevent excessive requests, filter incoming traffic to block malicious requests, distribute traffic with load balancers to absorb attacks, and use DDoS protection services for advanced mitigation."
+            "hints": "Set up rate limiting to prevent excessive requests, filter incoming traffic to block malicious requests,\ndistribute traffic with load balancers to absorb attacks, and use DDoS protection services for advanced mitigation."
           },
           {
             "question": "How would you ensure compliance with data protection regulations in a backend system?",
             "answer": "Discuss techniques like data anonymization, consent management, audit trails, and compliance monitoring.",
-            "hints": "Anonymize personal data to protect user privacy, manage user consent for data processing, maintain audit trails for compliance tracking, and monitor system activities for regulatory compliance."
+            "hints": "Anonymize personal data to protect user privacy, manage user consent for data processing,\nmaintain audit trails for compliance tracking, and monitor system activities for regulatory compliance."
           },
           {
             "question": "Design a system that can securely handle user authentication and authorization.",
             "answer": "Discuss strategies like multi-factor authentication, OAuth, JWT tokens, and role-based access control.",
-            "hints": "Implement multi-factor authentication for enhanced security, use OAuth for secure third-party authentication, issue JWT tokens for stateless authentication, and enforce role-based access control for fine-grained authorization."
+            "hints": "Implement multi-factor authentication for enhanced security, use OAuth for secure third-party authentication,\nissue JWT tokens for stateless authentication, and enforce role-based access control for fine-grained authorization."
           }
         ]
       },
@@ -179,32 +179,32 @@
           {
             "question": "Design a high-performance backend system that can handle large volumes of data and requests.",
             "answer": "Discuss strategies like indexing, caching, query optimization, and data partitioning.",
-            "hints": "Create indexes to speed up data retrieval, cache frequently accessed data to reduce load, optimize queries for efficient data retrieval, and partition data to distribute load and improve scalability."
+            "hints": "Create indexes to speed up data retrieval, cache frequently accessed data to reduce load,\noptimize queries for efficient data retrieval, and partition data to distribute load and improve scalability."
           },
           {
             "question": "How would you optimize a backend system for low latency and high throughput?",
             "answer": "Discuss techniques like parallel processing, asynchronous operations, connection pooling, and request batching.",
-            "hints": "Use parallel processing to speed up data processing, perform asynchronous operations to improve responsiveness, pool database connections to reduce overhead, and batch requests to minimize round-trip latency."
+            "hints": "Use parallel processing to speed up data processing, perform asynchronous operations to improve responsiveness,\npool database connections to reduce overhead, and batch requests to minimize round-trip latency."
           },
           {
             "question": "Design a system that can handle real-time data processing and analytics.",
             "answer": "Focus on stream processing, event-driven architecture, data pipelines, and real-time dashboards.",
-            "hints": "Implement stream processing for real-time data ingestion and processing, use event-driven architecture for handling data events, create data pipelines for processing and analyzing data, and build real-time dashboards for monitoring system performance."
+            "hints": "Implement stream processing for real-time data ingestion and processing, use event-driven architecture for handling data events,\ncreate data pipelines for processing and analyzing data, and build real-time dashboards for monitoring system performance."
           },
           {
             "question": "How would you optimize a backend system for efficient resource utilization?",
             "answer": "Discuss techniques like resource pooling, load balancing, auto-scaling, and resource monitoring.",
-            "hints": "Pool resources to reduce overhead, balance load across servers to optimize performance, automatically scale resources based on demand, and monitor resource usage for efficient allocation."
+            "hints": "Pool resources to reduce overhead, balance load across servers to optimize performance,\nautomatically scale resources based on demand, and monitor resource usage for efficient allocation."
           },
           {
             "question": "Design a system that can handle batch processing of large datasets.",
             "answer": "Discuss strategies like distributed computing, map-reduce, data partitioning, and job scheduling.",
-            "hints": "Implement distributed computing for parallel processing, use map-reduce for processing large datasets, partition data to distribute load, and schedule jobs for efficient batch processing."
+            "hints": "Implement distributed computing for parallel processing, use map-reduce for processing large datasets,\npartition data to distribute load, and schedule jobs for efficient batch processing."
           },
           {
             "question": "How would you optimize a backend system for data storage and retrieval?",
             "answer": "Discuss techniques like indexing, denormalization, data compression, and data archiving.",
-            "hints": "Create indexes to speed up data retrieval, denormalize data for faster queries, compress data to reduce storage space, and archive data to optimize storage costs."
+            "hints": "Create indexes to speed up data retrieval, denormalize data for faster queries, compress data to reduce storage space,\nand archive data to optimize storage costs."
           }
         ]
       },
