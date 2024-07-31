@@ -35,17 +35,17 @@
                   <h1>${data.name}</h1>
               </center>
               <hr class="divider" />
-              <ul class="topics-list">
+              <div class="topics-list">
                   ${data.topics
                     ?.map(
                       (t) => `
-                      <li class="topic-content">
+                      <div class="topic-content">
                           <h1><i><u>${t.name}</u></i></h1>
-                          <ul class="questions-list">
+                          <div class="questions-list">
                               ${t.questions
                                 ?.map(
                                   (q) => `
-                                  <li class="question-content">
+                                  <div class="question-content">
                                       <h3>${q.question}</h3>
                                       ${q.answer ? `<p>${q.answer}</p>` : ""}
                                       ${
@@ -58,18 +58,18 @@
                                           ? `<pre><code>${q.code}</code></pre>`
                                           : ""
                                       } 
-                                  </li>
+                                  </div>
                                   <hr />
                               `
                                 )
                                 .join("")}
-                          </ul>
-                      </li>
+                          </div>
+                      </div>
                       <hr class="divider" />
                   `
                     )
                     .join("")}
-              </ul>
+              </div>
           `;
         });
     </script>

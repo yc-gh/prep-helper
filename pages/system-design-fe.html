@@ -26,46 +26,114 @@
     </script>
 
     <script>
-      const dataFilePath = "{{ site.baseurl }}/data/system-design-fe.json";
-      const json = fetch(dataFilePath)
-        .then((response) => response.json())
-        .then((data) => {
-          document.getElementById("content").innerHTML = `
+      function slugify(text) {
+        return text
+          .toString()
+          .toLowerCase()
+          .replace(/\s+/g, "-") // Replace spaces with -
+          .replace(/[^\w\-]+/g, "") // Remove all non-word chars
+          .replace(/\-\-+/g, "-"); // Replace multiple - with single -
+      }
+
+      function populateContent(
+        data,
+        showIndexOfContents = false,
+        bookmarkBaseUrl = ""
+      ) {
+        let listOfTopics = "";
+
+        if (showIndexOfContents) {
+          listOfTopics = `
+                <div class="index-list">
+                        ${data.topics
+                          ?.map(
+                            (t, index) => `
+                                    <div class="link">
+                                      ${index + 1}. 
+                                      <h2>
+                                          <a href="${bookmarkBaseUrl}#${slugify(
+                                            t.name
+                                          )}">
+                                                <i><u>${t.name}</u></i>
+                                            </a>
+                                        </h2>
+                                    </div>
+                                    `
+                          )
+                          .join("")}
+                </div>
+                <hr class="divider" />
+            `;
+        }
+
+        document.getElementById("content").innerHTML = `
               <center>
                   <h1>${data.name}</h1>
               </center>
               <hr class="divider" />
-              <ul class="topics-list">
+              <div class="topics-list">
                   ${data.topics
                     ?.map(
                       (t) => `
-                      <li class="topic-content">
-                          <h1><i><u>${t.name}</u></i></h1>
-                          <ul class="questions-list">
-                              ${t.questions
-                                ?.map(
-                                  (q) => `
-                                  <li class="question-content">
-                                      <h3>${q.question}</h3>
-                                      ${q.answer ? `<p>${q.answer}</p>` : ""}
-                                      ${
-                                        q.hints
-                                          ? `<pre><code>${q.hints}</code></pre>`
-                                          : ""
-                                      } 
-                                  </li>
-                                  <hr />
-                              `
-                                )
-                                .join("")}
-                          </ul>
-                      </li>
+                      <div class="topic-content">
+                            <h1 class="topic-title" id="${slugify(t.name)}">
+                                <i><u>${t.name}</u></i>
+                            </h1>
+                            <div class="questions-list">
+                                ${t.questions
+                                  ?.map(
+                                    (q, index) => `
+                                      <div class="question-content">
+                                          <div class="question-title">
+                                            <h3>${index + 1}. ${q.question}</h3>
+                                            <div class="difficulty-circle ${
+                                              q.difficulty?.toLowerCase() || ""
+                                            }"></div>
+                                          </div>
+
+                                          ${
+                                            q.answer ? `<p>${q.answer}</p>` : ""
+                                          }
+                                          ${
+                                            q.link
+                                              ? `<div class="link"><a href=${q.link} target="_blank">${q.link}</a></div>`
+                                              : ""
+                                          } 
+                                          ${
+                                            q.hints
+                                              ? `<pre><code>${q.hints}</code></pre>`
+                                              : ""
+                                          } 
+                                          ${
+                                            q.code
+                                              ? `<pre><code>${q.code}</code></pre>`
+                                              : ""
+                                          } 
+                                          ${
+                                            q.complexity
+                                              ? `<pre><code>${q.complexity}</code></pre>`
+                                              : ""
+                                          } 
+                                      </div>
+                                    <hr />
+                                `
+                                  )
+                                  .join("")}
+                            </div>
+                      </div>
                       <hr class="divider" />
                   `
                     )
                     .join("")}
-              </ul>
+              </div>
           `;
+      }
+
+      const dataFilePath = "{{ site.baseurl }}/data/system-design-fe.json";
+      const json = fetch(dataFilePath)
+        .then((response) => response.json())
+        .then((data) => {
+          populateContent(data, true, "pages/system-design-fe");
         });
     </script>
   </body>
