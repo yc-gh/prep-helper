@@ -303,7 +303,11 @@
           },
           {
             "question": "Merge Intervals",
-            "link": "https://leetcode.com/problems/merge-intervals/"
+            "link": "https://leetcode.com/problems/merge-intervals/",
+            "code": "var merge = function(intervals) {\n    const sorted = intervals.sort((a, b) => {\n        if(a[0] == b[0]) return a[1] - b[1];\n        return a[0] - b[0];\n    });\n\n    const n = sorted.length, ans = [];\n    let [currStart, currEnd] = [sorted[0][0], sorted[0][1]];\n\n    for(let i = 1; i < n; i++) {\n        const [start, end] = sorted[i];\n\n        if(end > currEnd) {\n            if(start > currEnd) {\n                ans.push([currStart, currEnd]);\n                currStart = start;\n                currEnd = end;\n            }\n            else {\n                currEnd = end;\n            }\n        }\n    }\n\n    ans.push([currStart, currEnd]);\n    return ans;\n};",
+            "hints": "Sort the intervals based on the start time.\nIterate through the intervals and merge overlapping intervals.\nCompare the end time of current interval with previous interval to check for cases where the previous interval completely overlaps the current interval,\nand then compare the start time of the current interval with the end time of the previous interval.",
+            "complexity": "Time: O(nlogn)\nSpace: O(n)",
+            "difficulty": "Medium"
           },
           {
             "question": "Insert Interval",
@@ -868,11 +872,19 @@
           },
           {
             "question": "Word Break",
-            "link": "https://leetcode.com/problems/word-break/"
+            "link": "https://leetcode.com/problems/word-break/",
+            "code": "var wordBreak = function(s, wordDict) {\n    const wordSet = new Set();\n    for(let word of wordDict) {\n        wordSet.add(word);\n    }\n\n    const memo = new Map();\n    return backtrack(s, wordSet, memo);\n};\n\nvar backtrack = function(str, wordSet, memo) {\n    if(memo.has(str)) return memo.get(str);\n    \n    if(str == '') return true;\n\n    for(let i = str.length; i > 0; i--) {\n        const subStr = str.substring(0, i);\n        if(wordSet.has(subStr)) {\n            const remStr = str.substring(i);\n            const remBacktrack = backtrack(remStr, wordSet, memo);\n            if (remBacktrack) {\n                memo.set(remStr, true);\n                return true;\n            }\n        }\n    }\n\n    memo.set(str, false);\n    return false;\n}",
+            "hints": "Use a recursive function to check if the string can be broken into words.\nUse memoization to store the results of the subproblems.\nIterate through the string and check if the substring is in the word set.",
+            "complexity": "Time: O(n^2)\nSpace: O(n)",
+            "difficulty": "Medium"
           },
           {
             "question": "Coin Change",
-            "link": "https://leetcode.com/problems/coin-change/"
+            "link": "https://leetcode.com/problems/coin-change/",
+            "code": "var coinChange = function(coins, amount) {\n    const memo = Array(amount);\n    const ans = backtrack(coins, amount, memo);\n    return ans == Infinity ? -1 : ans;\n};\n\nvar backtrack = function(coins, amount, memo) {\n    if(amount == 0) return 0;\n    if(amount < 0) return Infinity;\n\n    if(memo[amount]) return memo[amount];\n\n    let minCoins = Infinity;\n\n    for(let c of coins) {\n        minCoins = Math.min(minCoins, 1 + backtrack(coins, amount - c, memo));\n    }\n\n    return memo[amount] = minCoins;\n}",
+            "hints": "Use a recursive function to find the minimum number of coins required to make the amount.\nUse memoization to store the results of the subproblems.\nIterate through the coins and find the minimum number of coins required to make the amount.",
+            "complexity": "Time: O(n * m)\nSpace: O(n)",
+            "difficulty": "Medium"
           },
           {
             "question": "Longest Increasing Subsequence",
