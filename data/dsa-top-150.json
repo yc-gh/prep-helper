@@ -647,7 +647,11 @@
       "questions": [
         {
           "question": "Snakes and Ladders",
-          "link": "https://leetcode.com/problems/snakes-and-ladders/"
+          "link": "https://leetcode.com/problems/snakes-and-ladders/",
+          "code": "var snakesAndLadders = function(board) {\n    const n = board.length, vis = new Set();\n    const queue = [1], lastCell = n * n;\n    let turns = 0;\n\n    vis.add(1);\n\n    while(queue.length > 0) {\n        let size = queue.length;\n        while(size-- > 0) {\n            const curr = queue.shift();\n            if(curr == lastCell) return turns;\n\n            for(let next = curr + 1; next <= curr + 6 && next <= lastCell; next++) {\n                if(vis.has(next)) continue;\n                vis.add(next);\n                const nextZeroIndexed = next - 1;\n                const row = n - parseInt(nextZeroIndexed / n) - 1;\n                const readIndexLToR = (n - row - 1) % 2 == 0;\n                const nextCol = nextZeroIndexed % n;\n                const col = readIndexLToR ? nextCol : (n - nextCol - 1);\n                const nextCell = board[row][col] == -1 ? next : board[row][col];\n                queue.push(nextCell);\n            }\n        }\n        turns++;\n    }\n\n    return -1;\n};",
+          "hints": "Use a queue to perform a BFS traversal.\nKeep track of the visited cells.\nIterate through the next 6 cells and add them to the queue.",
+          "complexity": "Time: O(n^2)\nSpace: O(n^2)",
+          "difficulty": "Medium"
         },
         {
           "question": "Minimum Genetic Mutation",
