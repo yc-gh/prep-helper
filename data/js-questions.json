@@ -52,7 +52,7 @@
         {
           "question": "Explain the concept of currying in JavaScript",
           "answer": "Currying is a technique in functional programming where a function with multiple arguments is transformed into a sequence of functions, each taking a single argument. This allows for partial application of functions and the creation of reusable functions.",
-          "hints": "function multiply(a, b) {\n  return a * b;\n}\n\nfunction curriedMultiply(a) {\n  return function(b) {\n    return a * b;\n  };\n}\n\nconst multiplyBy2 = curriedMultiply(2);\nconsole.log(multiplyBy2(3)); // 6"
+          "hints": "function multiply(a, b) {\n  return a * b;\n}\n\nfunction curriedMultiply(a) {\n  return function(b) {\n    return a * b;\n  };\n}\n\nconsole.log(curriedMultiply(2)(3)); // 6"
         },
         {
           "question": "What is the difference between 'null' and 'undefined' in JavaScript?",

@@ -225,15 +225,27 @@
         },
         {
           "question": "Spiral Matrix",
-          "link": "https://leetcode.com/problems/spiral-matrix/"
+          "link": "https://leetcode.com/problems/spiral-matrix/",
+          "code": "var spiralOrder = function(matrix) {\n    const m = matrix.length, n = matrix[0].length;\n    const ans = [];\n    let left = 0, top = 0, right = n - 1, bottom = m - 1;\n\n    while(left <= right && top <= bottom) {\n        for(let i = left; i <= right; i++) {\n            ans.push(matrix[top][i]);\n        }\n        top++;\n\n        for(let i = top; i <= bottom; i++) {\n            ans.push(matrix[i][right]);\n        }\n        right--;\n\n        if(top > bottom) break;\n\n        for(let i = right; i >= left; i--) {\n            ans.push(matrix[bottom][i]);\n        }\n        bottom--;\n\n        if(left > right) break;\n\n        for(let i = bottom; i >= top; i--) {\n            ans.push(matrix[i][left]);\n        }\n        left++;\n    }\n\n    return ans;\n};",
+          "hints": "Use four pointers to keep track of the boundaries of the matrix.\nIterate through the matrix in a spiral order.",
+          "complexity": "Time: O(mn)\nSpace: O(1)",
+          "difficulty": "Medium"
         },
         {
           "question": "Rotate Image",
-          "link": "https://leetcode.com/problems/rotate-image/"
+          "link": "https://leetcode.com/problems/rotate-image/",
+          "code": "var rotate = function(matrix) {\n    matrix.reverse();\n    transpose(matrix);\n};\n\nvar transpose = function(matrix) {\n    const m = matrix.length, n = matrix[0].length;\n\n    for(let i = 0; i < m; i++) {\n        for(let j = i; j < n; j++) {\n            let temp = matrix[i][j];\n            matrix[i][j] = matrix[j][i];\n            matrix[j][i] = temp;\n        }\n    }\n}",
+          "hints": "Reverse the matrix.\nTranspose the matrix.",
+          "complexity": "Time: O(n^2)\nSpace: O(1)",
+          "difficulty": "Medium"
         },
         {
           "question": "Set Matrix Zeroes",
-          "link": "https://leetcode.com/problems/set-matrix-zeroes/"
+          "link": "https://leetcode.com/problems/set-matrix-zeroes/",
+          "code": "var setZeroes = function(matrix) {\n    const m = matrix.length, n = matrix[0].length;\n    let firstRowZero = false, firstColZero = false;\n\n    for(let i = 0; i < m; i++) {\n        if(matrix[i][0] == 0) {\n            firstColZero = true;\n            break;\n        }\n    }\n\n    for(let j = 0; j < n; j++) {\n        if(matrix[0][j] == 0) {\n            firstRowZero = true;\n            break;\n        }\n    }\n\n    for(let i = 1; i < m; i++) {\n        for(let j = 1; j < n; j++) {\n            if(matrix[i][j] == 0) {\n                matrix[i][0] = 0;\n                matrix[0][j] = 0;\n            }\n        }\n    }\n\n    for(let i = 1; i < m; i++) {\n        for(let j = 1; j < n; j++) {\n            if(matrix[i][0] == 0 || matrix[0][j] == 0) {\n                matrix[i][j] = 0;\n            }\n        }\n    }\n\n    if(firstColZero) {\n        for(let i = 0; i < m; i++) {\n            matrix[i][0] = 0;\n        }\n    }\n\n    if(firstRowZero) {\n        for(let j = 0; j < n; j++) {\n            matrix[0][j] = 0;\n        }\n    }\n};",
+          "hints": "Use the first row and column to keep track of the rows and columns that need to be zeroed out.\nIterate through the matrix and update the first row and column based on the elements.\nIterate through the matrix and zero out the rows and columns based on the first row and column.",
+          "complexity": "Time: O(mn)\nSpace: O(1)",
+          "difficulty": "Medium"
         },
         {
           "question": "Game of Life",
@@ -446,7 +458,11 @@
         },
         {
           "question": "LRU Cache",
-          "link": "https://leetcode.com/problems/lru-cache/"
+          "link": "https://leetcode.com/problems/lru-cache/",
+          "code": "/**\n * @param {number} capacity\n */\nvar LRUCache = function(capacity) {\n    this.cache = new Map();\n    this.capacity = capacity;\n};\n\n/** \n * @param {number} key\n * @return {number}\n */\nLRUCache.prototype.get = function(key) {\n    if(!this.cache.has(key)) return -1;\n\n    const value = this.cache.get(key);\n    this.cache.delete(key);\n    this.cache.set(key, value);\n    return value;\n};\n\n/** \n * @param {number} key \n * @param {number} value\n * @return {void}\n */\nLRUCache.prototype.put = function(key, value) {\n    this.cache.delete(key);\n    this.cache.set(key, value);\n    if(this.cache.size > this.capacity) {\n        this.cache.delete(this.cache.keys().next().value);\n    }\n};",
+          "hints": "Use a hashmap to store the key-value pairs.\nUse a doubly linked list to keep track of the order of the keys.\nWhen getting a key, update the order of the keys.\nWhen putting a key, check if the capacity is exceeded and remove the least recently used key.",
+          "complexity": "Time: O(1)\nSpace: O(n)",
+          "difficulty": "Medium"
         }
       ]
     },
@@ -576,7 +592,11 @@
         },
         {
           "question": "Average of Levels in Binary Tree",
-          "link": "https://leetcode.com/problems/average-of-levels-in-binary-tree/"
+          "link": "https://leetcode.com/problems/average-of-levels-in-binary-tree/",
+          "code": "var averageOfLevels = function(root) {\n    const queue = [root], ans = [];\n\n    while(queue.length > 0) {\n        let size = queue.length;\n        let sum = queue.reduce((acc, curr) => acc + curr.val, 0);\n        ans.push(parseFloat((sum / size).toFixed(5)));\n        \n        while(size-- > 0) {\n            const curr = queue.shift();\n            if(curr.left) queue.push(curr.left);\n            if(curr.right) queue.push(curr.right);\n        }\n    }\n\n    return ans;\n};",
+          "hints": "Use a queue to perform a level order traversal.\nCalculate the sum of the nodes at each level.\nCalculate the average of the nodes at each level.",
+          "complexity": "Time: O(n)\nSpace: O(n)",
+          "difficulty": "Easy"
         },
         {
           "question": "Binary Tree Level Order Traversal",
@@ -601,11 +621,19 @@
       "questions": [
         {
           "question": "Minimum Absolute Difference in BST",
-          "link": "https://leetcode.com/problems/minimum-absolute-difference-in-bst/"
+          "link": "https://leetcode.com/problems/minimum-absolute-difference-in-bst/",
+          "code": "var getMinimumDifference = function(root) {\n    let prev = null, min = Infinity;\n\n    const inorder = function(curr) {\n        if(curr == null) return;\n        inorder(curr.left);\n        if(prev) {\n            min = Math.min(min, Math.abs(curr.val - prev.val));\n        }\n        prev = curr;\n        inorder(curr.right);\n    }\n\n    inorder(root);\n\n    return min;\n};",
+          "hints": "Perform an inorder traversal to get the nodes in sorted order.\nCalculate the absolute difference between the current node and the previous node.\nUpdate the minimum difference.",
+          "complexity": "Time: O(n)\nSpace: O(1)",
+          "difficulty": "Easy"
         },
         {
           "question": "Kth Smallest Element in a BST",
-          "link": "https://leetcode.com/problems/kth-smallest-element-in-a-bst/"
+          "link": "https://leetcode.com/problems/kth-smallest-element-in-a-bst/",
+          "code": "var kthSmallest = function(root, k) {\n    const arr =[];\n\n    const inorder = function(curr) {\n        if(curr == null) return null;\n\n        inorder(curr.left);\n        arr.push(curr.val);\n        inorder(curr.right);\n    };\n\n    inorder(root);\n\n    return arr[k - 1];\n};",
+          "hints": "Perform an inorder traversal to get the nodes in sorted order.\nReturn the kth element from the sorted array.",
+          "complexity": "Time: O(n)\nSpace: O(n)",
+          "difficulty": "Medium"
         },
         {
           "question": "Validate Binary Search Tree",
@@ -618,11 +646,19 @@
       "questions": [
         {
           "question": "Number of Islands",
-          "link": "https://leetcode.com/problems/number-of-islands/"
+          "link": "https://leetcode.com/problems/number-of-islands/",
+          "code": "var numIslands = function(grid) {\n    let count = 0;\n    const m = grid.length, n = grid[0].length;\n\n    var dfs = function(x, y) {\n        if(x < 0 || x >= m || y < 0 || y >= n) return;\n        if(grid[x][y] == \"0\") return;\n\n        grid[x][y] = \"0\";\n\n        dfs(x, y - 1);\n        dfs(x - 1, y);\n        dfs(x, y + 1);\n        dfs(x + 1, y);\n    }\n\n    for(let i = 0; i < m; i++) {\n        for(let j = 0; j < n; j++) {\n            if(grid[i][j] == \"1\") {\n                count++;\n                dfs(i, j);\n            }\n        }\n    }\n\n    return count;\n};",
+          "hints": "Use a DFS traversal to find the islands.\nMark the visited cells as 0.\nPerform a DFS traversal on the adjacent cells.",
+          "complexity": "Time: O(m * n)\nSpace: O(m * n)",
+          "difficulty": "Medium"
         },
         {
           "question": "Surrounded Regions",
-          "link": "https://leetcode.com/problems/surrounded-regions/"
+          "link": "https://leetcode.com/problems/surrounded-regions/",
+          "code": "var solve = function (board) {\n    const m = board.length, n = board[0].length;\n\n    var markConnected = function (x, y) {\n        if (x < 0 || x >= m || y < 0 || y >= n) return;\n        if (board[x][y] == \"X\" || board[x][y] == \"*\") return;\n\n        board[x][y] = \"*\";\n\n        markConnected(x, y - 1);\n        markConnected(x - 1, y);\n        markConnected(x, y + 1);\n        markConnected(x + 1, y);\n    }\n\n    for (let r = 0; r < m; r++) {\n        if (board[r][0] == \"O\") markConnected(r, 0);\n        if (board[r][n - 1] == \"O\") markConnected(r, n - 1);\n    }\n\n    for (let c = 0; c < n; c++) {\n        if (board[0][c] == \"O\") markConnected(0, c);\n        if (board[m - 1][c] == \"O\") markConnected(m - 1, c);\n    }\n\n    for (let i = 0; i < m; i++) {\n        for (let j = 0; j < n; j++) {\n            if (board[i][j] == \"*\") {\n                board[i][j] = \"O\";\n            }\n            else if (board[i][j] == \"O\") {\n                board[i][j] = \"X\";\n            }\n        }\n    }\n};",
+          "hints": "Mark the connected cells from the boundary as *.\nMark the connected cells from the boundary as *.\nMark the connected cells from the boundary as *.\nUpdate the cells marked as * to O and the cells marked as O to X.",
+          "complexity": "Time: O(m * n)\nSpace: O(m * n)",
+          "difficulty": "Medium"
         },
         {
           "question": "Clone Graph",
@@ -634,11 +670,19 @@
         },
         {
           "question": "Course Schedule",
-          "link": "https://leetcode.com/problems/course-schedule/"
+          "link": "https://leetcode.com/problems/course-schedule/",
+          "code": "var canFinish = function(numCourses, prerequisites) {\n    const graph = Array(numCourses).fill().map(() => []);\n\n    for(let p of prerequisites) {\n        graph[p[1]].push(p[0]);\n    }\n\n    const dfs = function(curr, vis, currVis) {\n        if(vis[curr]) return true;\n        if(currVis[curr]) return false;\n        currVis[curr] = true;\n\n        for(let next of graph[curr]) {\n            if(!dfs(next, vis, currVis)) return false;\n        }\n\n        vis[curr] = true;\n        currVis[curr] = false;\n        return true;\n    }\n\n\n    const visited = Array(numCourses).fill(false);\n    const currVisited = Array(numCourses).fill(false);\n\n    for(let i = 0; i < numCourses; i++) {\n        if(!dfs(i, visited, currVisited)) return false;\n    }\n    \n    return true;\n};",
+          "hints": "Create a graph with the prerequisites.\nPerform a DFS traversal to check if there is a cycle in the graph.",
+          "complexity": "Time: O(V + E)\nSpace: O(V + E)",
+          "difficulty": "Medium"
         },
         {
           "question": "Course Schedule II",
-          "link": "https://leetcode.com/problems/course-schedule-ii/"
+          "link": "https://leetcode.com/problems/course-schedule-ii/",
+          "code": "var findOrder = function(numCourses, prerequisites) {\n    const ans = [];\n    const graph = Array(numCourses).fill().map(() => []);\n\n    for(let p of prerequisites) {\n        graph[p[0]].push(p[1]);\n    }\n\n    const dfs = function(curr, vis, currVis) {\n        if(vis[curr]) return true;\n        if(currVis[curr]) return false;\n        currVis[curr] = true;\n\n        for(let next of graph[curr]) {\n            if(!dfs(next, vis, currVis)) return false;\n        }\n\n        vis[curr] = true;\n        currVis[curr] = false;\n        ans.push(curr);\n        return true;\n    }\n\n\n    const visited = Array(numCourses).fill(false);\n    const currVisited = Array(numCourses).fill(false);\n\n    for(let i = 0; i < numCourses; i++) {\n        if(!dfs(i, visited, currVisited)) return [];\n    }\n    \n    return ans;\n};",
+          "hints": "Create a graph with the prerequisites.\nPerform a DFS traversal to check if there is a cycle in the graph.\nAdd the nodes to the answer array in reverse order.",
+          "complexity": "Time: O(V + E)\nSpace: O(V + E)",
+          "difficulty": "Medium"
         }
       ]
     },
@@ -685,19 +729,35 @@
       "questions": [
         {
           "question": "Letter Combinations of a Phone Number",
-          "link": "https://leetcode.com/problems/letter-combinations-of-a-phone-number/"
+          "link": "https://leetcode.com/problems/letter-combinations-of-a-phone-number/",
+          "code": "var letterCombinations = function(digits) {\n    const n = digits.length;\n    const ans = [];\n    if(n == 0) return ans;\n\n    const graph = {\n        2: 'abc',\n        3: 'def',\n        4: 'ghi',\n        5: 'jkl',\n        6: 'mno',\n        7: 'pqrs',\n        8: 'tuv',\n        9: 'wxyz',\n    }\n\n    const backtrack = function(currIndex, str) {\n        if(currIndex >= n) {\n            ans.push(str);\n            return;\n        }\n\n        for(let c of graph[digits[currIndex]]) {\n            backtrack(currIndex + 1, str + c);\n        }\n    }\n\n    backtrack(0, '');\n\n    return ans;\n};",
+          "hints": "Use a DFS traversal to generate all possible combinations.\nIterate through the characters of the current digit and append them to the string.",
+          "complexity": "Time: O(4^n)\nSpace: O(n)",
+          "difficulty": "Medium"
         },
         {
           "question": "Combinations",
-          "link": "https://leetcode.com/problems/combinations/"
+          "link": "https://leetcode.com/problems/combinations/",
+          "code": "var combine = function(n, k) {\n    const ans = [];\n\n    const backtrack = function(currIndex, startNum, res) {\n        if(currIndex >= k) {\n            ans.push([...res]);\n            return;\n        }\n\n        for(let i = startNum; i <= n; i++) {\n            res.push(i);\n            backtrack(currIndex + 1, i + 1, res);\n            res.pop();\n        }\n    }\n\n    backtrack(0, 1, []);\n\n    return ans;\n};",
+          "hints": "Use a DFS traversal to generate all possible combinations.\nIterate through the numbers from the start number to n and append them to the result.",
+          "complexity": "Time: O(n choose k)\nSpace: O(k)",
+          "difficulty": "Medium"
         },
         {
           "question": "Permutations",
-          "link": "https://leetcode.com/problems/permutations/"
+          "link": "https://leetcode.com/problems/permutations/",
+          "code": "var permute = function(nums) {\n    const n = nums.length, ans = [];\n\n    const backtrack = function(set) {\n        if(set.size >= n) {\n            ans.push([...set]);\n            return;\n        }\n\n        for(let i of nums) {\n            if(!set.has(i)) {\n                set.add(i);\n                backtrack(set);\n                set.delete(i);\n            }\n        }\n    }\n\n    backtrack(new Set());\n\n    return ans;\n};",
+          "hints": "Use a DFS traversal to generate all possible permutations.\nIterate through the numbers and add them to the set.",
+          "complexity": "Time: O(n!)\nSpace: O(n)",
+          "difficulty": "Medium"
         },
         {
           "question": "Combination Sum",
-          "link": "https://leetcode.com/problems/combination-sum/"
+          "link": "https://leetcode.com/problems/combination-sum/",
+          "code": "var combinationSum = function(candidates, target) {\n    const n = candidates.length, res = [], ans = [];\n\n    const backtrack = function(startIndex, sum) {\n        if(sum > target) return;\n        if(sum == target) {\n            ans.push([...res]);\n            return;\n        }\n\n        for(let i = startIndex; i < n; i++) {\n            const c = candidates[i];\n            res.push(c);\n            backtrack(i, sum + c);\n            res.pop();\n        }\n    }\n\n    backtrack(0, 0);\n\n    return ans;\n};",
+          "hints": "Use a DFS traversal to generate all possible combinations.\nIterate through the candidates and add them to the result.",
+          "complexity": "Time: O(2^n)\nSpace: O(n)",
+          "difficulty": "Medium"
         },
         {
           "question": "N-Queens II",
@@ -705,11 +765,19 @@
         },
         {
           "question": "Generate Parentheses",
-          "link": "https://leetcode.com/problems/generate-parentheses/"
+          "link": "https://leetcode.com/problems/generate-parentheses/",
+          "code": "var generateParenthesis = function(n) {\n    const ans = [];\n    \n    const backtrack = function(open, close, str) {\n        if(open == n && open == close) {\n            ans.push(str);\n            return;\n        }\n\n        if(open < n) {\n            backtrack(open + 1, close, str + '(');\n        }\n\n        if(close < open) {\n            backtrack(open, close + 1, str + ')');\n        }\n    }\n\n    backtrack(0, 0, '');\n\n    return ans;\n};",
+          "hints": "Use a DFS traversal to generate all possible combinations.\nAdd an opening parenthesis if the count of opening parentheses is less than n.\nAdd a closing parenthesis if the count of closing parentheses is less than the count of opening parentheses.",
+          "complexity": "Time: O(2^n)\nSpace: O(n4)",
+          "difficulty": "Medium"
         },
         {
           "question": "Word Search",
-          "link": "https://leetcode.com/problems/word-search/"
+          "link": "https://leetcode.com/problems/word-search/",
+          "code": "var exist = function(board, word) {\n    const m = board.length, n = board[0].length;\n\n    const backtrack = function(row, col, wordIndex) {\n        if(wordIndex >= word.length) {\n            return true;\n        }\n\n        if(row < 0 || row >= m || col < 0 || col >= n) return false;\n\n        if(board[row][col] != word[wordIndex]) return false;\n        \n        board[row][col] = String.fromCharCode(board[row][col].charCodeAt(0) ^ 256);\n\n        const left = backtrack(row, col - 1, wordIndex + 1);\n        const top = backtrack(row - 1, col, wordIndex + 1);\n        const right = backtrack(row, col + 1, wordIndex + 1);\n        const bottom = backtrack(row + 1, col, wordIndex + 1);\n\n        board[row][col] = String.fromCharCode(board[row][col].charCodeAt(0) ^ 256);\n\n        return left || top || right || bottom;\n    }\n\n    for(let i = 0; i < m; i++) {\n        for(let j = 0; j < n; j++) {\n            if(board[i][j] == word[0]) {\n                if (backtrack(i, j, 0)) return true;\n            }\n        }\n    }\n\n    return false;\n};",
+          "hints": "Use a DFS traversal to find the word in the board.\nMark the visited cells.\nPerform a DFS traversal on the adjacent cells.",
+          "complexity": "Time: O(m * n * 4^l)\nSpace: O(l)",
+          "difficulty": "Medium"
         }
       ]
     },
