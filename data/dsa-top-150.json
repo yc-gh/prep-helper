@@ -861,7 +861,11 @@
       "questions": [
         {
           "question": "Kth Largest Element in an Array",
-          "link": "https://leetcode.com/problems/kth-largest-element-in-an-array/"
+          "link": "https://leetcode.com/problems/kth-largest-element-in-an-array/",
+          "code": "var findKthLargest = function(nums, k) {\r\n    if (nums.length === 0 || k > nums.length) return null;\r\n\r\n    let min = Math.min(...nums);\r\n    let max = Math.max(...nums);\r\n\r\n    const countArraySize = max - min + 1;\r\n    let countArray = new Array(countArraySize).fill(0);\r\n\r\n    for (let num of nums) {\r\n        countArray[num - min]++;\r\n    }\r\n\r\n    let count = 0;\r\n    for (let i = countArraySize - 1; i >= 0; i--) {\r\n        count += countArray[i];\r\n        if (count >= k) {\r\n            return i + min;\r\n        }\r\n    }\r\n\r\n    return null;\r\n};",
+          "hints": "Use Quick Select or Counting sort",
+          "complexity": "Time: O(n + r)\nSpace: O(r)",
+          "difficulty": "Medium"
         },
         {
           "question": "IPO",
